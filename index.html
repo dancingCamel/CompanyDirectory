@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta
+      name="description"
+      content="An employee directory for the ficitonal company, Bellport."
+    />
+    <meta name="author" content="Rob Morgan" />
+
+    <title>Bellport | Company Directory</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/static/css/bootstrap.css" rel="stylesheet" />
+
+    <!-- Other CSS -->
+    <link rel="stylesheet" href="static/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css"
+    />
+  </head>
+
+  <body>
+    <div
+      class="modal fade"
+      id="loader"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="loaderLabel"
+    >
+      <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-body text-center">
+            <div class="loader"></div>
+            <div clas="loaderTxt">
+              <p class="text-muted">Loading</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <nav
+      class="navbar navbar-expand-xs navbar-dark bg-dark justify-content-between"
+    >
+      <a class="navbar-brand" href="#"
+        ><img src="" alt="Bellport" id="logo"
+      /></a>
+      <div class="col-xs-auto"></div>
+      <div class="col-xs-6"></div>
+    </nav>
+
+    <main role="main" class="container mb-5">
+      <div class="container">
+        <div
+          class="alert alert-danger"
+          role="alert"
+          style="display: none"
+          id="errorBox"
+        >
+          An error occurred.
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+
+    <footer class="footer d-none d-sm-block">
+      <hr />
+      <div class="container">
+        <span class="text-muted">
+          <div class="footer-copyright text-center py-3">
+            Bellport is a fictional company | Copyright:
+            <a href="https://www.robbmdev.com/"> Robbmdev</a>
+          </div>
+        </span>
+      </div>
+    </footer>
+
+    <script src="/static/js/bootstrap.js"></script>
+    <script src="/static/js/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+    <script src="/static/js/keys.js"></script>
+    <script src="/static/js/utils.js"></script>
+    <script src="/static/js/script.js"></script>
+  </body>
+</html>

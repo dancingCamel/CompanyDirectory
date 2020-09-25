@@ -1,0 +1,52 @@
+html {
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Main page */
+#logo {
+  height: 40px;
+}
+
+main {
+  margin-top: 90px;
+}
+
+/* Loader */
+.loader {
+  position: relative;
+  text-align: center;
+  margin: 15px auto 35px auto;
+  z-index: 9999;
+  display: block;
+  width: 80px;
+  height: 80px;
+  border: 10px solid rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+  border-top-color: #000;
+  animation: spin 1s ease-in-out infinite;
+  -webkit-animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes spin {
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+/* Large screen syling */
+@media screen and (min-width: 576px) {
+  main {
+    margin-top: 80px !important;
+  }
+}
+
+/* Mobile device styling */
+@media screen and (max-width: 576px) {
+}
