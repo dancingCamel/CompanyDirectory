@@ -34,7 +34,11 @@
 
 	// $_REQUEST used for development / debugging. Remember to cange to $_POST for production
 
-	$query = 'INSERT INTO department (name, locationID) VALUES("' . $_REQUEST['name'] . '",' . $_REQUEST["locationID"] . ')';
+	$name = $conn -> real_escape_string($_REQUEST['name']);
+	$locID = $conn -> real_escape_string($_REQUEST['locationID']);
+	$locID = (int)$locID;
+
+	$query = "INSERT INTO department (name, locationID) VALUES (\"$name\" , $locID)";
 
 	$result = $conn->query($query);
 	
