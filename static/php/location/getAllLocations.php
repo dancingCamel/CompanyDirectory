@@ -29,7 +29,7 @@
 
 	}	
 
-	$query = 'SELECT id, name FROM location';  // check column names
+	$query = 'SELECT id, name FROM location';
 
 	$result = $conn->query($query);
 	

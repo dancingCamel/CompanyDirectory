@@ -1,9 +1,5 @@
 <?php
 
-
-	// example use from browser
-	// http://localhost/companydirectory/libs/php/getDepartmentByID.php?id=2
-	
 	// remove next two lines for production
 
 	ini_set('display_errors', 'On');
@@ -12,6 +8,8 @@
 	$executionStartTime = microtime(true);
 
 	include("../config.php");
+	
+	header('Content-Type: application/json; charset=UTF-8');
 
 	$conn = new mysqli($cd_host, $cd_user, $cd_password, $cd_dbname, $cd_port, $cd_socket);
 
@@ -31,7 +29,9 @@
 
 	// $_REQUEST used for development / debugging. Remember to cange to $_POST for production
 
-	$query = 'SELECT id, name, locationID FROM location WHERE id = ' . $_REQUEST['id'];
+	$id = $conn -> real_escape_string($_REQUEST['id']);
+	$query = "SELECT id, name FROM location WHERE id =  $id";
+	// Add a join here to get location name, too
 
 	$result = $conn->query($query);
 	
@@ -43,7 +43,7 @@
 		$output['data'] = [];
 
 		mysqli_close($conn);
-
+		
 		echo json_encode($output); 
 
 		exit;
@@ -58,13 +58,26 @@
 
 	}
 
+	if (sizeof($data) === 0 ){
+
+		$output['status']['code'] = "404";
+		$output['status']['name'] = "executed";
+		$output['status']['description'] = "deptartment with specified ID not found";	
+		$output['data'] = [];
+
+		mysqli_close($conn);
+
+		echo json_encode($output); 
+
+		exit;
+
+	}
+
 	$output['status']['code'] = "200";
 	$output['status']['name'] = "ok";
 	$output['status']['description'] = "success";
 	$output['status']['returnedIn'] = (microtime(true) - $executionStartTime) / 1000 . " ms";
 	$output['data'] = $data;
-
-	header('Content-Type: application/json; charset=UTF-8');
 	
 	mysqli_close($conn);
 

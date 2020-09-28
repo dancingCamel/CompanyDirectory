@@ -34,7 +34,9 @@
 
 	// $_REQUEST used for development / debugging. Remember to cange to $_POST for production
 
-	$query = 'INSERT INTO location (name, locationID) VALUES("' . $_REQUEST['name'] . '",' . $_REQUEST["locationID"] . ')'; // Rewrite this
+	$name = $conn -> real_escape_string($_REQUEST['name']);
+
+	$query = "INSERT INTO location (name) VALUES (\"$name\")";
 
 	$result = $conn->query($query);
 	
