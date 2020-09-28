@@ -11,6 +11,8 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
+-- enter mariadb with: mariadb -u yourusename -p (then type password)
+-- run this script with: mariadb -u yourusername -p yourdatabase < path_to_text_file (then type password)
 
 -- Dumping database structure for companydirectory
 CREATE DATABASE IF NOT EXISTS `companydirectory` /*!40100 DEFAULT CHARACTER SET utf8 */;
@@ -60,13 +62,13 @@ INSERT INTO `location` (`id`, `name`) VALUES
 
 -- Dumping structure for table companydirectory.personnel
 CREATE TABLE IF NOT EXISTS `personnel` (
-  `id` int(11) DEFAULT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `firstName` varchar(50) DEFAULT NULL,
   `lastName` varchar(50) DEFAULT NULL,
   `jobTitle` varchar(50) DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL,
   `departmentID` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- Dumping data for table companydirectory.personnel: ~100 rows (approximately)
 /*!40000 ALTER TABLE `personnel` DISABLE KEYS */;

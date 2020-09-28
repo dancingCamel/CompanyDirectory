@@ -34,7 +34,13 @@
 
 	// $_REQUEST used for development / debugging. Remember to cange to $_POST for production
 
-	$query = 'INSERT INTO personnel (name, locationID) VALUES("' . $_REQUEST['name'] . '",' . $_REQUEST["locationID"] . ')'; // Rewrite this
+	$firstName = $conn -> real_escape_string($_REQUEST['firstName']);
+	$lastName = $conn -> real_escape_string($_REQUEST['lastName']);
+	$jobTitle = $conn -> real_escape_string($_REQUEST['jobTitle']);
+	$email = $conn -> real_escape_string($_REQUEST['email']);
+	$deptID = (int)$conn -> real_escape_string($_REQUEST['departmentID']);
+
+	$query = "INSERT INTO personnel (firstName, lastName, jobTitle, email, departmentID) VALUES (\"$firstName\", \"$lastName\", \"$jobTitle\", \"$email\", $deptID)";
 
 	$result = $conn->query($query);
 	
