@@ -29,6 +29,20 @@
 
 	// $_REQUEST used for development / debugging. Remember to cange to $_POST for production
 
+	if (!isset($_REQUEST['id']) || !isset($_REQUEST['firstName']) || !isset($_REQUEST['lastName']) || !isset($_REQUEST['jobTitle']) || !isset($_REQUEST['email']) || !isset($_REQUEST['departmentID'])){
+		
+		$output['status']['code'] = "400";
+		$output['status']['name'] = "executed";
+		$output['status']['description'] = "bad request";	
+		$output['data'] = [];
+
+		mysqli_close($conn);
+
+		echo json_encode($output); 
+
+		exit;
+	}
+
 	$id = (int)$conn -> real_escape_string($_REQUEST['id']);
 	$firstName = $conn -> real_escape_string($_REQUEST['firstName']);
 	$lastName = $conn -> real_escape_string($_REQUEST['lastName']);

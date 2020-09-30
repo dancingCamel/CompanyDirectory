@@ -28,6 +28,19 @@
 	}	
 
 	// $_REQUEST used for development / debugging. Remember to cange to $_POST for production
+	if (!isset($_REQUEST['id']) || !isset($_REQUEST['name'])){
+		
+		$output['status']['code'] = "400";
+		$output['status']['name'] = "executed";
+		$output['status']['description'] = "bad request";	
+		$output['data'] = [];
+
+		mysqli_close($conn);
+
+		echo json_encode($output); 
+
+		exit;
+	}
 
 	$id = (int)$conn -> real_escape_string($_REQUEST['id']);
 	$name = $conn -> real_escape_string($_REQUEST['name']);

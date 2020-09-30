@@ -26,10 +26,11 @@
 		exit;
 
 	}	
+	// Set empty vars to don't get errors
 
 	// $_REQUEST used for development / debugging. Remember to cange to $_POST for production
 
-	$id = $conn -> real_escape_string($_REQUEST['id']);
+	$id = isset($_REQUEST['id']) ? $conn -> real_escape_string($_REQUEST['id']) : "";
 
 	$query = "DELETE FROM department WHERE id = $id";
 

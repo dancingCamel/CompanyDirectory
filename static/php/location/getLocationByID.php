@@ -29,6 +29,20 @@
 
 	// $_REQUEST used for development / debugging. Remember to cange to $_POST for production
 
+	if (!isset($_REQUEST['id'])){
+		
+		$output['status']['code'] = "400";
+		$output['status']['name'] = "executed";
+		$output['status']['description'] = "bad request";	
+		$output['data'] = [];
+
+		mysqli_close($conn);
+
+		echo json_encode($output); 
+
+		exit;
+	}
+
 	$id = $conn -> real_escape_string($_REQUEST['id']);
 	$query = "SELECT id, name FROM location WHERE id =  $id";
 	// Add a join here to get location name, too

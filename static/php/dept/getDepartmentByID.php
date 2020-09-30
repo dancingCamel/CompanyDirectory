@@ -29,7 +29,8 @@
 
 	// $_REQUEST used for development / debugging. Remember to cange to $_POST for production
 
-	$id = $conn -> real_escape_string($_REQUEST['id']);
+	$id = isset($_REQUEST['id']) ? $conn -> real_escape_string($_REQUEST['id']) : "";
+	
 	$query = "SELECT id, name, locationID FROM department WHERE id =  $id";
 	// Add a join here to get location name, too
 
