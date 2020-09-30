@@ -51,6 +51,11 @@ main {
   transform: scale(1.1);
 }
 
+.navbar-toggler {
+  border-color: var(--bellport-purple) !important;
+  /* background-color: var(--bellport-purple) !important; */
+}
+
 /* Loader */
 .loader {
   position: relative;
