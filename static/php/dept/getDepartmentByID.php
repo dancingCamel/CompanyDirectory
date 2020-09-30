@@ -31,7 +31,7 @@
 
 	$id = isset($_REQUEST['id']) ? $conn -> real_escape_string($_REQUEST['id']) : "";
 	
-	$query = "SELECT id, name, locationID FROM department WHERE id =  $id";
+	$query = "SELECT d.id, d.name, d.locationID, l.name AS location FROM department d LEFT JOIN location l ON (l.id = d.locationID) WHERE d.id =  $id";
 	// Add a join here to get location name, too
 
 	$result = $conn->query($query);
