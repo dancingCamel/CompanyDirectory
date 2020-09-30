@@ -35,12 +35,28 @@
 	$query = "UPDATE location SET name = \"$name\" WHERE id = $id";
 
 	$result = $conn->query($query);
+	$affected = $conn->affected_rows;
 	
 	if (!$result) {
 
 		$output['status']['code'] = "400";
 		$output['status']['name'] = "executed";
 		$output['status']['description'] = "query failed";	
+		$output['data'] = [];
+
+		mysqli_close($conn);
+
+		echo json_encode($output); 
+
+		exit;
+
+	}
+
+    if ($affected === 0) {
+
+		$output['status']['code'] = "404";
+		$output['status']['name'] = "executed";
+		$output['status']['description'] = "ID not found";	
 		$output['data'] = [];
 
 		mysqli_close($conn);
