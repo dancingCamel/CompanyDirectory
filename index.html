@@ -52,13 +52,58 @@
     </div>
 
     <nav
-      class="navbar navbar-expand-xs navbar-dark bg-dark justify-content-between"
+      class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark rotary-blue-background"
+      id="navbar"
     >
-      <a class="navbar-brand" href="#"
-        ><img src="" alt="Bellport" id="logo"
-      /></a>
-      <div class="col-xs-auto"></div>
-      <div class="col-xs-6"></div>
+      <div class="container d-flex justify-content-between align-items-center">
+        <a class="navbar-brand" href="/">
+          <img
+            src="./static/images/logo.svg"
+            alt="Bellport Logo"
+            height="40px"
+            width="auto"
+            id="logo-img"
+          />
+        </a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarCollapse"
+          aria-controls="navbarCollapse"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav ml-auto d-flex justify-content-between w-50">
+            <li class="nav-item active ml-auto">
+              <a class="nav-link" href="#"
+                >Employees<span class="sr-only">(current)</span></a
+              >
+            </li>
+            <li class="nav-item ml-auto">
+              <a class="nav-link" href="#">Departments</a>
+            </li>
+            <li class="nav-item ml-auto">
+              <a class="nav-link" href="#">Location</a>
+            </li>
+            <li class="nav-item ml-auto">
+              <a
+                href="#"
+                class="btn btn-outline-light my-2 my-sm-0"
+                type="button"
+                id="logoutBtn"
+              >
+                Logout<i class="fas fa-power-off ml-2 d-inline"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
     </nav>
 
     <main role="main" class="container mb-5">

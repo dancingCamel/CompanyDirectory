@@ -1,15 +1,54 @@
+:root {
+  --bellport-yellow: #faffd8;
+  --bellport-purple: #54577c;
+}
+
 html {
   position: relative;
   min-height: 100vh;
 }
 
 /* Main page */
+
+main {
+  margin-top: 90px;
+}
+
+/* NAVBAR */
 #logo {
   height: 40px;
 }
 
-main {
-  margin-top: 90px;
+#navbar {
+  background-color: var(--bellport-yellow) !important;
+  color: var(--bellport-purple) !important;
+}
+
+.nav-link {
+  color: var(--bellport-purple) !important;
+}
+
+.active .nav-link {
+  font-weight: bold !important;
+}
+
+.nav-link:hover {
+  font-weight: bold !important;
+}
+
+#logoutBtn {
+  border-color: var(--bellport-purple) !important;
+  color: var(--bellport-purple) !important;
+}
+
+#logoutBtn:hover {
+  border-color: var(--bellport-yellow) !important;
+  color: var(--bellport-yellow) !important;
+  background-color: var(--bellport-purple) !important;
+}
+
+#logo-img:hover {
+  transform: scale(1.1);
 }
 
 /* Loader */

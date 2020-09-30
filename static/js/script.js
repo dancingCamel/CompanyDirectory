@@ -9,7 +9,7 @@ $(document).ready(function () {
       .delay(200)
       .fadeOut("slow", function () {
         hideLoader();
-        $this.remove();
+        $("#preloader").remove();
       });
   }
 });
