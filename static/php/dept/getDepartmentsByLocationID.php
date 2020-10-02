@@ -29,9 +29,9 @@
 
 	// $_REQUEST used for development / debugging. Remember to cange to $_POST for production
 
-	$id = isset($_REQUEST['id']) ? $conn -> real_escape_string($_REQUEST['id']) : "";
+	$locID = isset($_REQUEST['locationID']) ? $conn -> real_escape_string($_REQUEST['locationID']) : "";
 	
-	$query = "SELECT d.id, d.name, d.locationID, l.name AS location FROM department d LEFT JOIN location l ON (l.id = d.locationID) WHERE d.id =  $id";
+	$query = "SELECT id, name, locationID FROM department WHERE locationID = $locID";
 
 	$result = $conn->query($query);
 	
@@ -62,7 +62,7 @@
 
 		$output['status']['code'] = "404";
 		$output['status']['name'] = "executed";
-		$output['status']['description'] = "deptartment with specified ID not found";	
+		$output['status']['description'] = "Location with specified ID not found";	
 		$output['data'] = [];
 
 		mysqli_close($conn);

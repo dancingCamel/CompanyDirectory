@@ -1,3 +1,5 @@
+/* GLOBAL */
+
 :root {
   --bellport-yellow: #faffd8;
   --bellport-purple: #54577c;
@@ -6,6 +8,32 @@
 html {
   position: relative;
   min-height: 100vh;
+}
+
+.bellport-purple-text {
+  color: var(--bellport-purple) !important;
+}
+
+.bellport-purple-background {
+  background-color: var(--bellport-purple) !important;
+}
+
+.bellport-yellow-background {
+  background-color: var(--bellport-yellow) !important;
+}
+
+.bellport-yellow-text {
+  color: var(--bellport-yellow) !important;
+}
+
+.bellport-purple-bottom-border {
+  border-color: var(--bellport-purple);
+  border-style: solid;
+  border-width: 0 0 1px 0;
+}
+
+.dropshadow {
+  filter: drop-shadow(0px 2px 4px #bbbbbb);
 }
 
 /* Main page */
@@ -17,11 +45,6 @@ main {
 /* NAVBAR */
 #logo {
   height: 40px;
-}
-
-#navbar {
-  background-color: var(--bellport-yellow) !important;
-  color: var(--bellport-purple) !important;
 }
 
 .nav-link {
