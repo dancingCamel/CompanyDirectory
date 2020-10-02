@@ -119,7 +119,7 @@
       </div>
 
       <!-- PAGES -->
-      <div class="employees">
+      <div class="employees d-none">
         <div class="container bellport-purple-text">
           <h1>Employees</h1>
         </div>
@@ -132,7 +132,71 @@
       <div class="editDept"></div>
       <div class="editEmployee"></div>
       <div class="editLocation"></div>
-      <div class="login"></div>
+      <div class="login">
+        <div class="text-center container">
+          <div class="row justify-content-center vertical-center mt-5">
+            <div class="col-12 col-lg-5 mt-5">
+              <form
+                class="form-signin align-middle mt-5"
+                method="POST"
+                action="/admin/login"
+              >
+                <div>
+                  <img
+                    src="./static/images/logo-no-text.svg"
+                    alt="Bellport Logo"
+                    height="100px"
+                  />
+                </div>
+                <a class="h1 mt-5 bellport-purple-text" href="#"
+                  >Company Directory</a
+                >
+                <h1 class="h3 mb-3 mt-3 font-weight-normal text-wrap d-none">
+                  Log in
+                </h1>
+
+                <div class="alert alert-success mt-3 d-none">
+                  <span id="loginSuccessBox"></span>
+                </div>
+
+                <div class="alert alert-danger mt-3 d-none">
+                  <span id="loginErrorBox"></span>
+                </div>
+
+                <label for="username" class="sr-only">Username</label>
+                <input
+                  type="text"
+                  id="username"
+                  name="username"
+                  class="form-control mt-3"
+                  placeholder="Username"
+                  required
+                  autofocus=""
+                />
+                <label for="password" class="sr-only">Password</label>
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  class="form-control mt-3"
+                  placeholder="Password"
+                  required
+                />
+
+                <button
+                  class="btn btn-lg btn-success btn-block mb-3 mt-3"
+                  type="submit"
+                >
+                  Log in
+                </button>
+                <!-- <div class="text-muted">
+                  Not registered yet? <a href="register">Register</a>
+                </div> -->
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
 
     <!-- Footer -->
