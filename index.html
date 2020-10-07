@@ -140,31 +140,274 @@
       <div class="createDept">
         <div class="container bellport-purple-text">
           <h1>New Department</h1>
+          <!-- (id no need), name, location (auto populate dropdown) -->
+          <form>
+            <div class="form-group">
+              <label for="newDeptName">Department Name</label>
+              <input
+                class="form-control"
+                type="text"
+                placeholder="e.g. Human Resources"
+                name="newDeptName"
+                id="newDeptName"
+              />
+            </div>
+            <div class="form-group">
+              <label for="newDeptLocation">Location</label>
+              <select
+                class="form-control"
+                id="newDeptLocation"
+                name="newDeptLocation"
+              >
+                <!-- <option>1</option> -->
+              </select>
+            </div>
+            <div class="d-flex flex-row justify-content-between mb-2">
+              <button type="button" class="btn btn-outline-danger">
+                Cancel
+              </button>
+              <button type="submit" class="btn btn-primary">
+                Create Department
+              </button>
+            </div>
+          </form>
         </div>
       </div>
       <div class="createLocation">
         <div class="container bellport-purple-text">
           <h1>New Location</h1>
+          <!-- (id no need), name -->
+          <form>
+            <div class="form-group">
+              <label for="newLocName">Location Name</label>
+              <input
+                class="form-control"
+                type="text"
+                placeholder="e.g. Shanghai"
+                name="newLocName"
+                id="newLocName"
+              />
+            </div>
+            <div class="d-flex flex-row justify-content-between mb-2">
+              <button type="button" class="btn btn-outline-danger">
+                Cancel
+              </button>
+              <button type="submit" class="btn btn-primary">
+                Create Location
+              </button>
+            </div>
+          </form>
         </div>
       </div>
       <div class="createEmployee">
         <div class="container bellport-purple-text">
           <h1>New Employee</h1>
+          <!-- (id no need), first name, last name, job title, email, location (dropdown), department (dropdown - updates on changing location) -->
+          <form>
+            <div class="form-group">
+              <label for="newEmployeeFirstName">First Name</label>
+              <input
+                class="form-control"
+                type="text"
+                placeholder="e.g. Steven"
+                name="newEmployeeFirstName"
+                id="newEmployeeFirstName"
+              />
+            </div>
+            <div class="form-group">
+              <label for="newEmployeeLastName">Last Name</label>
+              <input
+                class="form-control"
+                type="text"
+                placeholder="e.g. Seagal"
+                name="newEmployeeLastName"
+                id="newEmployeeLastName"
+              />
+            </div>
+            <div class="form-group">
+              <label for="newEmployeeEmail">Email</label>
+              <input
+                class="form-control"
+                type="text"
+                placeholder="e.g. Seagal"
+                name="newEmployeeEmail"
+                id="newEmployeeEmail"
+              />
+            </div>
+            <div class="form-group">
+              <label for="newEmployeeJobTitle">JobTitle</label>
+              <input
+                class="form-control"
+                type="text"
+                placeholder="e.g. Junior Dev"
+                name="newEmployeeJobTitle"
+                id="newEmployeeJobTitle"
+              />
+            </div>
+            <div class="form-group">
+              <label for="newEmployeeLocation">Location</label>
+              <select
+                class="form-control"
+                id="newEmployeeLocation"
+                name="newEmployeeLocation"
+              >
+                <!-- <option>1</option> -->
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="newEmployeeDept">Department</label>
+              <select
+                class="form-control"
+                id="newEmployeeDept"
+                name="newEmployeeDept"
+              >
+                <!-- <option>1</option> -->
+              </select>
+            </div>
+            <div class="d-flex flex-row justify-content-between mb-2">
+              <button type="button" class="btn btn-outline-danger">
+                Cancel
+              </button>
+              <button type="submit" class="btn btn-primary">
+                Create Employee
+              </button>
+            </div>
+          </form>
         </div>
       </div>
       <div class="editDept">
         <div class="container bellport-purple-text">
           <h1>Edit Department</h1>
+          <form>
+            <div class="form-group">
+              <label for="editDeptName">Department Name</label>
+              <input
+                class="form-control"
+                type="text"
+                placeholder="e.g. Human Resources"
+                name="editDeptName"
+                id="editDeptName"
+              />
+            </div>
+            <div class="form-group">
+              <label for="newDeptLocation">Location</label>
+              <select
+                class="form-control"
+                id="editDeptLocation"
+                name="editDeptLocation"
+              >
+                <!-- <option>1</option> -->
+              </select>
+            </div>
+            <div class="d-flex flex-row justify-content-between mb-2">
+              <button type="button" class="btn btn-outline-danger">
+                Cancel
+              </button>
+              <button type="submit" class="btn btn-primary">
+                Update Department
+              </button>
+            </div>
+          </form>
         </div>
       </div>
       <div class="editEmployee">
         <div class="container bellport-purple-text">
           <h1>Edit Employee</h1>
+          <form>
+            <div class="form-group">
+              <label for="editEmployeeFirstName">First Name</label>
+              <input
+                class="form-control"
+                type="text"
+                placeholder="e.g. Steven"
+                name="editEmployeeFirstName"
+                id="editEmployeeFirstName"
+              />
+            </div>
+            <div class="form-group">
+              <label for="editEmployeeLastName">Last Name</label>
+              <input
+                class="form-control"
+                type="text"
+                placeholder="e.g. Seagal"
+                name="editEmployeeLastName"
+                id="editEmployeeLastName"
+              />
+            </div>
+            <div class="form-group">
+              <label for="editEmployeeEmail">Email</label>
+              <input
+                class="form-control"
+                type="text"
+                placeholder="e.g. Seagal"
+                name="editEmployeeEmail"
+                id="editEmployeeEmail"
+              />
+            </div>
+            <div class="form-group">
+              <label for="editEmployeeJobTitle">JobTitle</label>
+              <input
+                class="form-control"
+                type="text"
+                placeholder="e.g. Junior Dev"
+                name="editEmployeeJobTitle"
+                id="editEmployeeJobTitle"
+              />
+            </div>
+            <div class="form-group">
+              <label for="editEmployeeLocation">Location</label>
+              <select
+                class="form-control"
+                id="editEmployeeLocation"
+                name="editEmployeeLocation"
+              >
+                <!-- <option>1</option> -->
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="editEmployeeDept">Department</label>
+              <select
+                class="form-control"
+                id="editEmployeeDept"
+                name="editEmployeeDept"
+              >
+                <!-- <option>1</option> -->
+              </select>
+            </div>
+            <div class="d-flex flex-row justify-content-between mb-2">
+              <button type="button" class="btn btn-outline-danger">
+                Cancel
+              </button>
+              <button type="submit" class="btn btn-primary">
+                Update Employee
+              </button>
+            </div>
+          </form>
         </div>
       </div>
       <div class="editLocation">
         <div class="container bellport-purple-text">
           <h1>Edit Location</h1>
+          <form>
+            <div class="form-group">
+              <label for="editLocName">Location Name</label>
+              <input
+                class="form-control"
+                type="text"
+                placeholder="e.g. Shanghai"
+                name="editLocName"
+                id="editLocName"
+              />
+            </div>
+            <div class="d-flex flex-row justify-content-between mb-2">
+              <button type="button" class="btn btn-outline-danger">
+                Cancel
+              </button>
+              <button type="submit" class="btn btn-primary">
+                Update Location
+              </button>
+            </div>
+          </form>
         </div>
       </div>
       <div class="login">
