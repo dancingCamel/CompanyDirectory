@@ -119,25 +119,25 @@
       </div>
 
       <!-- PAGES -->
-      <div class="employees">
+      <div class="employees page" id="employeesPage">
         <div class="container bellport-purple-text">
           <h1>Employees</h1>
           <table id="employeesTable"></table>
         </div>
       </div>
-      <div class="departments">
+      <div class="departments page" id="departmentsPage">
         <div class="container bellport-purple-text">
           <h1>Departments</h1>
           <table id="departmentsTable"></table>
         </div>
       </div>
-      <div class="locations">
+      <div class="locations page" id="locationsPage">
         <div class="container bellport-purple-text">
           <h1>Locations</h1>
           <table id="locationsTable"></table>
         </div>
       </div>
-      <div class="createDept">
+      <div class="createDept page" id="createDeptPage">
         <div class="container bellport-purple-text">
           <h1>New Department</h1>
           <!-- (id no need), name, location (auto populate dropdown) -->
@@ -173,7 +173,7 @@
           </form>
         </div>
       </div>
-      <div class="createLocation">
+      <div class="createLocation page" id="createLocationPage">
         <div class="container bellport-purple-text">
           <h1>New Location</h1>
           <!-- (id no need), name -->
@@ -199,7 +199,7 @@
           </form>
         </div>
       </div>
-      <div class="createEmployee">
+      <div class="createEmployee page" id="createEmployeePage">
         <div class="container bellport-purple-text">
           <h1>New Employee</h1>
           <!-- (id no need), first name, last name, job title, email, location (dropdown), department (dropdown - updates on changing location) -->
@@ -229,7 +229,7 @@
               <input
                 class="form-control"
                 type="text"
-                placeholder="e.g. Seagal"
+                placeholder="e.g. kung@foo.com"
                 name="newEmployeeEmail"
                 id="newEmployeeEmail"
               />
@@ -275,7 +275,7 @@
           </form>
         </div>
       </div>
-      <div class="editDept">
+      <div class="editDept page" id="editDeptPage">
         <div class="container bellport-purple-text">
           <h1>Edit Department</h1>
           <form>
@@ -310,7 +310,7 @@
           </form>
         </div>
       </div>
-      <div class="editEmployee">
+      <div class="editEmployee page" id="editEmployeePage">
         <div class="container bellport-purple-text">
           <h1>Edit Employee</h1>
           <form>
@@ -339,7 +339,7 @@
               <input
                 class="form-control"
                 type="text"
-                placeholder="e.g. Seagal"
+                placeholder="e.g. kung@foo.com"
                 name="editEmployeeEmail"
                 id="editEmployeeEmail"
               />
@@ -385,10 +385,13 @@
           </form>
         </div>
       </div>
-      <div class="editLocation">
+      <div class="editLocation page" id="editLocationPage">
         <div class="container bellport-purple-text">
           <h1>Edit Location</h1>
           <form>
+            <div class="form-group d-none">
+              <input type="hidden" id="editLocId" />
+            </div>
             <div class="form-group">
               <label for="editLocName">Location Name</label>
               <input
@@ -410,7 +413,7 @@
           </form>
         </div>
       </div>
-      <div class="login">
+      <div class="login page">
         <div class="text-center container">
           <div class="row justify-content-center vertical-center mt-5">
             <div class="col-12 col-lg-5 mt-5">

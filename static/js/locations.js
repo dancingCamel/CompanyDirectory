@@ -14,7 +14,7 @@ class Locations {
   static async fetchAllLocations() {
     let response = await fetch("/static/php/location/getAllLocations.php");
     let responseJson = await response.json();
-    console.log(responseJson);
+    // console.log(responseJson);
     return responseJson;
   }
 
@@ -26,7 +26,7 @@ class Locations {
       body: formData,
     });
     let responseJson = await response.json();
-    console.log(responseJson);
+    // console.log(responseJson);
     return responseJson;
   }
 
@@ -38,7 +38,7 @@ class Locations {
       body: formData,
     });
     let responseJson = await response.json();
-    console.log(responseJson);
+    // console.log(responseJson);
     return responseJson;
   }
 
@@ -50,7 +50,7 @@ class Locations {
       body: formData,
     });
     let responseJson = await response.json();
-    console.log(responseJson);
+    // console.log(responseJson);
     return responseJson;
   }
 
@@ -63,7 +63,7 @@ class Locations {
       body: formData,
     });
     let responseJson = await response.json();
-    console.log(responseJson);
+    // console.log(responseJson);
     return responseJson;
   }
 }

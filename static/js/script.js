@@ -1,3 +1,5 @@
+const exampleID = 12;
+
 // small devices
 if (window.screen.width < 576) {
 }
@@ -12,4 +14,18 @@ $(document).ready(function () {
         $("#preloader").remove();
       });
   }
+
+  testFuncs();
 });
+
+const testFuncs = () => {
+  // showEmployeesPage();
+  // showDepartmentsPage();
+  // showLocationsPage();
+  // showCreateLocationPage();
+  // showCreateDepartmentPage();
+  // showCreateEmployeePage();
+  // showEditEmployeePage();
+  // showEditDepartmentPage();
+  showEditLocationPage(exampleID);
+};
