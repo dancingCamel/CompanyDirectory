@@ -40,6 +40,12 @@ $("#navLocationsLink").click(function (e) {
   showLocationsPage();
 });
 
+$("#navLogoutBtn").click(function (e) {
+  e.preventDefault();
+  clearNavActive();
+  showLoginPage();
+});
+
 const testFuncs = () => {
   // showEmployeesPage();
   // showDepartmentsPage();

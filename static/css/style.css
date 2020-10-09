@@ -59,12 +59,12 @@ main {
   font-weight: bold !important;
 }
 
-#logoutBtn {
+#navLogoutBtn {
   border-color: var(--bellport-purple) !important;
   color: var(--bellport-purple) !important;
 }
 
-#logoutBtn:hover {
+#navLogoutBtn:hover {
   border-color: var(--bellport-yellow) !important;
   color: var(--bellport-yellow) !important;
   background-color: var(--bellport-purple) !important;
