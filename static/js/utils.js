@@ -53,14 +53,36 @@ const showNav = () => {
   $("nav").show();
 };
 
+const clearNavActive = () => {
+  $(".nav-item").removeClass("active");
+};
+
+const styleNavActive = (link) => {
+  clearNavActive();
+  $(link.parentElement).addClass("active");
+};
+
 const getLocationsForDropdowns = async () => {
   const response = await Locations.fetchAllLocations();
-
   $.each($(".locationDropdown"), function () {
+    $(this).empty();
     response.data.forEach((location) => {
       let $option = $(document.createElement("option"));
       $option.html(location.name);
       $option.val(location.id);
+      $(this).append($option);
+    });
+  });
+};
+
+const getDepartmentsForDropdown = async (id) => {
+  const response = await Departments.fetchDepartmentsByLocationID(id);
+  $.each($(".departmentDropdown"), function () {
+    $(this).empty();
+    response.data.forEach((dept) => {
+      let $option = $(document.createElement("option"));
+      $option.html(dept.name);
+      $option.val(dept.id);
       $(this).append($option);
     });
   });
@@ -138,7 +160,6 @@ const showEditLocationPage = async (id) => {
 const showEditDepartmentPage = async (id) => {
   hideAllPages();
   showNav();
-  // populate form here
   showLoader();
   const response = await Departments.fetchDepartmentByID(id);
   if (!(response.status.code == 200 && response.status.name == "ok")) {
@@ -148,14 +169,31 @@ const showEditDepartmentPage = async (id) => {
   } else {
     $("#editDeptId").val(response.data[0].id);
     $("#editDeptName").val(response.data[0].name);
+    $("#editDeptLocation").val(response.data[0].locationID);
   }
   $("#editDeptPage").show();
   hideLoader();
 };
 
-const showEditEmployeePage = (id) => {
+const showEditEmployeePage = async (id) => {
   hideAllPages();
   showNav();
-  // populate form here
+  showLoader();
+  const response = await Employees.fetchEmployeeByID(id);
+  if (!(response.status.code == 200 && response.status.name == "ok")) {
+    showError(response.status.description);
+    hideLoader();
+    return;
+  } else {
+    $("#editEmployeeId").val(response.data[0].id);
+    $("#editEmployeeFirstName").val(response.data[0].firstName);
+    $("#editEmployeeLastName").val(response.data[0].lastName);
+    $("#editEmployeeEmail").val(response.data[0].email);
+    $("#editEmployeeJobTitle").val(response.data[0].jobTitle);
+    $("#editEmployeeLocation").val(response.data[0].locationID);
+    getDepartmentsForDropdown(response.data[0].locationID);
+    $("#editEmployeeDept").val(response.data[0].departmentID);
+  }
   $("#editEmployeePage").show();
+  hideLoader();
 };

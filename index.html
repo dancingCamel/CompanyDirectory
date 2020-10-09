@@ -81,22 +81,22 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav ml-auto d-flex justify-content-between w-50">
             <li class="nav-item active ml-auto">
-              <a class="nav-link" href="#"
-                >Employees<span class="sr-only">(current)</span></a
+              <a class="nav-link" href="" id="navEmployeesLink"
+                >Employees</a
               >
             </li>
             <li class="nav-item ml-auto">
-              <a class="nav-link" href="#">Departments</a>
+              <a class="nav-link" href="" id="navDeptsLink">Departments</a>
             </li>
             <li class="nav-item ml-auto">
-              <a class="nav-link" href="#">Locations</a>
+              <a class="nav-link" href="" id="navLocationsLink">Locations</a>
             </li>
             <li class="nav-item ml-auto">
               <a
-                href="#"
+                href=""
                 class="btn btn-outline-light my-2 my-sm-0"
                 type="button"
-                id="logoutBtn"
+                id="navLogoutBtn"
               >
                 Logout<i class="fas fa-power-off ml-2 d-inline"></i>
               </a>
@@ -292,7 +292,7 @@
             <div class="form-group">
               <label for="editDeptLocation">Location</label>
               <select
-                class="form-control locationDropdown
+                class="form-control locationDropdown"
                 id="editDeptLocation"
                 name="editDeptLocation"
               >
@@ -357,7 +357,7 @@
             <div class="form-group">
               <label for="editEmployeeLocation">Location</label>
               <select
-                class="form-control"
+                class="form-control locationDropdown"
                 id="editEmployeeLocation"
                 name="editEmployeeLocation"
               >
@@ -367,7 +367,7 @@
             <div class="form-group">
               <label for="editEmployeeDept">Department</label>
               <select
-                class="form-control"
+                class="form-control departmentDropdown"
                 id="editEmployeeDept"
                 name="editEmployeeDept"
               >

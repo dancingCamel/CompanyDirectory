@@ -26,7 +26,7 @@ class Employees {
       body: formData,
     });
     let responseJson = await response.json();
-    console.log(responseJson);
+    // console.log(responseJson);
     return responseJson;
   }
 

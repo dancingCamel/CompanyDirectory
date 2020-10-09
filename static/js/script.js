@@ -1,4 +1,4 @@
-const exampleID = 2;
+const exampleID = 4;
 
 // small devices
 if (window.screen.width < 576) {
@@ -14,8 +14,30 @@ $(document).ready(function () {
         $("#preloader").remove();
       });
   }
-
+  getLocationsForDropdowns();
   testFuncs();
+});
+
+$("#editEmployeeLocation").change(function () {
+  getDepartmentsForDropdown($(this).val());
+});
+
+$("#navDeptsLink").click(function (e) {
+  e.preventDefault();
+  styleNavActive(e.target);
+  showDepartmentsPage();
+});
+
+$("#navEmployeesLink").click(function (e) {
+  e.preventDefault();
+  styleNavActive(e.target);
+  showEmployeesPage();
+});
+
+$("#navLocationsLink").click(function (e) {
+  e.preventDefault();
+  styleNavActive(e.target);
+  showLocationsPage();
 });
 
 const testFuncs = () => {
@@ -25,9 +47,8 @@ const testFuncs = () => {
   // showCreateLocationPage();
   // showCreateDepartmentPage();
   // showCreateEmployeePage();
-  // showEditEmployeePage();
-  showEditDepartmentPage(exampleID);
+  showEditEmployeePage(exampleID);
+  // showEditDepartmentPage(exampleID);
   // showEditLocationPage(exampleID);
   // showLoginPage();
-  getLocationsForDropdowns();
 };
