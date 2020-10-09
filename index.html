@@ -80,15 +80,13 @@
 
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav ml-auto d-flex justify-content-between w-50">
-            <li class="nav-item active ml-auto">
-              <a class="nav-link" href="" id="navEmployeesLink"
-                >Employees</a
-              >
+            <li class="nav-item active ml-auto" id="navEmployeesLinkLi">
+              <a class="nav-link" href="" id="navEmployeesLink">Employees</a>
             </li>
-            <li class="nav-item ml-auto">
+            <li class="nav-item ml-auto" id="navDeptsLinkLi">
               <a class="nav-link" href="" id="navDeptsLink">Departments</a>
             </li>
-            <li class="nav-item ml-auto">
+            <li class="nav-item ml-auto" id="navLocationsLinkLi">
               <a class="nav-link" href="" id="navLocationsLink">Locations</a>
             </li>
             <li class="nav-item ml-auto">
@@ -189,7 +187,11 @@
               />
             </div>
             <div class="d-flex flex-row justify-content-between mb-2">
-              <button type="button" class="btn btn-outline-danger">
+              <button
+                type="button"
+                class="btn btn-outline-danger"
+                id="newLocCancelBtn"
+              >
                 Cancel
               </button>
               <button type="submit" class="btn btn-primary">

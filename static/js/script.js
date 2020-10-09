@@ -50,10 +50,10 @@ const testFuncs = () => {
   // showEmployeesPage();
   // showDepartmentsPage();
   // showLocationsPage();
-  // showCreateLocationPage();
+  showCreateLocationPage();
   // showCreateDepartmentPage();
   // showCreateEmployeePage();
-  showEditEmployeePage(exampleID);
+  // showEditEmployeePage(exampleID);
   // showEditDepartmentPage(exampleID);
   // showEditLocationPage(exampleID);
   // showLoginPage();

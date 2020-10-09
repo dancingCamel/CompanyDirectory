@@ -62,6 +62,21 @@ const styleNavActive = (link) => {
   $(link.parentElement).addClass("active");
 };
 
+const activeNavEmployees = () => {
+  clearNavActive();
+  $("#navEmployeesLinkLi").addClass("active");
+};
+
+const activeNavDepts = () => {
+  clearNavActive();
+  $("#navDeptsLinkLi").addClass("active");
+};
+
+const activeNavLocations = () => {
+  clearNavActive();
+  $("#navLocationsLinkLi").addClass("active");
+};
+
 const getLocationsForDropdowns = async () => {
   const response = await Locations.fetchAllLocations();
   $.each($(".locationDropdown"), function () {
@@ -104,6 +119,7 @@ const showLoginPage = () => {
 const showEmployeesPage = () => {
   hideAllPages();
   showNav();
+  activeNavEmployees();
   // repopulate employees table here
   $("#employeesPage").show();
 };
@@ -111,6 +127,7 @@ const showEmployeesPage = () => {
 const showDepartmentsPage = () => {
   hideAllPages();
   showNav();
+  activeNavDepts();
   // repopulate departments table here
   $("#departmentsPage").show();
 };
@@ -118,6 +135,7 @@ const showDepartmentsPage = () => {
 const showLocationsPage = () => {
   hideAllPages();
   showNav();
+  activeNavLocations();
   // repopulate locations table here
   $("#locationsPage").show();
 };
@@ -125,24 +143,28 @@ const showLocationsPage = () => {
 const showCreateLocationPage = () => {
   hideAllPages();
   showNav();
+  activeNavLocations();
   $("#createLocationPage").show();
 };
 
 const showCreateDepartmentPage = () => {
   hideAllPages();
   showNav();
+  activeNavDepts();
   $("#createDeptPage").show();
 };
 
 const showCreateEmployeePage = () => {
   hideAllPages();
   showNav();
+  activeNavEmployees();
   $("#createEmployeePage").show();
 };
 
 const showEditLocationPage = async (id) => {
   hideAllPages();
   showNav();
+  activeNavLocations();
   showLoader();
   const response = await Locations.fetchLocationByID(id);
   if (!(response.status.code == 200 && response.status.name == "ok")) {
@@ -160,6 +182,7 @@ const showEditLocationPage = async (id) => {
 const showEditDepartmentPage = async (id) => {
   hideAllPages();
   showNav();
+  activeNavDepts();
   showLoader();
   const response = await Departments.fetchDepartmentByID(id);
   if (!(response.status.code == 200 && response.status.name == "ok")) {
@@ -178,6 +201,7 @@ const showEditDepartmentPage = async (id) => {
 const showEditEmployeePage = async (id) => {
   hideAllPages();
   showNav();
+  activeNavEmployees();
   showLoader();
   const response = await Employees.fetchEmployeeByID(id);
   if (!(response.status.code == 200 && response.status.name == "ok")) {
