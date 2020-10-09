@@ -1,4 +1,4 @@
-const exampleID = 12;
+const exampleID = 2;
 
 // small devices
 if (window.screen.width < 576) {
@@ -27,5 +27,6 @@ const testFuncs = () => {
   // showCreateEmployeePage();
   // showEditEmployeePage();
   // showEditDepartmentPage();
-  showEditLocationPage(exampleID);
+  // showEditLocationPage(exampleID);
+  // showLoginPage();
 };

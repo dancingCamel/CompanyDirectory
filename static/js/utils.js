@@ -45,6 +45,14 @@ const showMain = () => {
   $("main").css("visibility", "visible");
 };
 
+const hideNav = () => {
+  $("nav").hide();
+};
+
+const showNav = () => {
+  $("nav").show();
+};
+
 const hideAllPages = () => {
   hideError();
   $.each($(".page"), function () {
@@ -52,41 +60,54 @@ const hideAllPages = () => {
   });
 };
 
+const showLoginPage = () => {
+  hideAllPages();
+  $("nav").hide();
+  $("#loginPage").show();
+};
+
 const showEmployeesPage = () => {
   hideAllPages();
+  showNav();
   // repopulate employees table here
   $("#employeesPage").show();
 };
 
 const showDepartmentsPage = () => {
   hideAllPages();
+  showNav();
   // repopulate departments table here
   $("#departmentsPage").show();
 };
 
 const showLocationsPage = () => {
   hideAllPages();
+  showNav();
   // repopulate locations table here
   $("#locationsPage").show();
 };
 
 const showCreateLocationPage = () => {
   hideAllPages();
+  showNav();
   $("#createLocationPage").show();
 };
 
 const showCreateDepartmentPage = () => {
   hideAllPages();
+  showNav();
   $("#createDeptPage").show();
 };
 
 const showCreateEmployeePage = () => {
   hideAllPages();
+  showNav();
   $("#createEmployeePage").show();
 };
 
 const showEditLocationPage = async (id) => {
   hideAllPages();
+  showNav();
   // populate form here
   showLoader();
   const response = await Locations.fetchLocationByID(id);
@@ -104,12 +125,14 @@ const showEditLocationPage = async (id) => {
 
 const showEditDepartmentPage = (id) => {
   hideAllPages();
+  showNav();
   // populate form here
   $("#editDeptPage").show();
 };
 
 const showEditEmployeePage = (id) => {
   hideAllPages();
+  showNav();
   // populate form here
   $("#editEmployeePage").show();
 };
