@@ -27,8 +27,19 @@ $(document).ready(function () {
       { data: "location" },
     ],
   });
-  $("#departmentsTable").DataTable();
-  $("#locationsTable").DataTable();
+  $("#departmentsTable").DataTable({
+    ajax: { url: "/static/php/dept/getAllDepartments.php", dataSrc: "data" },
+    columns: [
+      { data: "id" },
+      { data: "name" },
+      { data: "locationID" },
+      { data: "location" },
+    ],
+  });
+  $("#locationsTable").DataTable({
+    ajax: { url: "/static/php/location/getAllLocations.php", dataSrc: "data" },
+    columns: [{ data: "id" }, { data: "name" }],
+  });
   // getLocationsForDropdowns();
   testFuncs();
 });

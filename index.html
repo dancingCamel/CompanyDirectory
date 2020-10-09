@@ -8,7 +8,7 @@
     />
     <meta
       name="description"
-      content="An employee directory for the ficitonal company, Bellport."
+      content="An employee directory for the fictional company, Bellport."
     />
     <meta name="author" content="Rob Morgan" />
 
@@ -18,7 +18,6 @@
     <link href="/static/css/bootstrap.css" rel="stylesheet" />
 
     <!-- Other CSS -->
-    <link rel="stylesheet" href="static/css/style.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
@@ -28,6 +27,7 @@
       type="text/css"
       href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css"
     />
+    <link rel="stylesheet" href="static/css/style.css" />
   </head>
 
   <body>
@@ -151,7 +151,13 @@
       <div class="locations page" id="locationsPage">
         <div class="container bellport-purple-text">
           <h1>Locations</h1>
-          <table id="locationsTable"></table>
+          <table id="locationsTable">
+            <thead>
+              <th>ID</th>
+              <th>Name</th>
+            </thead>
+            <tbody></tbody>
+          </table>
         </div>
       </div>
       <div class="createDept page" id="createDeptPage">
