@@ -14,7 +14,22 @@ $(document).ready(function () {
         $("#preloader").remove();
       });
   }
-  getLocationsForDropdowns();
+  // set up data tables
+  $("#employeesTable").DataTable({
+    ajax: { url: "/static/php/personnel/getAllPersonnel.php", dataSrc: "data" },
+    columns: [
+      { data: "id" },
+      { data: "lastName" },
+      { data: "firstName" },
+      { data: "jobTitle" },
+      { data: "email" },
+      { data: "department" },
+      { data: "location" },
+    ],
+  });
+  $("#departmentsTable").DataTable();
+  $("#locationsTable").DataTable();
+  // getLocationsForDropdowns();
   testFuncs();
 });
 

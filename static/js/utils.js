@@ -144,6 +144,7 @@ const showCreateLocationPage = () => {
   hideAllPages();
   showNav();
   activeNavLocations();
+  // getLocationsForDropdowns();
   $("#createLocationPage").show();
 };
 
@@ -151,6 +152,7 @@ const showCreateDepartmentPage = () => {
   hideAllPages();
   showNav();
   activeNavDepts();
+  getLocationsForDropdowns();
   $("#createDeptPage").show();
 };
 
@@ -158,6 +160,7 @@ const showCreateEmployeePage = () => {
   hideAllPages();
   showNav();
   activeNavEmployees();
+  getLocationsForDropdowns();
   $("#createEmployeePage").show();
 };
 
@@ -184,6 +187,7 @@ const showEditDepartmentPage = async (id) => {
   showNav();
   activeNavDepts();
   showLoader();
+  getLocationsForDropdowns();
   const response = await Departments.fetchDepartmentByID(id);
   if (!(response.status.code == 200 && response.status.name == "ok")) {
     showError(response.status.description);
@@ -203,6 +207,7 @@ const showEditEmployeePage = async (id) => {
   showNav();
   activeNavEmployees();
   showLoader();
+  getLocationsForDropdowns();
   const response = await Employees.fetchEmployeeByID(id);
   if (!(response.status.code == 200 && response.status.name == "ok")) {
     showError(response.status.description);
