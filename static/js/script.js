@@ -46,11 +46,35 @@ $("#navLogoutBtn").click(function (e) {
   showLoginPage();
 });
 
+$("#newLocCancelBtn").click(function (e) {
+  showLocationsPage();
+});
+
+$("#newDeptCancelBtn").click(function (e) {
+  showDepartmentsPage();
+});
+
+$("#newEmployeeCancelBtn").click(function (e) {
+  showEmployeesPage();
+});
+
+$("#editEmployeeCancelBtn").click(function (e) {
+  showEmployeesPage();
+});
+
+$("#editLocCancelBtn").click(function (e) {
+  showLocationsPage();
+});
+
+$("#editDeptCancelBtn").click(function (e) {
+  showDepartmentsPage();
+});
+
 const testFuncs = () => {
   // showEmployeesPage();
   // showDepartmentsPage();
   // showLocationsPage();
-  showCreateLocationPage();
+  // showCreateLocationPage();
   // showCreateDepartmentPage();
   // showCreateEmployeePage();
   // showEditEmployeePage(exampleID);
