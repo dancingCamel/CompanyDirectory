@@ -26,7 +26,8 @@ const testFuncs = () => {
   // showCreateDepartmentPage();
   // showCreateEmployeePage();
   // showEditEmployeePage();
-  // showEditDepartmentPage();
+  showEditDepartmentPage(exampleID);
   // showEditLocationPage(exampleID);
   // showLoginPage();
+  getLocationsForDropdowns();
 };

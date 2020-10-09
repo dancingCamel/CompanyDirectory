@@ -53,6 +53,19 @@ const showNav = () => {
   $("nav").show();
 };
 
+const getLocationsForDropdowns = async () => {
+  const response = await Locations.fetchAllLocations();
+
+  $.each($(".locationDropdown"), function () {
+    response.data.forEach((location) => {
+      let $option = $(document.createElement("option"));
+      $option.html(location.name);
+      $option.val(location.id);
+      $(this).append($option);
+    });
+  });
+};
+
 const hideAllPages = () => {
   hideError();
   $.each($(".page"), function () {
@@ -108,7 +121,6 @@ const showCreateEmployeePage = () => {
 const showEditLocationPage = async (id) => {
   hideAllPages();
   showNav();
-  // populate form here
   showLoader();
   const response = await Locations.fetchLocationByID(id);
   if (!(response.status.code == 200 && response.status.name == "ok")) {
@@ -123,11 +135,22 @@ const showEditLocationPage = async (id) => {
   hideLoader();
 };
 
-const showEditDepartmentPage = (id) => {
+const showEditDepartmentPage = async (id) => {
   hideAllPages();
   showNav();
   // populate form here
+  showLoader();
+  const response = await Departments.fetchDepartmentByID(id);
+  if (!(response.status.code == 200 && response.status.name == "ok")) {
+    showError(response.status.description);
+    hideLoader();
+    return;
+  } else {
+    $("#editDeptId").val(response.data[0].id);
+    $("#editDeptName").val(response.data[0].name);
+  }
   $("#editDeptPage").show();
+  hideLoader();
 };
 
 const showEditEmployeePage = (id) => {

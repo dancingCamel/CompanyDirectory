@@ -14,7 +14,7 @@ class Departments {
   static async fetchAllDepartments() {
     let response = await fetch("/static/php/dept/getAllDepartments.php");
     let responseJson = await response.json();
-    console.log(responseJson);
+    // console.log(responseJson);
     return responseJson;
   }
 
@@ -26,7 +26,7 @@ class Departments {
       body: formData,
     });
     let responseJson = await response.json();
-    console.log(responseJson);
+    // console.log(responseJson);
     return responseJson;
   }
 
