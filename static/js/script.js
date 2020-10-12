@@ -195,7 +195,7 @@ $("#editDeptCancelBtn").click(function (e) {
 });
 
 const testFuncs = () => {
-  showEmployeesPage();
+  // showEmployeesPage();
   // showDepartmentsPage();
   // showLocationsPage();
   // showCreateLocationPage();
@@ -204,5 +204,5 @@ const testFuncs = () => {
   // showEditEmployeePage(exampleID);
   // showEditDepartmentPage(exampleID);
   // showEditLocationPage(exampleID);
-  // showLoginPage();
+  showLoginPage();
 };

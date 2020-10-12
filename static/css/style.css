@@ -11,6 +11,10 @@ html {
   overflow-x: hidden;
 }
 
+main {
+  min-height: 72vh;
+}
+
 .bellport-purple-text {
   color: var(--bellport-purple) !important;
 }
