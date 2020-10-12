@@ -15,32 +15,130 @@ $(document).ready(function () {
       });
   }
   // set up data tables
-  $("#employeesTable").DataTable({
+  const employeesTable = $("#employeesTable").DataTable({
+    responsive: true,
     ajax: { url: "/static/php/personnel/getAllPersonnel.php", dataSrc: "data" },
     columns: [
-      { data: "id" },
+      { data: "id", visible: false },
       { data: "lastName" },
       { data: "firstName" },
       { data: "jobTitle" },
       { data: "email" },
       { data: "department" },
       { data: "location" },
+      {
+        data: null,
+        orderable: false,
+        width: "180px",
+        render: function (data, type, row, meta) {
+          return (
+            '<div><button class="btn btn-primary mr-2 table-button edit" data-row=' +
+            row.id +
+            '><i class="fas fa-edit"></i></button><button class="btn btn-danger table-button delete" data-row=' +
+            row.id +
+            '><i class="fas fa-trash-alt"></i></button></div>'
+          );
+        },
+      },
     ],
   });
-  $("#departmentsTable").DataTable({
+
+  $("#employeesTable tbody").on("click", "tr .edit", function () {
+    const id = $(this).data("row");
+    showEditEmployeePage(id);
+  });
+
+  $("#employeesTable tbody").on("click", ".delete", async function () {
+    const id = $(this).data("row");
+    const row = $(this).parents("tr");
+    const response = await Employees.deleteEmployee(id);
+    if (response.status.code == 200 && response.status.name === "ok") {
+      employeesTable.row(row).remove().draw();
+    } else {
+      showError(response.status.description);
+    }
+  });
+
+  const departmentsTable = $("#departmentsTable").DataTable({
+    responsive: true,
     ajax: { url: "/static/php/dept/getAllDepartments.php", dataSrc: "data" },
     columns: [
-      { data: "id" },
+      { data: "id", visible: false },
       { data: "name" },
-      { data: "locationID" },
+      { data: "locationID", visible: false },
       { data: "location" },
+      {
+        data: null,
+        orderable: false,
+        width: "180px",
+        render: function (data, type, row, meta) {
+          return (
+            '<div><button class="btn btn-primary mr-2 table-button edit" data-row=' +
+            row.id +
+            '><i class="fas fa-edit"></i></button><button class="btn btn-danger table-button delete" data-row=' +
+            row.id +
+            '><i class="fas fa-trash-alt"></i></button></div>'
+          );
+        },
+      },
     ],
   });
-  $("#locationsTable").DataTable({
-    ajax: { url: "/static/php/location/getAllLocations.php", dataSrc: "data" },
-    columns: [{ data: "id" }, { data: "name" }],
+
+  $("#departmentsTable tbody").on("click", "tr .edit", function () {
+    const id = $(this).data("row");
+    showEditDepartmentPage(id);
   });
-  // getLocationsForDropdowns();
+
+  $("#departmentsTable tbody").on("click", ".delete", async function () {
+    const id = $(this).data("row");
+    const row = $(this).parents("tr");
+    const response = await Departments.deleteDepartment(id);
+    if (response.status.code == 200 && response.status.name === "ok") {
+      departmentsTable.row(row).remove().draw();
+    } else {
+      showError(response.status.description);
+    }
+  });
+
+  const locationsTable = $("#locationsTable").DataTable({
+    responsive: true,
+    ajax: { url: "/static/php/location/getAllLocations.php", dataSrc: "data" },
+    columns: [
+      { data: "id", visible: false },
+      { data: "name" },
+      {
+        data: null,
+        orderable: false,
+        width: "180px",
+        render: function (data, type, row, meta) {
+          return (
+            '<div><button class="btn btn-primary mr-2 table-button edit" data-row=' +
+            row.id +
+            '><i class="fas fa-edit"></i></button><button class="btn btn-danger table-button delete" data-row=' +
+            row.id +
+            '><i class="fas fa-trash-alt"></i></button></div>'
+          );
+        },
+      },
+    ],
+  });
+
+  $("#locationsTable tbody").on("click", "tr .edit", function () {
+    const id = $(this).data("row");
+    showEditLocationPage(id);
+  });
+
+  $("#locationsTable tbody").on("click", ".delete", async function () {
+    const id = $(this).data("row");
+    const row = $(this).parents("tr");
+    const response = await Locations.deleteLocation(id);
+    if (response.status.code == 200 && response.status.name === "ok") {
+      locationsTable.row(row).remove().draw();
+    } else {
+      showError(response.status.description);
+    }
+  });
+
   testFuncs();
 });
 
@@ -97,7 +195,7 @@ $("#editDeptCancelBtn").click(function (e) {
 });
 
 const testFuncs = () => {
-  // showEmployeesPage();
+  showEmployeesPage();
   // showDepartmentsPage();
   // showLocationsPage();
   // showCreateLocationPage();

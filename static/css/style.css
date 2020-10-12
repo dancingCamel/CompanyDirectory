@@ -8,6 +8,7 @@
 html {
   position: relative;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 .bellport-purple-text {
@@ -120,4 +121,14 @@ main {
 
 /* Mobile device styling */
 @media screen and (max-width: 576px) {
+}
+
+/* Tables */
+
+.table-button {
+  width: 40%;
+}
+
+.dtr-details {
+  width: 100% !important;
 }

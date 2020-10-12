@@ -179,7 +179,7 @@ const showEditLocationPage = async (id) => {
     $("#editLocName").val(response.data[0].name);
   }
   $("#editLocationPage").show();
-  hideLoader();
+  setTimeout(hideLoader, 500);
 };
 
 const showEditDepartmentPage = async (id) => {
@@ -199,7 +199,7 @@ const showEditDepartmentPage = async (id) => {
     $("#editDeptLocation").val(response.data[0].locationID);
   }
   $("#editDeptPage").show();
-  hideLoader();
+  setTimeout(hideLoader, 500);
 };
 
 const showEditEmployeePage = async (id) => {
@@ -224,5 +224,5 @@ const showEditEmployeePage = async (id) => {
     $("#editEmployeeDept").val(response.data[0].departmentID);
   }
   $("#editEmployeePage").show();
-  hideLoader();
+  setTimeout(hideLoader, 500);
 };
