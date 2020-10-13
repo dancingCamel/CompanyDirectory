@@ -228,7 +228,7 @@ const createEmployee = async () => {
   let response = await Employees.insertEmployee(fd);
 
   // get row that was just inserted
-  console.log(employeesTable);
+  console.log(response);
   // employeesTable.clear().rows().add().draw();
 
   showEmployeesPage();
