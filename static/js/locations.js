@@ -42,15 +42,12 @@ class Locations {
     return responseJson;
   }
 
-  static async insertLocation(name) {
-    var formData = new FormData();
-    formData.append("name", name);
+  static async insertLocation(formData) {
     let response = await fetch("/static/php/location/insertLocation.php", {
       method: "POST",
       body: formData,
     });
     let responseJson = await response.json();
-    // console.log(responseJson);
     return responseJson;
   }
 

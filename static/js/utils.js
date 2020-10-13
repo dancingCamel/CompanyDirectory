@@ -120,7 +120,6 @@ const showEmployeesPage = () => {
   hideAllPages();
   showNav();
   activeNavEmployees();
-  // repopulate employees table here
   $("#employeesPage").show();
 };
 
@@ -128,7 +127,6 @@ const showDepartmentsPage = () => {
   hideAllPages();
   showNav();
   activeNavDepts();
-  // repopulate departments table here
   $("#departmentsPage").show();
 };
 
@@ -221,18 +219,46 @@ const showEditEmployeePage = async (id) => {
   $("#editEmployeePage").show();
 };
 
-const createEmployee = async () => {
+const insertEmployee = async () => {
   const form = $("#createEmployeeForm").serializeArray();
   let fd = new FormData();
-  console.log(form);
   form.forEach((element) => fd.append(element.name, element.value));
   let response = await Employees.insertEmployee(fd);
-
-  // get row that was just inserted
-  console.log(response);
-  // employeesTable.clear().rows().add().draw();
-
+  if (!(response.status.code == 200 && response.status.name == "ok")) {
+    showError(response.status.description);
+    return;
+  } else {
+    $("#employeesTable").DataTable().row.add(response.data[0]).draw(false);
+  }
   showEmployeesPage();
+};
+
+const insertLocation = async () => {
+  const form = $("#createLocationForm").serializeArray();
+  let fd = new FormData();
+  form.forEach((element) => fd.append(element.name, element.value));
+  let response = await Locations.insertLocation(fd);
+  if (!(response.status.code == 200 && response.status.name == "ok")) {
+    showError(response.status.description);
+    return;
+  } else {
+    $("#locationsTable").DataTable().row.add(response.data[0]).draw(false);
+  }
+  showLocationsPage();
+};
+
+const insertDept = async () => {
+  const form = $("#createDepartmentForm").serializeArray();
+  let fd = new FormData();
+  form.forEach((element) => fd.append(element.name, element.value));
+  let response = await Departments.insertDepartment(fd);
+  if (!(response.status.code == 200 && response.status.name == "ok")) {
+    showError(response.status.description);
+    return;
+  } else {
+    $("#departmentsTable").DataTable().row.add(response.data[0]).draw(false);
+  }
+  showDepartmentsPage();
 };
 
 const loaderWrapper = (wrapped) => {

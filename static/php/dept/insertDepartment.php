@@ -69,7 +69,7 @@
 
 	}
 
-	$query = "SELECT * FROM department ORDER BY ID DESC LIMIT 1";
+	$query = "SELECT d.id, d.name, d.locationID, l.name AS location FROM department d LEFT JOIN location l ON (l.id = d.locationID) ORDER BY d.id DESC LIMIT 1";
 
 	$result = $conn->query($query);
 

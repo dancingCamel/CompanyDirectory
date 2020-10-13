@@ -215,20 +215,20 @@ $(".createBtn").click(function (e) {
 
   switch ($(this).data("form")) {
     case "createDept":
-      // createDept();
+      insertDept();
       break;
     case "createLocation":
-      createLocation();
+      insertLocation();
       break;
     case "createEmployee":
-      createEmployee();
+      insertEmployee();
       break;
   }
 });
 
 const testFuncs = () => {
   // showEmployeesPage();
-  // showDepartmentsPage();
+  showDepartmentsPage();
   // showLocationsPage();
   // showCreateLocationPage();
   // showCreateDepartmentPage();

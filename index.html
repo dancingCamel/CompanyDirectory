@@ -210,14 +210,14 @@
         <div class="container bellport-purple-text">
           <h1>New Department</h1>
           <!-- (id no need), name, location (auto populate dropdown) -->
-          <form>
+          <form id="createDepartmentForm">
             <div class="form-group">
               <label for="newDeptName">Department Name</label>
               <input
                 class="form-control"
                 type="text"
                 placeholder="e.g. Human Resources"
-                name="newDeptName"
+                name="name"
                 id="newDeptName"
               />
             </div>
@@ -226,7 +226,7 @@
               <select
                 class="form-control locationDropdown"
                 id="newDeptLocation"
-                name="newDeptLocation"
+                name="locationID"
               >
                 <!-- <option>1</option> -->
               </select>
@@ -255,14 +255,14 @@
         <div class="container bellport-purple-text">
           <h1>New Location</h1>
           <!-- (id no need), name -->
-          <form>
+          <form id="createLocationForm">
             <div class="form-group">
               <label for="newLocName">Location Name</label>
               <input
                 class="form-control"
                 type="text"
                 placeholder="e.g. Shanghai"
-                name="newLocName"
+                name="name"
                 id="newLocName"
               />
             </div>

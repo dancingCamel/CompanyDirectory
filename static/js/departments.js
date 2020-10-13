@@ -57,16 +57,12 @@ class Departments {
     return responseJson;
   }
 
-  static async insertDepartment(name, locationID) {
-    var formData = new FormData();
-    formData.append("name", name);
-    formData.append("locationID", locationID);
+  static async insertDepartment(formData) {
     let response = await fetch("/static/php/dept/insertDepartment.php", {
       method: "POST",
       body: formData,
     });
     let responseJson = await response.json();
-    console.log(responseJson);
     return responseJson;
   }
 
