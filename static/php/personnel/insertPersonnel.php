@@ -53,7 +53,7 @@
 	$email = $conn -> real_escape_string($_REQUEST['email']);
 	$deptID = (int)$conn -> real_escape_string($_REQUEST['departmentID']);
 
-	$query = "INSERT INTO personnel (firstName, lastName, jobTitle, email, departmentID) VALUES (\"$firstName\", \"$lastName\", \"$jobTitle\", \"$email\", $deptID) OUTPUT INSERTED.id";
+	$query = "INSERT INTO personnel (firstName, lastName, jobTitle, email, departmentID) VALUES (\"$firstName\", \"$lastName\", \"$jobTitle\", \"$email\", $deptID)";
 
 	$result = $conn->query($query);
 	

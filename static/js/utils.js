@@ -224,6 +224,7 @@ const showEditEmployeePage = async (id) => {
 const createEmployee = async () => {
   const form = $("#createEmployeeForm").serializeArray();
   let fd = new FormData();
+  console.log(form);
   form.forEach((element) => fd.append(element.name, element.value));
   let response = await Employees.insertEmployee(fd);
 
