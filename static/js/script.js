@@ -146,6 +146,10 @@ $("#editEmployeeLocation").change(function () {
   getDepartmentsForDropdown($(this).val());
 });
 
+$("#newEmployeeLocation").change(function () {
+  getDepartmentsForDropdown($(this).val());
+});
+
 $("#navDeptsLink").click(function (e) {
   e.preventDefault();
   styleNavActive(e.target);
@@ -206,6 +210,22 @@ $("#departmentsPageCreateBtn").click(function () {
   showCreateDepartmentPage();
 });
 
+$(".createBtn").click(function (e) {
+  e.preventDefault();
+
+  switch ($(this).data("form")) {
+    case "createDept":
+      // createDept();
+      break;
+    case "createLocation":
+      createLocation();
+      break;
+    case "createEmployee":
+      createEmployee();
+      break;
+  }
+});
+
 const testFuncs = () => {
   // showEmployeesPage();
   // showDepartmentsPage();
@@ -215,6 +235,6 @@ const testFuncs = () => {
   // showCreateEmployeePage();
   // showEditEmployeePage(exampleID);
   // showEditDepartmentPage(exampleID);
-  showEditLocationPage(exampleID);
+  // showEditLocationPage(exampleID);
   // showLoginPage();
 };

@@ -144,7 +144,7 @@ const showCreateLocationPage = () => {
   hideAllPages();
   showNav();
   activeNavLocations();
-  // getLocationsForDropdowns();
+  getDepartmentsForDropdown($("#newEmployeeLocation").val());
   $("#createLocationPage").show();
 };
 
@@ -161,6 +161,9 @@ const showCreateEmployeePage = () => {
   showNav();
   activeNavEmployees();
   getLocationsForDropdowns();
+  // set default values;
+  $("#newEmployeeLocation").val(1);
+  getDepartmentsForDropdown(1);
   $("#createEmployeePage").show();
 };
 
@@ -168,30 +171,25 @@ const showEditLocationPage = async (id) => {
   hideAllPages();
   showNav();
   activeNavLocations();
-  // showLoader();
   const response = await Locations.fetchLocationByID(id);
   if (!(response.status.code == 200 && response.status.name == "ok")) {
     showError(response.status.description);
-    // hideLoader();
     return;
   } else {
     $("#editLocId").val(response.data[0].id);
     $("#editLocName").val(response.data[0].name);
   }
   $("#editLocationPage").show();
-  // setTimeout(hideLoader, 500);
 };
 
 const showEditDepartmentPage = async (id) => {
   hideAllPages();
   showNav();
   activeNavDepts();
-  // showLoader();
   getLocationsForDropdowns();
   const response = await Departments.fetchDepartmentByID(id);
   if (!(response.status.code == 200 && response.status.name == "ok")) {
     showError(response.status.description);
-    // hideLoader();
     return;
   } else {
     $("#editDeptId").val(response.data[0].id);
@@ -199,7 +197,6 @@ const showEditDepartmentPage = async (id) => {
     $("#editDeptLocation").val(response.data[0].locationID);
   }
   $("#editDeptPage").show();
-  // setTimeout(hideLoader, 500);
 };
 
 const showEditEmployeePage = async (id) => {
@@ -224,11 +221,24 @@ const showEditEmployeePage = async (id) => {
   $("#editEmployeePage").show();
 };
 
+const createEmployee = async () => {
+  const form = $("#createEmployeeForm").serializeArray();
+  let fd = new FormData();
+  form.forEach((element) => fd.append(element.name, element.value));
+  let response = await Employees.insertEmployee(fd);
+
+  // get row that was just inserted
+  console.log(employeesTable);
+  // employeesTable.clear().rows().add().draw();
+
+  showEmployeesPage();
+};
+
 const loaderWrapper = (wrapped) => {
   showLoader();
   let result = function () {
     return wrapped.apply(this, arguments);
   };
-  hideLoader();
+  setTimeout(hideLoader, 500);
   return result;
 };

@@ -45,21 +45,31 @@ class Employees {
     return responseJson;
   }
 
-  static async insertEmployee(
-    firstName,
-    lastName,
-    email,
-    jobTitle,
-    locationID,
-    departmentID
-  ) {
-    var formData = new FormData();
-    formData.append("firstName", firstName);
-    formData.append("lastName", lastName);
-    formData.append("email", email);
-    formData.append("jobTitle", jobTitle);
-    formData.append("locationID", locationID);
-    formData.append("departmentID", departmentID);
+  // static async insertEmployee(
+  //   firstName,
+  //   lastName,
+  //   email,
+  //   jobTitle,
+  //   locationID,
+  //   departmentID
+  // ) {
+  //   var formData = new FormData();
+  //   formData.append("firstName", firstName);
+  //   formData.append("lastName", lastName);
+  //   formData.append("email", email);
+  //   formData.append("jobTitle", jobTitle);
+  //   formData.append("locationID", locationID);
+  //   formData.append("departmentID", departmentID);
+  //   let response = await fetch("/static/php/personnel/insertPersonnel.php", {
+  //     method: "POST",
+  //     body: formData,
+  //   });
+  //   let responseJson = await response.json();
+  //   console.log(responseJson);
+  //   return responseJson;
+  // }
+
+  static async insertEmployee(formData) {
     let response = await fetch("/static/php/personnel/insertPersonnel.php", {
       method: "POST",
       body: formData,

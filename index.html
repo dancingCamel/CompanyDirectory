@@ -239,7 +239,12 @@
               >
                 Cancel
               </button>
-              <button type="submit" class="btn btn-primary">
+              <button
+                type="submit"
+                class="btn btn-primary createBtn"
+                id="createDeptBtn"
+                data-form="createDept"
+              >
                 Create Department
               </button>
             </div>
@@ -269,7 +274,12 @@
               >
                 Cancel
               </button>
-              <button type="submit" class="btn btn-primary">
+              <button
+                type="submit"
+                class="btn btn-primary createBtn"
+                id="createLocationBtn"
+                data-form="createLocation"
+              >
                 Create Location
               </button>
             </div>
@@ -280,14 +290,14 @@
         <div class="container bellport-purple-text">
           <h1>New Employee</h1>
           <!-- (id no need), first name, last name, job title, email, location (dropdown), department (dropdown - updates on changing location) -->
-          <form>
+          <form id="createEmployeeForm">
             <div class="form-group">
               <label for="newEmployeeFirstName">First Name</label>
               <input
                 class="form-control"
                 type="text"
                 placeholder="e.g. Steven"
-                name="newEmployeeFirstName"
+                name="firstName"
                 id="newEmployeeFirstName"
               />
             </div>
@@ -297,7 +307,7 @@
                 class="form-control"
                 type="text"
                 placeholder="e.g. Seagal"
-                name="newEmployeeLastName"
+                name="lastName"
                 id="newEmployeeLastName"
               />
             </div>
@@ -305,9 +315,9 @@
               <label for="newEmployeeEmail">Email</label>
               <input
                 class="form-control"
-                type="text"
+                type="email"
                 placeholder="e.g. kung@foo.com"
-                name="newEmployeeEmail"
+                name="email"
                 id="newEmployeeEmail"
               />
             </div>
@@ -317,7 +327,7 @@
                 class="form-control"
                 type="text"
                 placeholder="e.g. Junior Dev"
-                name="newEmployeeJobTitle"
+                name="jobTitle"
                 id="newEmployeeJobTitle"
               />
             </div>
@@ -326,7 +336,7 @@
               <select
                 class="form-control locationDropdown"
                 id="newEmployeeLocation"
-                name="newEmployeeLocation"
+                name="locationID"
               >
                 <!-- <option>1</option> -->
               </select>
@@ -334,9 +344,9 @@
             <div class="form-group">
               <label for="newEmployeeDept">Department</label>
               <select
-                class="form-control"
+                class="form-control departmentDropdown"
                 id="newEmployeeDept"
-                name="newEmployeeDept"
+                name="departmentID"
               >
                 <!-- <option>1</option> -->
               </select>
@@ -349,7 +359,12 @@
               >
                 Cancel
               </button>
-              <button type="submit" class="btn btn-primary">
+              <button
+                type="submit"
+                class="btn btn-primary createBtn"
+                id="createEmployeeBtn"
+                data-form="createEmployee"
+              >
                 Create Employee
               </button>
             </div>
