@@ -212,7 +212,6 @@ $("#departmentsPageCreateBtn").click(function () {
 
 $(".createBtn").click(function (e) {
   e.preventDefault();
-
   switch ($(this).data("form")) {
     case "createDept":
       insertDept();
@@ -226,9 +225,24 @@ $(".createBtn").click(function (e) {
   }
 });
 
+$(".updateBtn").click(function (e) {
+  e.preventDefault();
+  switch ($(this).data("form")) {
+    case "updateDept":
+      updateDept();
+      break;
+    case "updateLocation":
+      updateLocation();
+      break;
+    case "updateEmployee":
+      updateEmployee();
+      break;
+  }
+});
+
 const testFuncs = () => {
   // showEmployeesPage();
-  showDepartmentsPage();
+  // showDepartmentsPage();
   // showLocationsPage();
   // showCreateLocationPage();
   // showCreateDepartmentPage();

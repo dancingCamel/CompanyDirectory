@@ -51,10 +51,7 @@ class Locations {
     return responseJson;
   }
 
-  static async updateLocationByID(id, name) {
-    var formData = new FormData();
-    formData.append("id", id);
-    formData.append("name", name);
+  static async updateLocationByID(formData) {
     let response = await fetch("/static/php/location/updateLocationByID.php", {
       method: "POST",
       body: formData,

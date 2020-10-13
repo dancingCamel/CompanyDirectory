@@ -66,17 +66,12 @@ class Departments {
     return responseJson;
   }
 
-  static async updateDepartmentByID(id, name, locationID) {
-    var formData = new FormData();
-    formData.append("id", id);
-    formData.append("name", name);
-    formData.append("locationID", locationID);
+  static async updateDepartmentByID(formData) {
     let response = await fetch("/static/php/dept/updateDepartmentByID.php", {
       method: "POST",
       body: formData,
     });
     let responseJson = await response.json();
-    console.log(responseJson);
     return responseJson;
   }
 }

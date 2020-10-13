@@ -80,22 +80,23 @@ class Employees {
   }
 
   static async updateEmployeeByID(
-    id,
-    firstName,
-    lastName,
-    email,
-    jobTitle,
-    locationID,
-    departmentID
+    // id,
+    // firstName,
+    // lastName,
+    // email,
+    // jobTitle,
+    // locationID,
+    // departmentID
+    formData
   ) {
-    var formData = new FormData();
-    formData.append("id", id);
-    formData.append("firstName", firstName);
-    formData.append("lastName", lastName);
-    formData.append("email", email);
-    formData.append("jobTitle", jobTitle);
-    formData.append("locationID", locationID);
-    formData.append("departmentID", departmentID);
+    // var formData = new FormData();
+    // formData.append("id", id);
+    // formData.append("firstName", firstName);
+    // formData.append("lastName", lastName);
+    // formData.append("email", email);
+    // formData.append("jobTitle", jobTitle);
+    // formData.append("locationID", locationID);
+    // formData.append("departmentID", departmentID);
     let response = await fetch(
       "/static/php/personnel/updatePersonnelByID.php",
       {

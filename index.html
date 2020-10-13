@@ -374,14 +374,17 @@
       <div class="editDept page" id="editDeptPage">
         <div class="container bellport-purple-text">
           <h1>Edit Department</h1>
-          <form>
+          <form id="updateDeptForm">
+            <div class="form-group d-none">
+              <input type="hidden" id="editDeptId" name="id" />
+            </div>
             <div class="form-group">
               <label for="editDeptName">Department Name</label>
               <input
                 class="form-control"
                 type="text"
                 placeholder="e.g. Human Resources"
-                name="editDeptName"
+                name="name"
                 id="editDeptName"
               />
             </div>
@@ -390,7 +393,7 @@
               <select
                 class="form-control locationDropdown"
                 id="editDeptLocation"
-                name="editDeptLocation"
+                name="locationID"
               >
                 <!-- <option>1</option> -->
               </select>
@@ -403,7 +406,11 @@
               >
                 Cancel
               </button>
-              <button type="submit" class="btn btn-primary">
+              <button
+                type="submit"
+                class="btn btn-primary updateBtn"
+                data-form="updateDept"
+              >
                 Update Department
               </button>
             </div>
@@ -413,14 +420,17 @@
       <div class="editEmployee page" id="editEmployeePage">
         <div class="container bellport-purple-text">
           <h1>Edit Employee</h1>
-          <form>
+          <form id="updateEmployeeForm">
+            <div class="form-group d-none">
+              <input type="hidden" id="editEmployeeId" name="id" />
+            </div>
             <div class="form-group">
               <label for="editEmployeeFirstName">First Name</label>
               <input
                 class="form-control"
                 type="text"
                 placeholder="e.g. Steven"
-                name="editEmployeeFirstName"
+                name="firstName"
                 id="editEmployeeFirstName"
               />
             </div>
@@ -430,7 +440,7 @@
                 class="form-control"
                 type="text"
                 placeholder="e.g. Seagal"
-                name="editEmployeeLastName"
+                name="lastName"
                 id="editEmployeeLastName"
               />
             </div>
@@ -440,7 +450,7 @@
                 class="form-control"
                 type="text"
                 placeholder="e.g. kung@foo.com"
-                name="editEmployeeEmail"
+                name="email"
                 id="editEmployeeEmail"
               />
             </div>
@@ -450,7 +460,7 @@
                 class="form-control"
                 type="text"
                 placeholder="e.g. Junior Dev"
-                name="editEmployeeJobTitle"
+                name="jobTitle"
                 id="editEmployeeJobTitle"
               />
             </div>
@@ -459,7 +469,7 @@
               <select
                 class="form-control locationDropdown"
                 id="editEmployeeLocation"
-                name="editEmployeeLocation"
+                name="locationID"
               >
                 <!-- <option>1</option> -->
               </select>
@@ -469,7 +479,7 @@
               <select
                 class="form-control departmentDropdown"
                 id="editEmployeeDept"
-                name="editEmployeeDept"
+                name="departmentID"
               >
                 <!-- <option>1</option> -->
               </select>
@@ -482,7 +492,11 @@
               >
                 Cancel
               </button>
-              <button type="submit" class="btn btn-primary">
+              <button
+                type="submit"
+                class="btn btn-primary updateBtn"
+                data-form="updateEmployee"
+              >
                 Update Employee
               </button>
             </div>
@@ -492,9 +506,9 @@
       <div class="editLocation page" id="editLocationPage">
         <div class="container bellport-purple-text">
           <h1>Edit Location</h1>
-          <form>
+          <form id="updateLocationForm">
             <div class="form-group d-none">
-              <input type="hidden" id="editLocId" />
+              <input type="hidden" id="editLocId" name="id" />
             </div>
             <div class="form-group">
               <label for="editLocName">Location Name</label>
@@ -502,7 +516,7 @@
                 class="form-control"
                 type="text"
                 placeholder="e.g. Shanghai"
-                name="editLocName"
+                name="name"
                 id="editLocName"
               />
             </div>
@@ -514,7 +528,11 @@
               >
                 Cancel
               </button>
-              <button type="submit" class="btn btn-primary">
+              <button
+                type="submit"
+                class="btn btn-primary updateBtn"
+                data-form="updateLocation"
+              >
                 Update Location
               </button>
             </div>

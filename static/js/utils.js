@@ -261,6 +261,63 @@ const insertDept = async () => {
   showDepartmentsPage();
 };
 
+const updateEmployee = async () => {
+  const form = $("#updateEmployeeForm").serializeArray();
+  let fd = new FormData();
+  form.forEach((element) => fd.append(element.name, element.value));
+  let response = await Employees.updateEmployeeByID(fd);
+  if (!(response.status.code == 200 && response.status.name == "ok")) {
+    showError(response.status.description);
+    return;
+  } else {
+    console.log(response);
+    $("#employeesTable")
+      .DataTable()
+      .row(fd.id)
+      .data(response.data[0])
+      .draw(false);
+  }
+  showEmployeesPage();
+};
+
+const updateLocation = async () => {
+  const form = $("#updateLocationForm").serializeArray();
+  let fd = new FormData();
+  form.forEach((element) => fd.append(element.name, element.value));
+  let response = await Locations.updateLocationByID(fd);
+  if (!(response.status.code == 200 && response.status.name == "ok")) {
+    showError(response.status.description);
+    return;
+  } else {
+    console.log(response);
+    $("#locationsTable")
+      .DataTable()
+      .row(fd.id)
+      .data(response.data[0])
+      .draw(false);
+  }
+  showLocationsPage();
+};
+
+const updateDept = async () => {
+  const form = $("#updateDeptForm").serializeArray();
+  let fd = new FormData();
+  form.forEach((element) => fd.append(element.name, element.value));
+  let response = await Departments.updateDepartmentByID(fd);
+  if (!(response.status.code == 200 && response.status.name == "ok")) {
+    showError(response.status.description);
+    return;
+  } else {
+    console.log(response);
+    $("#departmentsTable")
+      .DataTable()
+      .row(fd.id)
+      .data(response.data[0])
+      .draw(false);
+  }
+  showDepartmentsPage();
+};
+
 const loaderWrapper = (wrapped) => {
   showLoader();
   let result = function () {
