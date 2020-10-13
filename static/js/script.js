@@ -1,4 +1,4 @@
-const exampleID = 4;
+const exampleID = 2;
 
 // small devices
 if (window.screen.width < 576) {
@@ -45,7 +45,7 @@ $(document).ready(function () {
 
   $("#employeesTable tbody").on("click", "tr .edit", function () {
     const id = $(this).data("row");
-    showEditEmployeePage(id);
+    loaderWrapper(showEditEmployeePage(id));
   });
 
   $("#employeesTable tbody").on("click", ".delete", async function () {
@@ -86,7 +86,7 @@ $(document).ready(function () {
 
   $("#departmentsTable tbody").on("click", "tr .edit", function () {
     const id = $(this).data("row");
-    showEditDepartmentPage(id);
+    loaderWrapper(showEditDepartmentPage(id));
   });
 
   $("#departmentsTable tbody").on("click", ".delete", async function () {
@@ -125,7 +125,7 @@ $(document).ready(function () {
 
   $("#locationsTable tbody").on("click", "tr .edit", function () {
     const id = $(this).data("row");
-    showEditLocationPage(id);
+    loaderWrapper(showEditLocationPage(id));
   });
 
   $("#locationsTable tbody").on("click", ".delete", async function () {
@@ -194,6 +194,18 @@ $("#editDeptCancelBtn").click(function (e) {
   showDepartmentsPage();
 });
 
+$("#employeesPageCreateBtn").click(function () {
+  showCreateEmployeePage();
+});
+
+$("#locationsPageCreateBtn").click(function () {
+  showCreateLocationPage();
+});
+
+$("#departmentsPageCreateBtn").click(function () {
+  showCreateDepartmentPage();
+});
+
 const testFuncs = () => {
   // showEmployeesPage();
   // showDepartmentsPage();
@@ -203,6 +215,6 @@ const testFuncs = () => {
   // showCreateEmployeePage();
   // showEditEmployeePage(exampleID);
   // showEditDepartmentPage(exampleID);
-  // showEditLocationPage(exampleID);
-  showLoginPage();
+  showEditLocationPage(exampleID);
+  // showLoginPage();
 };

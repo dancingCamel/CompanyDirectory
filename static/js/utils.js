@@ -168,30 +168,30 @@ const showEditLocationPage = async (id) => {
   hideAllPages();
   showNav();
   activeNavLocations();
-  showLoader();
+  // showLoader();
   const response = await Locations.fetchLocationByID(id);
   if (!(response.status.code == 200 && response.status.name == "ok")) {
     showError(response.status.description);
-    hideLoader();
+    // hideLoader();
     return;
   } else {
     $("#editLocId").val(response.data[0].id);
     $("#editLocName").val(response.data[0].name);
   }
   $("#editLocationPage").show();
-  setTimeout(hideLoader, 500);
+  // setTimeout(hideLoader, 500);
 };
 
 const showEditDepartmentPage = async (id) => {
   hideAllPages();
   showNav();
   activeNavDepts();
-  showLoader();
+  // showLoader();
   getLocationsForDropdowns();
   const response = await Departments.fetchDepartmentByID(id);
   if (!(response.status.code == 200 && response.status.name == "ok")) {
     showError(response.status.description);
-    hideLoader();
+    // hideLoader();
     return;
   } else {
     $("#editDeptId").val(response.data[0].id);
@@ -199,19 +199,17 @@ const showEditDepartmentPage = async (id) => {
     $("#editDeptLocation").val(response.data[0].locationID);
   }
   $("#editDeptPage").show();
-  setTimeout(hideLoader, 500);
+  // setTimeout(hideLoader, 500);
 };
 
 const showEditEmployeePage = async (id) => {
   hideAllPages();
   showNav();
   activeNavEmployees();
-  showLoader();
   getLocationsForDropdowns();
   const response = await Employees.fetchEmployeeByID(id);
   if (!(response.status.code == 200 && response.status.name == "ok")) {
     showError(response.status.description);
-    hideLoader();
     return;
   } else {
     $("#editEmployeeId").val(response.data[0].id);
@@ -224,5 +222,13 @@ const showEditEmployeePage = async (id) => {
     $("#editEmployeeDept").val(response.data[0].departmentID);
   }
   $("#editEmployeePage").show();
-  setTimeout(hideLoader, 500);
+};
+
+const loaderWrapper = (wrapped) => {
+  showLoader();
+  let result = function () {
+    return wrapped.apply(this, arguments);
+  };
+  hideLoader();
+  return result;
 };
