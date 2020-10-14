@@ -41,22 +41,18 @@ $(document).ready(function () {
         },
       },
     ],
-    // current working area
     initComplete: function () {
       this.api()
-        // add one filter button to main table
-        // create another table and use it to hold the search dropdown.
-        // hide this table usually
-
-        // download responsive datatables script and find the body responsive part. make new for footer part?
-        .columns([1])
+        .columns([1, 3, 5, 6])
         .every(function () {
           var column = this;
-          var select = $("<button>" + "Filter" + "</button>")
-            .appendTo($(column.footer()).empty())
-            .on("click", function () {
-              // show filter buttons
-
+          var select = $(
+            '<select><option value="">' +
+              column.header().innerHTML +
+              "</option></select>"
+          )
+            .prependTo($(column.footer()).empty())
+            .on("change", function () {
               var val = $.fn.dataTable.util.escapeRegex($(this).val());
 
               column.search(val ? "^" + val + "$" : "", true, false).draw();
@@ -70,52 +66,8 @@ $(document).ready(function () {
               select.append('<option value="' + d + '">' + d + "</option>");
             });
         });
-      // this is correct function
-      // this.api()
-      // .columns([1, 3, 5, 6])
-      // .every(function () {
-      //   var column = this;
-      //   var select = $(
-      //     '<select><option value="">' +
-      //       column.header().innerHTML +
-      //       "</option></select>"
-      //   )
-      //     .prependTo($(column.footer()).empty())
-      //     .on("change", function () {
-      //       var val = $.fn.dataTable.util.escapeRegex($(this).val());
-
-      //       column.search(val ? "^" + val + "$" : "", true, false).draw();
-      //     });
-
-      //   column
-      //     .data()
-      //     .unique()
-      //     .sort()
-      //     .each(function (d, j) {
-      //       select.append('<option value="' + d + '">' + d + "</option>");
-      //     });
-      // });
-      // },
     },
   });
-
-  // trying to make footer responsive
-  // https://stackoverflow.com/questions/50335255/how-to-make-table-footer-collapse-and-expand-in-datatable-responsive
-  // https://datatables.net/reference/api/#:~:text=DataTables%20has%20an%20extensive%20API%20which%20can%20be,typically%20interact%20with%20the%20table%20through%20the%20API.
-
-  // current working area
-  // $("#employeesTable tfoot tr").clone(true).prependTo("#employeesTable tbody");
-  // $("#employeesTable thead tr:eq(1) th").each(function (i) {
-  //   var title = $(this).text();
-  //   $(this).html('<input type="text" placeholder="Search ' + title + '" />');
-
-  //   $("input", this).on("keyup change", function () {
-  //     if (table.column(i).search() !== this.value) {
-  //       table.column(i).search(this.value).draw();
-  //     }
-  //   });
-  // });
-  // end working area
 
   $("#employeesTable tbody").on("click", "tr .edit", function () {
     const id = $(this).data("row");
