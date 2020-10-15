@@ -347,7 +347,7 @@ $(".updateBtn").click(function (e) {
 const testFuncs = () => {
   // showEmployeesPage();
   // showDepartmentsPage();
-  // showLocationsPage();
+  showLocationsPage();
   // showCreateLocationPage();
   // showCreateDepartmentPage();
   // showCreateEmployeePage();
