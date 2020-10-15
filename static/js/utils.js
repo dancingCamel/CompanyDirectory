@@ -120,7 +120,9 @@ const showEmployeesPage = () => {
   hideAllPages();
   showNav();
   activeNavEmployees();
+  // $("#employeesTable").DataTable().columns.adjust().draw();
   $("#employeesPage").show();
+  $("#employeesTable").DataTable().columns.adjust().draw();
 };
 
 const showDepartmentsPage = () => {
@@ -128,6 +130,7 @@ const showDepartmentsPage = () => {
   showNav();
   activeNavDepts();
   $("#departmentsPage").show();
+  $("#departmentsTable").DataTable().columns.adjust().draw();
 };
 
 const showLocationsPage = () => {
@@ -136,6 +139,7 @@ const showLocationsPage = () => {
   activeNavLocations();
   // repopulate locations table here
   $("#locationsPage").show();
+  $("#locationsTable").DataTable().columns.adjust().draw();
 };
 
 const showCreateLocationPage = () => {

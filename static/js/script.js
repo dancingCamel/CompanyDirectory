@@ -14,9 +14,15 @@ $(document).ready(function () {
         $("#preloader").remove();
       });
   }
+
+  $(".navbar-nav>li>a").on("click", function () {
+    $(".navbar-collapse").collapse("hide");
+  });
+
   // set up data tables
   const employeesTable = $("#employeesTable").DataTable({
     responsive: true,
+    autoWidth: false,
     ajax: { url: "/static/php/personnel/getAllPersonnel.php", dataSrc: "data" },
     columns: [
       { data: "id", visible: false },
@@ -29,7 +35,7 @@ $(document).ready(function () {
       {
         data: null,
         orderable: false,
-        width: "180px",
+        // width: 180,
         render: function (data, type, row, meta) {
           return (
             '<div><button class="btn btn-primary mr-2 table-button edit" data-row=' +
@@ -52,45 +58,29 @@ $(document).ready(function () {
               column.header().innerHTML +
               "</option></select>"
           );
-          // add to row of other table here
-          // .prependTo(employeesFilterTable.columns([columnIndex]).cells());
-          // this on change function needs to be a seperate function, invoked in the onChange handler of html in render function
-          // .on("change", function () {
-          //   var val = $.fn.dataTable.util.escapeRegex($(this).val());
-          //   // column.search(val ? "^" + val + "$" : "", true, false).draw();
-
-          //   employeesTable
-          //     .columns([columnIndex])
-          //     .search(val ? "^" + val + "$" : "", true, false)
-          //     .draw();
-          // });
 
           column
             .data()
             .unique()
             .sort()
             .each(function (d, j) {
-              // here we need to select the cell data in other table
               let $option = $(document.createElement("option"));
               $option.val(d);
               $option.html(d);
-              console.log(employeesFilterTable.cell(1, columnIndex));
-              $(".employeeFilterSelect")[Math.floor(columnIndex / 2)].append(
+              $($(".employeeFilterSelect")[Math.floor(columnIndex / 2)]).append(
                 $option
               );
-              // need to draw the table every time we append data? can chain it?
-              employeesFilterTable.draw();
             });
         });
     },
   });
 
   $(".employeeFilterSelect").on("change", function () {
+    console.log(this);
     var val = $.fn.dataTable.util.escapeRegex($(this).val());
-    // column.search(val ? "^" + val + "$" : "", true, false).draw();
 
     employeesTable
-      .columns([columnIndex])
+      .columns([$(this).data("column")])
       .search(val ? "^" + val + "$" : "", true, false)
       .draw();
   });
@@ -111,98 +101,9 @@ $(document).ready(function () {
     }
   });
 
-  // employees filter table
-  // the data in this table overwrites anything added in the last table.
-  // don't make this a data table? just manually put selects in the main page and populate from employeesTable data
-  // leave the on change function
-  const employeesFilterTable = $("#employeesFilterTable").DataTable({
-    paging: false,
-    ordering: false,
-    searching: false,
-    info: false,
-    responsive: true,
-    columnDefs: [
-      {
-        render: function (data, type, row) {
-          return (
-            '<select class="employeeFilterSelect"><option value="">' +
-            // grab name from other table
-            employeesTable.column([1]).header().innerHTML +
-            "</option></select>"
-          );
-        },
-        targets: 0,
-      },
-      {
-        render: function (data, type, row) {
-          return (
-            '<select class="employeeFilterSelect"><option value="">' +
-            // grab name from other table
-            employeesTable.column([3]).header().innerHTML +
-            "</option></select>"
-          );
-        },
-        targets: 2,
-      },
-      {
-        render: function (data, type, row) {
-          return (
-            '<select class="employeeFilterSelect"><option value="">' +
-            // grab name from other table
-            employeesTable.column([4]).header().innerHTML +
-            "</option></select>"
-          );
-        },
-        targets: 4,
-      },
-      {
-        render: function (data, type, row) {
-          return (
-            '<select class="employeeFilterSelect"><option value="">' +
-            // grab name from other table
-            employeesTable.column([5]).header().innerHTML +
-            "</option></select>"
-          );
-        },
-        targets: 5,
-      },
-    ],
-    // working here
-    // initComplete: function () {
-    //   this.api()
-    //     .columns()
-    //     .every(function () {
-    //       var column = this;
-    //       var columnIndex = column.index();
-    //       console.log(columnIndex);
-    //       var select = $(
-    //         '<select><option value="">' +
-    //           column.header().innerHTML +
-    //           "</option></select>"
-    //       )
-    //         .prependTo($(column.footer()).empty())
-    //         .on("change", function () {
-    //           var val = $.fn.dataTable.util.escapeRegex($(this).val());
-
-    //           column.search(val ? "^" + val + "$" : "", true, false).draw();
-    //         });
-
-    //       // this function is running before getting data from ajax in other table.
-    //       employeesTable
-    //         .columns([columnIndex])
-    //         .data()
-    //         .unique()
-    //         .sort()
-    //         .each(function (d, j) {
-    //           console.log(d);
-    //           // select.append('<option value="' + d + '">' + d + "</option>");
-    //         });
-    //     });
-    // },
-  });
-
   const departmentsTable = $("#departmentsTable").DataTable({
     responsive: true,
+    autoWidth: false,
     ajax: { url: "/static/php/dept/getAllDepartments.php", dataSrc: "data" },
     columns: [
       { data: "id", visible: false },
@@ -226,30 +127,38 @@ $(document).ready(function () {
     ],
     initComplete: function () {
       this.api()
-        .columns([1, 2, 3])
+        .columns([3])
         .every(function () {
           var column = this;
+          var columnIndex = column.index();
           var select = $(
             '<select><option value="">' +
               column.header().innerHTML +
               "</option></select>"
-          )
-            .appendTo($(column.footer()).empty())
-            .on("change", function () {
-              var val = $.fn.dataTable.util.escapeRegex($(this).val());
-
-              column.search(val ? "^" + val + "$" : "", true, false).draw();
-            });
+          );
 
           column
             .data()
             .unique()
             .sort()
             .each(function (d, j) {
-              select.append('<option value="' + d + '">' + d + "</option>");
+              let $option = $(document.createElement("option"));
+              $option.val(d);
+              $option.html(d);
+              $($(".departmentFilterSelect")[0]).append($option);
             });
         });
     },
+  });
+
+  $(".departmentFilterSelect").on("change", function () {
+    console.log(this);
+    var val = $.fn.dataTable.util.escapeRegex($(this).val());
+
+    departmentsTable
+      .columns([$(this).data("column")])
+      .search(val ? "^" + val + "$" : "", true, false)
+      .draw();
   });
 
   $("#departmentsTable tbody").on("click", "tr .edit", function () {
@@ -270,6 +179,7 @@ $(document).ready(function () {
 
   const locationsTable = $("#locationsTable").DataTable({
     responsive: true,
+    autoWidth: false,
     ajax: { url: "/static/php/location/getAllLocations.php", dataSrc: "data" },
     columns: [
       { data: "id", visible: false },
@@ -435,7 +345,7 @@ $(".updateBtn").click(function (e) {
 });
 
 const testFuncs = () => {
-  showEmployeesPage();
+  // showEmployeesPage();
   // showDepartmentsPage();
   // showLocationsPage();
   // showCreateLocationPage();
