@@ -233,6 +233,7 @@ const insertEmployee = async () => {
     return;
   } else {
     $("#employeesTable").DataTable().row.add(response.data[0]).draw(false);
+    $("#createEmployeeForm")[0].reset();
   }
   showEmployeesPage();
 };
@@ -247,6 +248,7 @@ const insertLocation = async () => {
     return;
   } else {
     $("#locationsTable").DataTable().row.add(response.data[0]).draw(false);
+    $("#createLocationForm")[0].reset();
   }
   showLocationsPage();
 };
@@ -261,6 +263,7 @@ const insertDept = async () => {
     return;
   } else {
     $("#departmentsTable").DataTable().row.add(response.data[0]).draw(false);
+    $("#createDepartmentForm")[0].reset();
   }
   showDepartmentsPage();
 };

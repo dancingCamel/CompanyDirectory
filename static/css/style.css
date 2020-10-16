@@ -125,6 +125,13 @@ main {
 
 /* Mobile device styling */
 @media screen and (max-width: 576px) {
+  .select {
+    margin-top: 5px;
+  }
+
+  .filter-row {
+    margin-top: 5px;
+  }
 }
 
 /* Tables */
@@ -151,9 +158,11 @@ select {
 .select {
   position: relative;
   display: block;
-  width: 20em;
-  height: 3em;
-  line-height: 3;
+  /* width: 20em; */
+  width: 95%;
+  height: 2.5em;
+  line-height: 2.5;
+  color: var(--bellport-yellow);
   /* background: #2c3e50; */
   background: var(--bellport-purple);
   overflow: hidden;
@@ -163,26 +172,24 @@ select {
   width: 100%;
   height: 100%;
   margin: 0;
-  padding: 0 0 0 0.5em;
+  padding: 0 0 0 0.7em;
   color: var(--bellport-purple);
   cursor: pointer;
+  border-radius: 4px;
 }
 
 .select::after {
   content: "\25BC";
-  /* content: "\25BC"; */
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   padding: 0 1em;
-  /* background: #34495e; */
   background: var(--bellport-purple);
   pointer-events: none;
 }
 .select:hover::after {
-  /* color: #f39c12; */
-  color: var(--bellport-yellow);
+  color: rgb(247, 161, 2);
 }
 
 .select::after {

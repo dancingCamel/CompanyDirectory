@@ -152,7 +152,7 @@ $(document).ready(function () {
   });
 
   $(".departmentFilterSelect").on("change", function () {
-    console.log(this);
+    // console.log(this);
     var val = $.fn.dataTable.util.escapeRegex($(this).val());
 
     departmentsTable
@@ -204,24 +204,22 @@ $(document).ready(function () {
         .columns([1])
         .every(function () {
           var column = this;
+          var columnIndex = column.index();
           var select = $(
             '<select><option value="">' +
               column.header().innerHTML +
               "</option></select>"
-          )
-            .appendTo($(column.footer()).empty())
-            .on("change", function () {
-              var val = $.fn.dataTable.util.escapeRegex($(this).val());
-
-              column.search(val ? "^" + val + "$" : "", true, false).draw();
-            });
+          );
 
           column
             .data()
             .unique()
             .sort()
             .each(function (d, j) {
-              select.append('<option value="' + d + '">' + d + "</option>");
+              let $option = $(document.createElement("option"));
+              $option.val(d);
+              $option.html(d);
+              $($(".locationFilterSelect")[0]).append($option);
             });
         });
     },
@@ -241,6 +239,16 @@ $(document).ready(function () {
     } else {
       showError(response.status.description);
     }
+  });
+
+  $(".locationFilterSelect").on("change", function () {
+    // console.log(this);
+    var val = $.fn.dataTable.util.escapeRegex($(this).val());
+
+    locationsTable
+      .columns([$(this).data("column")])
+      .search(val ? "^" + val + "$" : "", true, false)
+      .draw();
   });
 
   testFuncs();
