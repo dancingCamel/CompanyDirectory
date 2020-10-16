@@ -93,11 +93,22 @@ $(document).ready(function () {
   $("#employeesTable tbody").on("click", ".delete", async function () {
     const id = $(this).data("row");
     const row = $(this).parents("tr");
-    const response = await Employees.deleteEmployee(id);
-    if (response.status.code == 200 && response.status.name === "ok") {
-      employeesTable.row(row).remove().draw();
-    } else {
-      showError(response.status.description);
+    const shouldDelete = await Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    });
+    if (!!(shouldDelete.value && shouldDelete.value === true)) {
+      const response = await Employees.deleteEmployee(id);
+      if (response.status.code == 200 && response.status.name === "ok") {
+        employeesTable.row(row).remove().draw();
+      } else {
+        showError(response.status.description);
+      }
     }
   });
 
@@ -169,11 +180,22 @@ $(document).ready(function () {
   $("#departmentsTable tbody").on("click", ".delete", async function () {
     const id = $(this).data("row");
     const row = $(this).parents("tr");
-    const response = await Departments.deleteDepartment(id);
-    if (response.status.code == 200 && response.status.name === "ok") {
-      departmentsTable.row(row).remove().draw();
-    } else {
-      showError(response.status.description);
+    const shouldDelete = await Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    });
+    if (!!(shouldDelete.value && shouldDelete.value === true)) {
+      const response = await Departments.deleteDepartment(id);
+      if (response.status.code == 200 && response.status.name === "ok") {
+        departmentsTable.row(row).remove().draw();
+      } else {
+        showError(response.status.description);
+      }
     }
   });
 
@@ -233,11 +255,23 @@ $(document).ready(function () {
   $("#locationsTable tbody").on("click", ".delete", async function () {
     const id = $(this).data("row");
     const row = $(this).parents("tr");
-    const response = await Locations.deleteLocation(id);
-    if (response.status.code == 200 && response.status.name === "ok") {
-      locationsTable.row(row).remove().draw();
-    } else {
-      showError(response.status.description);
+    const shouldDelete = await Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    });
+
+    if (!!(shouldDelete.value && shouldDelete.value === true)) {
+      const response = await Locations.deleteLocation(id);
+      if (response.status.code == 200 && response.status.name === "ok") {
+        locationsTable.row(row).remove().draw();
+      } else {
+        showError(response.status.description);
+      }
     }
   });
 

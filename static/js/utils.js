@@ -1,3 +1,22 @@
+// Toastr settings
+toastr.options = {
+  closeButton: false,
+  debug: false,
+  newestOnTop: true,
+  progressBar: false,
+  positionClass: "toast-top-right",
+  preventDuplicates: false,
+  onclick: null,
+  showDuration: "300",
+  hideDuration: "1000",
+  timeOut: "5000",
+  extendedTimeOut: "1000",
+  showEasing: "swing",
+  hideEasing: "linear",
+  showMethod: "fadeIn",
+  hideMethod: "fadeOut",
+};
+
 const showLoader = () => {
   $("#loader").modal({
     backdrop: "static",
@@ -233,6 +252,7 @@ const insertEmployee = async () => {
     return;
   } else {
     $("#employeesTable").DataTable().row.add(response.data[0]).draw(false);
+    toastr["success"]("Employee Created", "Success");
     $("#createEmployeeForm")[0].reset();
   }
   showEmployeesPage();
@@ -248,6 +268,7 @@ const insertLocation = async () => {
     return;
   } else {
     $("#locationsTable").DataTable().row.add(response.data[0]).draw(false);
+    toastr["success"]("Location Created", "Success");
     $("#createLocationForm")[0].reset();
   }
   showLocationsPage();
@@ -263,6 +284,7 @@ const insertDept = async () => {
     return;
   } else {
     $("#departmentsTable").DataTable().row.add(response.data[0]).draw(false);
+    toastr["success"]("Department Created", "Success");
     $("#createDepartmentForm")[0].reset();
   }
   showDepartmentsPage();
@@ -283,6 +305,8 @@ const updateEmployee = async () => {
       .row(fd.id)
       .data(response.data[0])
       .draw(false);
+    toastr["success"]("Employee Updated", "Success");
+    $("#updateEmployeeForm")[0].reset();
   }
   showEmployeesPage();
 };
@@ -302,6 +326,8 @@ const updateLocation = async () => {
       .row(fd.id)
       .data(response.data[0])
       .draw(false);
+    toastr["success"]("Location Updated", "Success");
+    $("#updateLocationForm")[0].reset();
   }
   showLocationsPage();
 };
@@ -321,6 +347,8 @@ const updateDept = async () => {
       .row(fd.id)
       .data(response.data[0])
       .draw(false);
+    toastr["success"]("Department Updated", "Success");
+    $("#updateDeptForm")[0].reset();
   }
   showDepartmentsPage();
 };
