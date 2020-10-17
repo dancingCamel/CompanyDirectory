@@ -18,6 +18,17 @@
 CREATE DATABASE IF NOT EXISTS `companydirectory` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `companydirectory`;
 
+-- create the users table
+CREATE  TABLE IF NOT EXISTS `user` (
+  `id` INT  AUTO_INCREMENT,
+  `username` VARCHAR(150) NOT NULL,
+  `password` VARCHAR(255) NOT NULL,
+  PRIMARY KEY (`id`) 
+);
+INSERT INTO `user` (`id`, `username`, `password`) VALUES
+	(1, 'example', '$2y$10$KPk5IFWXCByv7MYGfN5z4etxWRp4vMq2t2AXYkRV/gVNT9aNFayuy');
+	-- password is "project"
+
 -- Dumping structure for table companydirectory.department
 CREATE TABLE IF NOT EXISTS `department` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -178,3 +189,4 @@ INSERT INTO `personnel` (`id`, `firstName`, `lastName`, `jobTitle`, `email`, `de
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+
