@@ -85,7 +85,7 @@
           $audience_claim = "THE_AUDIENCE";
           $issuedat_claim = time(); // issued at
           $notbefore_claim = $issuedat_claim + 10; //not before in seconds
-          $expire_claim = $issuedat_claim + 60; // expire time in seconds
+          $expire_claim = $issuedat_claim + 14400; // expire time in seconds - 4 hours
           $token = array(
               "iss" => $issuer_claim,
               "aud" => $audience_claim,
@@ -111,6 +111,7 @@
           $output['data']['expireAt'] = $expire_claim;
           echo json_encode($output); 
         }
+
         else{
           mysqli_close($conn);
 
@@ -121,7 +122,7 @@
           $output['data'] = [];
           echo json_encode($output); 
         }
-        
+
     } else {
       mysqli_close($conn);
 
