@@ -618,8 +618,8 @@
             <div class="col-12 col-lg-5 mt-5">
               <form
                 class="form-signin align-middle mt-5"
-                method="POST"
-                action="/admin/login"
+                name="loginForm"
+                id="loginForm"
               >
                 <div>
                   <img
@@ -631,15 +631,11 @@
                 <a class="h1 mt-5 bellport-purple-text" href="#"
                   >Company Directory</a
                 >
-                <h1 class="h3 mb-3 mt-3 font-weight-normal text-wrap d-none">
-                  Log in
-                </h1>
 
-                <div class="alert alert-success mt-3 d-none">
-                  <span id="loginSuccessBox"></span>
-                </div>
-
-                <div class="alert alert-danger mt-3 d-none">
+                <div
+                  class="alert alert-danger mt-3 d-none"
+                  id="loginErrorContainer"
+                >
                   <span id="loginErrorBox"></span>
                 </div>
 
@@ -664,8 +660,9 @@
                 />
 
                 <button
-                  class="btn btn-lg btn-success btn-block mb-3 mt-3"
+                  class="btn btn-lg btn-success btn-block mb-3 mt-3 loginBtn"
                   type="submit"
+                  id="loginBtn"
                 >
                   Log in
                 </button>
@@ -720,6 +717,7 @@
     <script src="/static/js/locations.js"></script>
     <script src="/static/js/departments.js"></script>
     <script src="/static/js/employees.js"></script>
+    <script src="/static/js/user.js"></script>
     <script src="/static/js/utils.js"></script>
     <script src="/static/js/script.js"></script>
   </body>

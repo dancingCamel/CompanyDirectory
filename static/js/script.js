@@ -317,6 +317,7 @@ $("#navLocationsLink").click(function (e) {
 $("#navLogoutBtn").click(function (e) {
   e.preventDefault();
   clearNavActive();
+  userLogout();
   showLoginPage();
 });
 
@@ -386,15 +387,20 @@ $(".updateBtn").click(function (e) {
   }
 });
 
+$("#loginBtn").click(function (e) {
+  e.preventDefault();
+  userLogin();
+});
+
 const testFuncs = () => {
   // showEmployeesPage();
   // showDepartmentsPage();
-  showLocationsPage();
+  // showLocationsPage();
   // showCreateLocationPage();
   // showCreateDepartmentPage();
   // showCreateEmployeePage();
   // showEditEmployeePage(exampleID);
   // showEditDepartmentPage(exampleID);
   // showEditLocationPage(exampleID);
-  // showLoginPage();
+  showLoginPage();
 };

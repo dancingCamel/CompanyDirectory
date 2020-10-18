@@ -48,7 +48,7 @@
 		exit;
     }
     
-    $username = $_REQUEST['username'];
+    $username = '"'.$_REQUEST['username'].'"';
     $password = $_REQUEST['password'];
 
     $query = "SELECT id, username, password FROM user WHERE username = $username LIMIT 1";
@@ -81,10 +81,10 @@
         if(password_verify($password, $password2))
         {
           $secret_key = $secret;
-          $issuer_claim = "THE_ISSUER"; // this can be the servername
-          $audience_claim = "THE_AUDIENCE";
+          $issuer_claim = "Bellport"; // this can be the servername
+          $audience_claim = "user";
           $issuedat_claim = time(); // issued at
-          $notbefore_claim = $issuedat_claim + 10; //not before in seconds
+          $notbefore_claim = $issuedat_claim + 5; //not before in seconds
           $expire_claim = $issuedat_claim + 14400; // expire time in seconds - 4 hours
           $token = array(
               "iss" => $issuer_claim,

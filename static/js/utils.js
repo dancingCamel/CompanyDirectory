@@ -353,6 +353,36 @@ const updateDept = async () => {
   showDepartmentsPage();
 };
 
+const userLogin = async () => {
+  $("#loginErrorContainer").addClass("d-none");
+  $("#loginErrorBox").text("");
+  const form = $("#loginForm").serializeArray();
+  let fd = new FormData();
+  form.forEach((element) => fd.append(element.name, element.value));
+  let response = await User.login(fd);
+  if (!(response.status.code == 200 && response.status.name == "ok")) {
+    $("#loginErrorBox").text(
+      `An error occurred: ${response.status.description}`
+    );
+    $("#loginErrorContainer").removeClass("d-none");
+    return;
+  } else {
+    console.log(response);
+    sessionStorage.setItem("jwt", response.data.jwt);
+    sessionStorage.setItem("username", response.data.username);
+    $("#loginForm")[0].reset();
+  }
+  showEmployeesPage();
+};
+
+const userLogout = async () => {
+  sessionStorage.setItem("jwt", "");
+  sessionStorage.setItem("username", "");
+  sessionStorage.clear();
+  // show login page
+  showLoginPage();
+};
+
 const loaderWrapper = (wrapped) => {
   showLoader();
   let result = function () {
