@@ -135,19 +135,20 @@ const showLoginPage = () => {
   $("#loginPage").show();
 };
 
-const showEmployeesPage = () => {
+const showEmployeesPage = async (jwt) => {
+  const token = jwt ? jwt : sessionStorage.getItem("jwt");
   hideAllPages();
   showNav();
   activeNavEmployees();
   if (!populatedEmployeesTable) {
-    loaderWrapper(populateEmployeesTable(sessionStorage.getItem("jwt")));
+    loaderWrapper(populateEmployeesTable(token));
     populatedEmployeesTable = true;
   }
   $("#employeesPage").show();
   $("#employeesTable").DataTable().columns.adjust().draw();
 };
 
-const showDepartmentsPage = () => {
+const showDepartmentsPage = async () => {
   hideAllPages();
   showNav();
   activeNavDepts();
@@ -159,7 +160,7 @@ const showDepartmentsPage = () => {
   $("#departmentsTable").DataTable().columns.adjust().draw();
 };
 
-const showLocationsPage = () => {
+const showLocationsPage = async () => {
   hideAllPages();
   showNav();
   activeNavLocations();
@@ -377,20 +378,21 @@ const userLogin = async () => {
     $("#loginErrorContainer").removeClass("d-none");
     return;
   } else {
-    console.log(response);
     sessionStorage.setItem("jwt", response.data.jwt);
     sessionStorage.setItem("username", response.data.username);
     $("#loginForm")[0].reset();
   }
-  showEmployeesPage();
+
+  loaderWrapper(showEmployeesPage(response.data.jwt));
 };
 
 const userLogout = async () => {
   sessionStorage.setItem("jwt", "");
   sessionStorage.setItem("username", "");
   sessionStorage.clear();
-  // show login page
-  showLoginPage();
+  // clear tables
+  // reload page
+  location.reload();
 };
 
 const loaderWrapper = (wrapped) => {
@@ -405,14 +407,17 @@ const loaderWrapper = (wrapped) => {
 // set up data tables
 let employeesTable;
 let populatedEmployeesTable = false;
-const populateEmployeesTable = (jwt) => {
+const populateEmployeesTable = async (jwt) => {
+  const token = jwt ? jwt : sessionStorage.getItem("jwt");
   employeesTable = $("#employeesTable").DataTable({
     responsive: true,
     autoWidth: false,
     ajax: {
       url: "/static/php/personnel/getAllPersonnel.php",
-      headers: { Authorization: `JWT ${jwt}` },
-      dataSrc: "data",
+      headers: { Authorization: `JWT ${token}` },
+      dataSrc: function (json) {
+        return json.data;
+      },
     },
     columns: [
       { data: "id", visible: false },

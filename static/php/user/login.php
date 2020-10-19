@@ -84,7 +84,7 @@
           $issuer_claim = "Bellport"; // this can be the servername
           $audience_claim = "user";
           $issuedat_claim = time(); // issued at
-          $notbefore_claim = $issuedat_claim + 5; //not before in seconds
+          $notbefore_claim = $issuedat_claim; //not before in seconds
           $expire_claim = $issuedat_claim + 14400; // expire time in seconds - 4 hours
           $token = array(
               "iss" => $issuer_claim,

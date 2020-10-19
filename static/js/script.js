@@ -242,7 +242,7 @@ $("#loginBtn").click(function (e) {
 
 const testFuncs = () => {
   // showEmployeesPage();
-  showDepartmentsPage();
+  // showDepartmentsPage();
   // showLocationsPage();
   // showCreateLocationPage();
   // showCreateDepartmentPage();
@@ -250,5 +250,5 @@ const testFuncs = () => {
   // showEditEmployeePage(exampleID);
   // showEditDepartmentPage(exampleID);
   // showEditLocationPage(exampleID);
-  // showLoginPage();
+  showLoginPage();
 };
