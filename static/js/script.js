@@ -1,9 +1,3 @@
-const exampleID = 2;
-
-// small devices
-if (window.screen.width < 576) {
-}
-
 $(document).ready(function () {
   showLoader();
   if ($("#preloader").length) {
@@ -37,6 +31,7 @@ $(document).ready(function () {
   });
 
   $("#employeesTable tbody").on("click", ".delete", async function () {
+    const token = sessionStorage.getItem("jwt");
     const id = $(this).data("row");
     const row = $(this).parents("tr");
     const shouldDelete = await Swal.fire({
@@ -49,7 +44,12 @@ $(document).ready(function () {
       confirmButtonText: "Yes, delete it!",
     });
     if (!!(shouldDelete.value && shouldDelete.value === true)) {
-      const response = await Employees.deleteEmployee(id);
+      const response = await Employees.deleteEmployee(id, token);
+      if (response.status.code == 401) {
+        showLoginError("For security, please log in again.");
+        showLoginPage();
+        return;
+      }
       if (response.status.code == 200 && response.status.name === "ok") {
         employeesTable.row(row).remove().draw();
       } else {
@@ -74,6 +74,7 @@ $(document).ready(function () {
   });
 
   $("#departmentsTable tbody").on("click", ".delete", async function () {
+    const token = sessionStorage.getItem("jwt");
     const id = $(this).data("row");
     const row = $(this).parents("tr");
     const shouldDelete = await Swal.fire({
@@ -86,7 +87,12 @@ $(document).ready(function () {
       confirmButtonText: "Yes, delete it!",
     });
     if (!!(shouldDelete.value && shouldDelete.value === true)) {
-      const response = await Departments.deleteDepartment(id);
+      const response = await Departments.deleteDepartment(id, token);
+      if (response.status.code == 401) {
+        showLoginError("For security, please log in again.");
+        showLoginPage();
+        return;
+      }
       if (response.status.code == 200 && response.status.name === "ok") {
         departmentsTable.row(row).remove().draw();
       } else {
@@ -101,6 +107,7 @@ $(document).ready(function () {
   });
 
   $("#locationsTable tbody").on("click", ".delete", async function () {
+    const token = sessionStorage.getItem("jwt");
     const id = $(this).data("row");
     const row = $(this).parents("tr");
     const shouldDelete = await Swal.fire({
@@ -114,7 +121,12 @@ $(document).ready(function () {
     });
 
     if (!!(shouldDelete.value && shouldDelete.value === true)) {
-      const response = await Locations.deleteLocation(id);
+      const response = await Locations.deleteLocation(id, token);
+      if (response.status.code == 401) {
+        showLoginError("For security, please log in again.");
+        showLoginPage();
+        return;
+      }
       if (response.status.code == 200 && response.status.name === "ok") {
         locationsTable.row(row).remove().draw();
       } else {
@@ -209,13 +221,13 @@ $(".createBtn").click(function (e) {
   e.preventDefault();
   switch ($(this).data("form")) {
     case "createDept":
-      insertDept();
+      checkLoggedIn(insertDept());
       break;
     case "createLocation":
-      insertLocation();
+      checkLoggedIn(insertLocation());
       break;
     case "createEmployee":
-      insertEmployee();
+      checkLoggedIn(insertEmployee());
       break;
   }
 });
@@ -224,13 +236,13 @@ $(".updateBtn").click(function (e) {
   e.preventDefault();
   switch ($(this).data("form")) {
     case "updateDept":
-      updateDept();
+      checkLoggedIn(updateDept());
       break;
     case "updateLocation":
-      updateLocation();
+      checkLoggedIn(updateLocation());
       break;
     case "updateEmployee":
-      updateEmployee();
+      checkLoggedIn(updateEmployee());
       break;
   }
 });

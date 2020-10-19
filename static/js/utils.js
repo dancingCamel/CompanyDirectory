@@ -37,25 +37,6 @@ const hideError = () => {
   $("#errorBox").hide();
 };
 
-const createTable = (element, data, columns) => {
-  let columnsObjects = [];
-
-  columns.forEach((column) => {
-    let temp = {};
-    temp["title"] = column;
-    columnsObjects.push(temp);
-  });
-
-  $(element).DataTable({
-    data: data,
-    columns: columnsObjects,
-    paging: false,
-    info: false,
-    searching: false,
-    destroy: true,
-  });
-};
-
 const hideMain = () => {
   $("main").css("visibility", "hidden");
 };
@@ -96,8 +77,9 @@ const activeNavLocations = () => {
   $("#navLocationsLinkLi").addClass("active");
 };
 
-const getLocationsForDropdowns = async () => {
-  const response = await Locations.fetchAllLocations();
+const getLocationsForDropdowns = async (jwt) => {
+  const token = jwt ? jwt : sessionStorage.getItem("jwt");
+  const response = await Locations.fetchAllLocations(token);
   $.each($(".locationDropdown"), function () {
     $(this).empty();
     response.data.forEach((location) => {
@@ -109,8 +91,9 @@ const getLocationsForDropdowns = async () => {
   });
 };
 
-const getDepartmentsForDropdown = async (id) => {
-  const response = await Departments.fetchDepartmentsByLocationID(id);
+const getDepartmentsForDropdown = async (id, jwt) => {
+  const token = jwt ? jwt : sessionStorage.getItem("jwt");
+  const response = await Departments.fetchDepartmentsByLocationID(id, token);
   $.each($(".departmentDropdown"), function () {
     $(this).empty();
     response.data.forEach((dept) => {
@@ -148,24 +131,26 @@ const showEmployeesPage = async (jwt) => {
   $("#employeesTable").DataTable().columns.adjust().draw();
 };
 
-const showDepartmentsPage = async () => {
+const showDepartmentsPage = async (jwt) => {
+  const token = jwt ? jwt : sessionStorage.getItem("jwt");
   hideAllPages();
   showNav();
   activeNavDepts();
   if (!populatedDepartmentsTable) {
-    loaderWrapper(populateDepartmentsTable(sessionStorage.getItem("jwt")));
+    loaderWrapper(populateDepartmentsTable(token));
     populatedDepartmentsTable = true;
   }
   $("#departmentsPage").show();
   $("#departmentsTable").DataTable().columns.adjust().draw();
 };
 
-const showLocationsPage = async () => {
+const showLocationsPage = async (jwt) => {
+  const token = jwt ? jwt : sessionStorage.getItem("jwt");
   hideAllPages();
   showNav();
   activeNavLocations();
   if (!populatedLocationsTable) {
-    loaderWrapper(populateLocationsTable(sessionStorage.getItem("jwt")));
+    loaderWrapper(populateLocationsTable(token));
     populatedLocationsTable = true;
   }
   $("#locationsPage").show();
@@ -199,11 +184,12 @@ const showCreateEmployeePage = () => {
   $("#createEmployeePage").show();
 };
 
-const showEditLocationPage = async (id) => {
+const showEditLocationPage = async (id, jwt) => {
+  const token = jwt ? jwt : sessionStorage.getItem("jwt");
   hideAllPages();
   showNav();
   activeNavLocations();
-  const response = await Locations.fetchLocationByID(id);
+  const response = await Locations.fetchLocationByID(id, token);
   if (!(response.status.code == 200 && response.status.name == "ok")) {
     showError(response.status.description);
     return;
@@ -214,12 +200,13 @@ const showEditLocationPage = async (id) => {
   $("#editLocationPage").show();
 };
 
-const showEditDepartmentPage = async (id) => {
+const showEditDepartmentPage = async (id, jwt) => {
+  const token = jwt ? jwt : sessionStorage.getItem("jwt");
   hideAllPages();
   showNav();
   activeNavDepts();
-  getLocationsForDropdowns();
-  const response = await Departments.fetchDepartmentByID(id);
+  getLocationsForDropdowns(token);
+  const response = await Departments.fetchDepartmentByID(id, token);
   if (!(response.status.code == 200 && response.status.name == "ok")) {
     showError(response.status.description);
     return;
@@ -231,12 +218,13 @@ const showEditDepartmentPage = async (id) => {
   $("#editDeptPage").show();
 };
 
-const showEditEmployeePage = async (id) => {
+const showEditEmployeePage = async (id, jwt) => {
+  const token = jwt ? jwt : sessionStorage.getItem("jwt");
   hideAllPages();
   showNav();
   activeNavEmployees();
-  getLocationsForDropdowns();
-  const response = await Employees.fetchEmployeeByID(id);
+  getLocationsForDropdowns(token);
+  const response = await Employees.fetchEmployeeByID(id, token);
   if (!(response.status.code == 200 && response.status.name == "ok")) {
     showError(response.status.description);
     return;
@@ -247,17 +235,23 @@ const showEditEmployeePage = async (id) => {
     $("#editEmployeeEmail").val(response.data[0].email);
     $("#editEmployeeJobTitle").val(response.data[0].jobTitle);
     $("#editEmployeeLocation").val(response.data[0].locationID);
-    getDepartmentsForDropdown(response.data[0].locationID);
+    getDepartmentsForDropdown(response.data[0].locationID, token);
     $("#editEmployeeDept").val(response.data[0].departmentID);
   }
   $("#editEmployeePage").show();
 };
 
-const insertEmployee = async () => {
+const insertEmployee = async (jwt) => {
+  const token = jwt ? jwt : sessionStorage.getItem("jwt");
   const form = $("#createEmployeeForm").serializeArray();
   let fd = new FormData();
   form.forEach((element) => fd.append(element.name, element.value));
-  let response = await Employees.insertEmployee(fd);
+  let response = await Employees.insertEmployee(fd, token);
+  if (response.status.code == 401) {
+    showLoginError("For security, please log in again.");
+    showLoginPage();
+    return;
+  }
   if (!(response.status.code == 200 && response.status.name == "ok")) {
     showError(response.status.description);
     return;
@@ -269,11 +263,17 @@ const insertEmployee = async () => {
   showEmployeesPage();
 };
 
-const insertLocation = async () => {
+const insertLocation = async (jwt) => {
+  const token = jwt ? jwt : sessionStorage.getItem("jwt");
   const form = $("#createLocationForm").serializeArray();
   let fd = new FormData();
   form.forEach((element) => fd.append(element.name, element.value));
-  let response = await Locations.insertLocation(fd);
+  let response = await Locations.insertLocation(fd, token);
+  if (response.status.code == 401) {
+    showLoginError("For security, please log in again.");
+    showLoginPage();
+    return;
+  }
   if (!(response.status.code == 200 && response.status.name == "ok")) {
     showError(response.status.description);
     return;
@@ -285,11 +285,17 @@ const insertLocation = async () => {
   showLocationsPage();
 };
 
-const insertDept = async () => {
+const insertDept = async (jwt) => {
+  const token = jwt ? jwt : sessionStorage.getItem("jwt");
   const form = $("#createDepartmentForm").serializeArray();
   let fd = new FormData();
   form.forEach((element) => fd.append(element.name, element.value));
-  let response = await Departments.insertDepartment(fd);
+  let response = await Departments.insertDepartment(fd, token);
+  if (response.status.code == 401) {
+    showLoginError("For security, please log in again.");
+    showLoginPage();
+    return;
+  }
   if (!(response.status.code == 200 && response.status.name == "ok")) {
     showError(response.status.description);
     return;
@@ -301,11 +307,17 @@ const insertDept = async () => {
   showDepartmentsPage();
 };
 
-const updateEmployee = async () => {
+const updateEmployee = async (jwt) => {
+  const token = jwt ? jwt : sessionStorage.getItem("jwt");
   const form = $("#updateEmployeeForm").serializeArray();
   let fd = new FormData();
   form.forEach((element) => fd.append(element.name, element.value));
-  let response = await Employees.updateEmployeeByID(fd);
+  let response = await Employees.updateEmployeeByID(fd, token);
+  if (response.status.code == 401) {
+    showLoginError("For security, please log in again.");
+    showLoginPage();
+    return;
+  }
   if (!(response.status.code == 200 && response.status.name == "ok")) {
     showError(response.status.description);
     return;
@@ -322,11 +334,17 @@ const updateEmployee = async () => {
   showEmployeesPage();
 };
 
-const updateLocation = async () => {
+const updateLocation = async (jwt) => {
+  const token = jwt ? jwt : sessionStorage.getItem("jwt");
   const form = $("#updateLocationForm").serializeArray();
   let fd = new FormData();
   form.forEach((element) => fd.append(element.name, element.value));
-  let response = await Locations.updateLocationByID(fd);
+  let response = await Locations.updateLocationByID(fd, token);
+  if (response.status.code == 401) {
+    showLoginError("For security, please log in again.");
+    showLoginPage();
+    return;
+  }
   if (!(response.status.code == 200 && response.status.name == "ok")) {
     showError(response.status.description);
     return;
@@ -343,11 +361,17 @@ const updateLocation = async () => {
   showLocationsPage();
 };
 
-const updateDept = async () => {
+const updateDept = async (jwt) => {
+  const token = jwt ? jwt : sessionStorage.getItem("jwt");
   const form = $("#updateDeptForm").serializeArray();
   let fd = new FormData();
   form.forEach((element) => fd.append(element.name, element.value));
-  let response = await Departments.updateDepartmentByID(fd);
+  let response = await Departments.updateDepartmentByID(fd, token);
+  if (response.status.code == 401) {
+    showLoginError("For security, please log in again.");
+    showLoginPage();
+    return;
+  }
   if (!(response.status.code == 200 && response.status.name == "ok")) {
     showError(response.status.description);
     return;
@@ -365,17 +389,13 @@ const updateDept = async () => {
 };
 
 const userLogin = async () => {
-  $("#loginErrorContainer").addClass("d-none");
-  $("#loginErrorBox").text("");
+  hideLoginError();
   const form = $("#loginForm").serializeArray();
   let fd = new FormData();
   form.forEach((element) => fd.append(element.name, element.value));
   let response = await User.login(fd);
   if (!(response.status.code == 200 && response.status.name == "ok")) {
-    $("#loginErrorBox").text(
-      `An error occurred: ${response.status.description}`
-    );
-    $("#loginErrorContainer").removeClass("d-none");
+    showLoginError(response.status.description);
     return;
   } else {
     sessionStorage.setItem("jwt", response.data.jwt);
@@ -386,22 +406,35 @@ const userLogin = async () => {
   loaderWrapper(showEmployeesPage(response.data.jwt));
 };
 
+const showLoginError = (message) => {
+  $("#loginErrorBox").text(`An error occurred: ${message}`);
+  $("#loginErrorContainer").removeClass("d-none");
+};
+
+const hideLoginError = () => {
+  $("#loginErrorContainer").addClass("d-none");
+  $("#loginErrorBox").text("");
+};
+
 const userLogout = async () => {
   sessionStorage.setItem("jwt", "");
   sessionStorage.setItem("username", "");
   sessionStorage.clear();
-  // clear tables
+  clearTables();
   // reload page
   location.reload();
 };
 
-const loaderWrapper = (wrapped) => {
-  showLoader();
-  let result = async function () {
-    return await wrapped.apply(this, arguments);
-  };
-  setTimeout(hideLoader, 700);
-  return result;
+const clearTables = () => {
+  if (locationsTable) {
+    locationsTable.clear().draw();
+  }
+  if (employeesTable) {
+    employeesTable.clear().draw();
+  }
+  if (departmentsTable) {
+    departmentsTable.clear().draw();
+  }
 };
 
 // set up data tables
@@ -583,4 +616,27 @@ const populateLocationsTable = (jwt) => {
         });
     },
   });
+};
+
+// wrappers
+const loaderWrapper = (wrapped) => {
+  showLoader();
+  let result = async function () {
+    return await wrapped.apply(this, arguments);
+  };
+  setTimeout(hideLoader, 700);
+  return result;
+};
+
+const checkLoggedIn = (wrapped) => {
+  // check if have jwt set in session storage to prevent hitting endpoints unnecessarily
+  const jwt = sessionStorage.getItem("jwt");
+  if (jwt === null) {
+    userLogout();
+    showLoginError("Please log in to perform this action");
+  }
+  let result = async function () {
+    return await wrapped.apply(this, arguments);
+  };
+  return result;
 };
