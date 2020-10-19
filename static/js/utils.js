@@ -140,8 +140,7 @@ const showEmployeesPage = () => {
   showNav();
   activeNavEmployees();
   if (!populatedEmployeesTable) {
-    // pass jwt here
-    populateEmployeesTable();
+    loaderWrapper(populateEmployeesTable(sessionStorage.getItem("jwt")));
     populatedEmployeesTable = true;
   }
   $("#employeesPage").show();
@@ -153,8 +152,7 @@ const showDepartmentsPage = () => {
   showNav();
   activeNavDepts();
   if (!populatedDepartmentsTable) {
-    // pass jwt here
-    populateDepartmentsTable();
+    loaderWrapper(populateDepartmentsTable(sessionStorage.getItem("jwt")));
     populatedDepartmentsTable = true;
   }
   $("#departmentsPage").show();
@@ -166,8 +164,7 @@ const showLocationsPage = () => {
   showNav();
   activeNavLocations();
   if (!populatedLocationsTable) {
-    // pass jwt here
-    populateLocationsTable();
+    loaderWrapper(populateLocationsTable(sessionStorage.getItem("jwt")));
     populatedLocationsTable = true;
   }
   $("#locationsPage").show();
@@ -398,21 +395,25 @@ const userLogout = async () => {
 
 const loaderWrapper = (wrapped) => {
   showLoader();
-  let result = function () {
-    return wrapped.apply(this, arguments);
+  let result = async function () {
+    return await wrapped.apply(this, arguments);
   };
-  setTimeout(hideLoader, 500);
+  setTimeout(hideLoader, 700);
   return result;
 };
 
 // set up data tables
 let employeesTable;
 let populatedEmployeesTable = false;
-const populateEmployeesTable = () => {
+const populateEmployeesTable = (jwt) => {
   employeesTable = $("#employeesTable").DataTable({
     responsive: true,
     autoWidth: false,
-    ajax: { url: "/static/php/personnel/getAllPersonnel.php", dataSrc: "data" },
+    ajax: {
+      url: "/static/php/personnel/getAllPersonnel.php",
+      headers: { Authorization: `JWT ${jwt}` },
+      dataSrc: "data",
+    },
     columns: [
       { data: "id", visible: false },
       { data: "lastName" },
@@ -467,11 +468,15 @@ const populateEmployeesTable = () => {
 
 let departmentsTable;
 let populatedDepartmentsTable = false;
-const populateDepartmentsTable = () => {
+const populateDepartmentsTable = (jwt) => {
   departmentsTable = $("#departmentsTable").DataTable({
     responsive: true,
     autoWidth: false,
-    ajax: { url: "/static/php/dept/getAllDepartments.php", dataSrc: "data" },
+    ajax: {
+      url: "/static/php/dept/getAllDepartments.php",
+      headers: { Authorization: `JWT ${jwt}` },
+      dataSrc: "data",
+    },
     columns: [
       { data: "id", visible: false },
       { data: "name" },
@@ -521,11 +526,15 @@ const populateDepartmentsTable = () => {
 
 let locationsTable;
 let populatedLocationsTable = false;
-const populateLocationsTable = () => {
+const populateLocationsTable = (jwt) => {
   locationsTable = $("#locationsTable").DataTable({
     responsive: true,
     autoWidth: false,
-    ajax: { url: "/static/php/location/getAllLocations.php", dataSrc: "data" },
+    ajax: {
+      url: "/static/php/location/getAllLocations.php",
+      headers: { Authorization: `JWT ${jwt}` },
+      dataSrc: "data",
+    },
     columns: [
       { data: "id", visible: false },
       { data: "name" },
