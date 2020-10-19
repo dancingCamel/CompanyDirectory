@@ -7,6 +7,13 @@
 
 	include("../config.php");
 
+	// setup authentication
+	include("../secret.php");
+    require "../../../vendor/autoload.php";
+    use \Firebase\JWT\JWT;
+	$secret_key = $secret;
+	$jwt = null;
+
 	header('Content-Type: application/json; charset=UTF-8');
 
 	$conn = new mysqli($cd_host, $cd_user, $cd_password, $cd_dbname, $cd_port, $cd_socket);
@@ -26,9 +33,57 @@
 		exit;
 
 	}	
-	// Set empty vars to don't get errors
+	
 
 	// $_REQUEST used for development / debugging. Remember to cange to $_POST for production
+	if (!isset($_SERVER['HTTP_AUTHORIZATION'])){
+		
+		$output['status']['code'] = "401";
+		$output['status']['name'] = "Unauthorized";
+		$output['status']['description'] = "Missing Token";	
+		$output['data'] = [];
+
+		mysqli_close($conn);
+
+		echo json_encode($output); 
+
+		exit;
+	}
+
+	$authHeader = $_SERVER['HTTP_AUTHORIZATION'];
+	$arr = explode(" ", $authHeader);
+	$jwt = $arr[1];
+
+	if($jwt){
+		try {
+			$decoded = JWT::decode($jwt, $secret_key, array('HS256'));
+	
+			// Access is granted.
+	
+			// $output['status']['code'] = "200";
+			// $output['status']['name'] = "ok";
+			// $output['status']['description'] = "Access Granted";	
+			// $output['data'] = [];
+
+			// mysqli_close($conn);
+			// echo json_encode($output); 
+	
+		}catch (Exception $e){
+	
+			$output['status']['code'] = "401";
+			$output['status']['name'] = "Unauthorized";
+			$output['status']['description'] = $e->getMessage();	
+			$output['data'] = [];
+
+			mysqli_close($conn);
+
+			echo json_encode($output); 
+
+			exit;
+		}
+	}
+	
+	
 
 	$id = isset($_REQUEST['id']) ? $conn -> real_escape_string($_REQUEST['id']) : "";
 

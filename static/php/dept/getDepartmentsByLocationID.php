@@ -8,6 +8,13 @@
 	$executionStartTime = microtime(true);
 
 	include("../config.php");
+
+	// setup authentication
+	include("../secret.php");
+    require "../../../vendor/autoload.php";
+    use \Firebase\JWT\JWT;
+	$secret_key = $secret;
+	$jwt = null;
 	
 	header('Content-Type: application/json; charset=UTF-8');
 

@@ -8,7 +8,7 @@
 	$executionStartTime = microtime(true);
 
     include("../config.php");
-    include("./secret.php");
+    include("../secret.php");
     require "../../../vendor/autoload.php";
     use \Firebase\JWT\JWT;
 
