@@ -36,6 +36,53 @@
 
 	}	
 
+	if (!isset($_SERVER['HTTP_AUTHORIZATION'])){
+		
+		$output['status']['code'] = "401";
+		$output['status']['name'] = "Unauthorized";
+		$output['status']['description'] = "Missing Token";	
+		$output['data'] = [];
+
+		mysqli_close($conn);
+
+		echo json_encode($output); 
+
+		exit;
+	}
+
+	$authHeader = $_SERVER['HTTP_AUTHORIZATION'];
+	$arr = explode(" ", $authHeader);
+	$jwt = $arr[1];
+
+	if($jwt){
+		try {
+			$decoded = JWT::decode($jwt, $secret_key, array('HS256'));
+	
+			// Access is granted.
+	
+			// $output['status']['code'] = "200";
+			// $output['status']['name'] = "ok";
+			// $output['status']['description'] = "Access Granted";	
+			// $output['data'] = [];
+
+			// mysqli_close($conn);
+			// echo json_encode($output); 
+	
+		}catch (Exception $e){
+	
+			$output['status']['code'] = "401";
+			$output['status']['name'] = "Unauthorized";
+			$output['status']['description'] = $e->getMessage();	
+			$output['data'] = [];
+
+			mysqli_close($conn);
+
+			echo json_encode($output); 
+
+			exit;
+		}
+	}
+
 	$query = 'SELECT id, name FROM location';
 
 	$result = $conn->query($query);

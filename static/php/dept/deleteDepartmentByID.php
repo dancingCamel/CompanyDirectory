@@ -59,6 +59,7 @@
 			$decoded = JWT::decode($jwt, $secret_key, array('HS256'));
 	
 			// Access is granted.
+			// could do something with the decoded token here. e.g. see what role the user has then limit views based on that
 	
 			// $output['status']['code'] = "200";
 			// $output['status']['name'] = "ok";
@@ -83,8 +84,6 @@
 		}
 	}
 	
-	
-
 	$id = isset($_REQUEST['id']) ? $conn -> real_escape_string($_REQUEST['id']) : "";
 
 	$query = "DELETE FROM department WHERE id = $id";

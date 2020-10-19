@@ -40,6 +40,53 @@
 	}	
 
 	// $_REQUEST used for development / debugging. Remember to cange to $_POST for production
+	if (!isset($_SERVER['HTTP_AUTHORIZATION'])){
+		
+		$output['status']['code'] = "401";
+		$output['status']['name'] = "Unauthorized";
+		$output['status']['description'] = "Missing Token";	
+		$output['data'] = [];
+
+		mysqli_close($conn);
+
+		echo json_encode($output); 
+
+		exit;
+	}
+
+	$authHeader = $_SERVER['HTTP_AUTHORIZATION'];
+	$arr = explode(" ", $authHeader);
+	$jwt = $arr[1];
+
+	if($jwt){
+		try {
+			$decoded = JWT::decode($jwt, $secret_key, array('HS256'));
+	
+			// Access is granted.
+	
+			// $output['status']['code'] = "200";
+			// $output['status']['name'] = "ok";
+			// $output['status']['description'] = "Access Granted";	
+			// $output['data'] = [];
+
+			// mysqli_close($conn);
+			// echo json_encode($output); 
+	
+		}catch (Exception $e){
+	
+			$output['status']['code'] = "401";
+			$output['status']['name'] = "Unauthorized";
+			$output['status']['description'] = $e->getMessage();	
+			$output['data'] = [];
+
+			mysqli_close($conn);
+
+			echo json_encode($output); 
+
+			exit;
+		}
+	}
+
 	if (!isset($_REQUEST['firstName']) || !isset($_REQUEST['lastName']) || !isset($_REQUEST['jobTitle']) || !isset($_REQUEST['email']) || !isset($_REQUEST['departmentID'])){
 		
 		$output['status']['code'] = "400";
