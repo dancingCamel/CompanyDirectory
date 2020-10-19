@@ -1,22 +1,9 @@
 class Departments {
-  constructor(data) {
-    this.departments = data;
-  }
-
-  get getDepartments() {
-    return this.departments;
-  }
-
-  set setDepartments(departments) {
-    this.departments = departments;
-  }
-
   static async fetchAllDepartments(token) {
     let response = await fetch("/static/php/dept/getAllDepartments.php", {
       headers: { Authorization: `JWT ${token}` },
     });
     let responseJson = await response.json();
-    // console.log(responseJson);
     return responseJson;
   }
 
@@ -29,7 +16,6 @@ class Departments {
       body: formData,
     });
     let responseJson = await response.json();
-    // console.log(responseJson);
     return responseJson;
   }
 
@@ -45,7 +31,6 @@ class Departments {
       }
     );
     let responseJson = await response.json();
-    // console.log(responseJson);
     return responseJson;
   }
 
@@ -58,7 +43,6 @@ class Departments {
       body: formData,
     });
     let responseJson = await response.json();
-    console.log(responseJson);
     return responseJson;
   }
 

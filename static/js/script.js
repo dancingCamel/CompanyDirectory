@@ -16,7 +16,6 @@ $(document).ready(function () {
   // set up data table functionality
 
   $(".employeeFilterSelect").on("change", function () {
-    console.log(this);
     var val = $.fn.dataTable.util.escapeRegex($(this).val());
 
     employeesTable
@@ -59,7 +58,6 @@ $(document).ready(function () {
   });
 
   $(".departmentFilterSelect").on("change", function () {
-    // console.log(this);
     var val = $.fn.dataTable.util.escapeRegex($(this).val());
 
     departmentsTable
@@ -136,7 +134,6 @@ $(document).ready(function () {
   });
 
   $(".locationFilterSelect").on("change", function () {
-    // console.log(this);
     var val = $.fn.dataTable.util.escapeRegex($(this).val());
 
     locationsTable
@@ -144,8 +141,6 @@ $(document).ready(function () {
       .search(val ? "^" + val + "$" : "", true, false)
       .draw();
   });
-
-  // testFuncs();
 });
 
 $("#editEmployeeLocation").change(function () {
@@ -251,16 +246,3 @@ $("#loginBtn").click(function (e) {
   e.preventDefault();
   userLogin();
 });
-
-const testFuncs = () => {
-  // showEmployeesPage();
-  // showDepartmentsPage();
-  // showLocationsPage();
-  // showCreateLocationPage();
-  // showCreateDepartmentPage();
-  // showCreateEmployeePage();
-  // showEditEmployeePage(exampleID);
-  // showEditDepartmentPage(exampleID);
-  // showEditLocationPage(exampleID);
-  // showLoginPage();
-};

@@ -1,10 +1,5 @@
 <?php
 
-	// remove next two lines for production
-	
-	ini_set('display_errors', 'On');
-	error_reporting(E_ALL);
-
 	$executionStartTime = microtime(true);
 
 	include("../config.php");
@@ -59,15 +54,7 @@
 			$decoded = JWT::decode($jwt, $secret_key, array('HS256'));
 	
 			// Access is granted.
-	
-			// $output['status']['code'] = "200";
-			// $output['status']['name'] = "ok";
-			// $output['status']['description'] = "Access Granted";	
-			// $output['data'] = [];
 
-			// mysqli_close($conn);
-			// echo json_encode($output); 
-	
 		}catch (Exception $e){
 	
 			$output['status']['code'] = "401";

@@ -1,7 +1,4 @@
 <?php
-	
-	ini_set('display_errors', 'On');
-	error_reporting(E_ALL);
 
 	$executionStartTime = microtime(true);
 
@@ -34,7 +31,6 @@
 
 	}	
 
-	// $_REQUEST used for development / debugging. Remember to cange to $_POST for production
 	if (!isset($_SERVER['HTTP_AUTHORIZATION'])){
 		
 		$output['status']['code'] = "401";
@@ -58,15 +54,7 @@
 			$decoded = JWT::decode($jwt, $secret_key, array('HS256'));
 	
 			// Access is granted.
-	
-			// $output['status']['code'] = "200";
-			// $output['status']['name'] = "ok";
-			// $output['status']['description'] = "Access Granted";	
-			// $output['data'] = [];
 
-			// mysqli_close($conn);
-			// echo json_encode($output); 
-	
 		}catch (Exception $e){
 	
 			$output['status']['code'] = "401";
@@ -82,7 +70,7 @@
 		}
 	}
 
-	if (!isset($_REQUEST['id'])){
+	if (!isset($_POST['id'])){
 		
 		$output['status']['code'] = "400";
 		$output['status']['name'] = "executed";
@@ -96,7 +84,7 @@
 		exit;
 	}
 
-	$id = $conn -> real_escape_string($_REQUEST['id']);
+	$id = $conn -> real_escape_string($_POST['id']);
 
 	$query = "DELETE FROM location WHERE id = $id";
 

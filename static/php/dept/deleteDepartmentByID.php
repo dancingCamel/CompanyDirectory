@@ -1,7 +1,4 @@
 <?php
-	
-	ini_set('display_errors', 'On');
-	error_reporting(E_ALL);
 
 	$executionStartTime = microtime(true);
 
@@ -34,8 +31,6 @@
 
 	}	
 	
-
-	// $_REQUEST used for development / debugging. Remember to cange to $_POST for production
 	if (!isset($_SERVER['HTTP_AUTHORIZATION'])){
 		
 		$output['status']['code'] = "401";
@@ -61,14 +56,6 @@
 			// Access is granted.
 			// could do something with the decoded token here. e.g. see what role the user has then limit views based on that
 	
-			// $output['status']['code'] = "200";
-			// $output['status']['name'] = "ok";
-			// $output['status']['description'] = "Access Granted";	
-			// $output['data'] = [];
-
-			// mysqli_close($conn);
-			// echo json_encode($output); 
-	
 		}catch (Exception $e){
 	
 			$output['status']['code'] = "401";
@@ -84,7 +71,7 @@
 		}
 	}
 	
-	$id = isset($_REQUEST['id']) ? $conn -> real_escape_string($_REQUEST['id']) : "";
+	$id = isset($_POST['id']) ? $conn -> real_escape_string($_POST['id']) : "";
 
 	$query = "DELETE FROM department WHERE id = $id";
 

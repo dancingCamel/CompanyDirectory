@@ -1,10 +1,5 @@
 <?php
 
-	// remove next two lines for production
-
-	ini_set('display_errors', 'On');
-	error_reporting(E_ALL);
-
 	$executionStartTime = microtime(true);
 
 	include("../config.php");
@@ -34,7 +29,6 @@
 
 	}	
 
-	// $_REQUEST used for development / debugging. Remember to cange to $_POST for production
 	if (!isset($_SERVER['HTTP_AUTHORIZATION'])){
 		
 		$output['status']['code'] = "401";
@@ -59,14 +53,6 @@
 	
 			// Access is granted.
 	
-			// $output['status']['code'] = "200";
-			// $output['status']['name'] = "ok";
-			// $output['status']['description'] = "Access Granted";	
-			// $output['data'] = [];
-
-			// mysqli_close($conn);
-			// echo json_encode($output); 
-	
 		}catch (Exception $e){
 	
 			$output['status']['code'] = "401";
@@ -82,7 +68,7 @@
 		}
 	}
 
-	if (!isset($_REQUEST['id'])){
+	if (!isset($_POST['id'])){
 		
 		$output['status']['code'] = "400";
 		$output['status']['name'] = "executed";
@@ -96,9 +82,8 @@
 		exit;
 	}
 
-	$id = $conn -> real_escape_string($_REQUEST['id']);
+	$id = $conn -> real_escape_string($_POST['id']);
 	$query = "SELECT p.id, p.lastName, p.firstName, p.jobTitle, p.email, d.name as department, d.id as departmentID, l.name as location, l.id as locationID FROM personnel p LEFT JOIN department d ON (d.id = p.departmentID) LEFT JOIN location l ON (l.id = d.locationID) WHERE p.id = $id ORDER BY p.lastName, p.firstName, d.name, l.name";
-	// Add a join here to get location name, too
 
 	$result = $conn->query($query);
 	

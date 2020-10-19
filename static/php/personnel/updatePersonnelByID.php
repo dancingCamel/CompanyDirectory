@@ -1,7 +1,4 @@
 <?php
-	
-	ini_set('display_errors', 'On');
-	error_reporting(E_ALL);
 
 	$executionStartTime = microtime(true);
 
@@ -34,7 +31,6 @@
 
 	}	
 
-	// $_REQUEST used for development / debugging. Remember to cange to $_POST for production
 	if (!isset($_SERVER['HTTP_AUTHORIZATION'])){
 		
 		$output['status']['code'] = "401";
@@ -59,14 +55,6 @@
 	
 			// Access is granted.
 	
-			// $output['status']['code'] = "200";
-			// $output['status']['name'] = "ok";
-			// $output['status']['description'] = "Access Granted";	
-			// $output['data'] = [];
-
-			// mysqli_close($conn);
-			// echo json_encode($output); 
-	
 		}catch (Exception $e){
 	
 			$output['status']['code'] = "401";
@@ -82,7 +70,7 @@
 		}
 	}
 
-	if (!isset($_REQUEST['id']) || !isset($_REQUEST['firstName']) || !isset($_REQUEST['lastName']) || !isset($_REQUEST['jobTitle']) || !isset($_REQUEST['email']) || !isset($_REQUEST['departmentID'])){
+	if (!isset($_POST['id']) || !isset($_POST['firstName']) || !isset($_POST['lastName']) || !isset($_POST['jobTitle']) || !isset($_POST['email']) || !isset($_POST['departmentID'])){
 		
 		$output['status']['code'] = "400";
 		$output['status']['name'] = "executed";
@@ -96,12 +84,12 @@
 		exit;
 	}
 
-	$id = (int)$conn -> real_escape_string($_REQUEST['id']);
-	$firstName = $conn -> real_escape_string($_REQUEST['firstName']);
-	$lastName = $conn -> real_escape_string($_REQUEST['lastName']);
-	$jobTitle = $conn -> real_escape_string($_REQUEST['jobTitle']);
-	$email = $conn -> real_escape_string($_REQUEST['email']);
-	$deptID = (int)$conn -> real_escape_string($_REQUEST['departmentID']);
+	$id = (int)$conn -> real_escape_string($_POST['id']);
+	$firstName = $conn -> real_escape_string($_POST['firstName']);
+	$lastName = $conn -> real_escape_string($_POST['lastName']);
+	$jobTitle = $conn -> real_escape_string($_POST['jobTitle']);
+	$email = $conn -> real_escape_string($_POST['email']);
+	$deptID = (int)$conn -> real_escape_string($_POST['departmentID']);
 
 
 	$query = "UPDATE personnel SET firstName = \"$firstName\", lastName = \"$lastName\", jobTitle = \"$jobTitle\", email = \"$email\", departmentID = \"$deptID\" WHERE id = $id";

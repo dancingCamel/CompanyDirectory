@@ -1,13 +1,5 @@
 <?php
 
-	// example use from browser
-	// http://localhost/companydirectory/libs/php/insertDepartment.php?name=New%20Department&locationID=1
-
-	// remove next two lines for production
-	
-	ini_set('display_errors', 'On');
-	error_reporting(E_ALL);
-
 	$executionStartTime = microtime(true);
 
 	include("../config.php");
@@ -39,7 +31,6 @@
 
 	}	
 
-	// $_REQUEST used for development / debugging. Remember to cange to $_POST for production
 	if (!isset($_SERVER['HTTP_AUTHORIZATION'])){
 		
 		$output['status']['code'] = "401";
@@ -63,15 +54,7 @@
 			$decoded = JWT::decode($jwt, $secret_key, array('HS256'));
 	
 			// Access is granted.
-	
-			// $output['status']['code'] = "200";
-			// $output['status']['name'] = "ok";
-			// $output['status']['description'] = "Access Granted";	
-			// $output['data'] = [];
 
-			// mysqli_close($conn);
-			// echo json_encode($output); 
-	
 		}catch (Exception $e){
 	
 			$output['status']['code'] = "401";
@@ -87,7 +70,7 @@
 		}
 	}
 
-	if (!isset($_REQUEST['name'])){
+	if (!isset($_POST['name'])){
 		
 		$output['status']['code'] = "400";
 		$output['status']['name'] = "executed";
@@ -101,7 +84,7 @@
 		exit;
 	}
 
-	$name = $conn -> real_escape_string($_REQUEST['name']);
+	$name = $conn -> real_escape_string($_POST['name']);
 
 	$query = "INSERT INTO location (name)  VALUES (\"$name\")";
 

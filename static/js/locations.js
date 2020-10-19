@@ -1,22 +1,9 @@
 class Locations {
-  constructor(data) {
-    this.locations = data;
-  }
-
-  get getLocations() {
-    return this.locations;
-  }
-
-  set setLocations(locations) {
-    this.locations = locations;
-  }
-
   static async fetchAllLocations(token) {
     let response = await fetch("/static/php/location/getAllLocations.php", {
       headers: { Authorization: `JWT ${token}` },
     });
     let responseJson = await response.json();
-    // console.log(responseJson);
     return responseJson;
   }
 
@@ -29,7 +16,6 @@ class Locations {
       body: formData,
     });
     let responseJson = await response.json();
-    // console.log(responseJson);
     return responseJson;
   }
 
@@ -42,7 +28,6 @@ class Locations {
       body: formData,
     });
     let responseJson = await response.json();
-    // console.log(responseJson);
     return responseJson;
   }
 
@@ -63,7 +48,6 @@ class Locations {
       body: formData,
     });
     let responseJson = await response.json();
-    // console.log(responseJson);
     return responseJson;
   }
 }

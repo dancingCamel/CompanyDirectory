@@ -1,10 +1,5 @@
 <?php
 
-	// remove next two lines for production
-
-	ini_set('display_errors', 'On');
-	error_reporting(E_ALL);
-
 	$executionStartTime = microtime(true);
 
 	include("../config.php");
@@ -34,7 +29,6 @@
 
 	}	
 
-	// $_REQUEST used for development / debugging. Remember to cange to $_POST for production
 	if (!isset($_SERVER['HTTP_AUTHORIZATION'])){
 		
 		$output['status']['code'] = "401";
@@ -59,14 +53,6 @@
 	
 			// Access is granted.
 	
-			// $output['status']['code'] = "200";
-			// $output['status']['name'] = "ok";
-			// $output['status']['description'] = "Access Granted";	
-			// $output['data'] = [];
-
-			// mysqli_close($conn);
-			// echo json_encode($output); 
-	
 		}catch (Exception $e){
 	
 			$output['status']['code'] = "401";
@@ -82,7 +68,7 @@
 		}
 	}
 
-	$id = isset($_REQUEST['id']) ? $conn -> real_escape_string($_REQUEST['id']) : "";
+	$id = isset($_POST['id']) ? $conn -> real_escape_string($_POST['id']) : "";
 	
 	$query = "SELECT d.id, d.name, d.locationID, l.name AS location FROM department d LEFT JOIN location l ON (l.id = d.locationID) WHERE d.id =  $id";
 

@@ -14,6 +14,9 @@
 -- enter mariadb with: mariadb -u yourusename -p (then type password)
 -- run this script with: mariadb -u yourusername -p yourdatabase < path_to_text_file (then type password)
 
+-- To run the sql script, first make the companydirectory db, then type:
+-- mariadb -u yourusername -p companydirectory < path_to_text_file
+
 -- Dumping database structure for companydirectory
 CREATE DATABASE IF NOT EXISTS `companydirectory` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `companydirectory`;

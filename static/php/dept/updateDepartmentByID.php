@@ -1,7 +1,4 @@
 <?php
-	
-	ini_set('display_errors', 'On');
-	error_reporting(E_ALL);
 
 	$executionStartTime = microtime(true);
 
@@ -34,7 +31,6 @@
 
 	}	
 
-	// $_REQUEST used for development / debugging. Remember to cange to $_POST for production
 	if (!isset($_SERVER['HTTP_AUTHORIZATION'])){
 		
 		$output['status']['code'] = "401";
@@ -59,14 +55,6 @@
 	
 			// Access is granted.
 	
-			// $output['status']['code'] = "200";
-			// $output['status']['name'] = "ok";
-			// $output['status']['description'] = "Access Granted";	
-			// $output['data'] = [];
-
-			// mysqli_close($conn);
-			// echo json_encode($output); 
-	
 		}catch (Exception $e){
 	
 			$output['status']['code'] = "401";
@@ -82,7 +70,7 @@
 		}
 	}
 
-	if (!isset($_REQUEST['name'])|| !isset($_REQUEST['locationID']) || !isset($_REQUEST['id'])){
+	if (!isset($_POST['name'])|| !isset($_POST['locationID']) || !isset($_POST['id'])){
 		$output['status']['code'] = "400";
 		$output['status']['name'] = "executed";
 		$output['status']['description'] = "bad request";	
@@ -95,9 +83,9 @@
 		exit;
 	}
 
-	$id = (int)$conn -> real_escape_string($_REQUEST['id']);
-	$name = $conn -> real_escape_string($_REQUEST['name']);
-	$locID = (int)$conn -> real_escape_string($_REQUEST['locationID']);
+	$id = (int)$conn -> real_escape_string($_POST['id']);
+	$name = $conn -> real_escape_string($_POST['name']);
+	$locID = (int)$conn -> real_escape_string($_POST['locationID']);
 	
 
 	$query = "UPDATE department SET name = \"$name\", locationID = $locID WHERE id = $id";

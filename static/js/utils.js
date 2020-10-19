@@ -178,7 +178,7 @@ const showCreateEmployeePage = () => {
   showNav();
   activeNavEmployees();
   getLocationsForDropdowns();
-  // set default values;
+  // set default values
   $("#newEmployeeLocation").val(1);
   getDepartmentsForDropdown(1);
   $("#createEmployeePage").removeClass("d-none");
@@ -190,6 +190,11 @@ const showEditLocationPage = async (id, jwt) => {
   showNav();
   activeNavLocations();
   const response = await Locations.fetchLocationByID(id, token);
+  if (response.status.code == 401) {
+    showLoginError("For security, please log in again.");
+    showLoginPage();
+    return;
+  }
   if (!(response.status.code == 200 && response.status.name == "ok")) {
     showError(response.status.description);
     return;
@@ -207,6 +212,11 @@ const showEditDepartmentPage = async (id, jwt) => {
   activeNavDepts();
   getLocationsForDropdowns(token);
   const response = await Departments.fetchDepartmentByID(id, token);
+  if (response.status.code == 401) {
+    showLoginError("For security, please log in again.");
+    showLoginPage();
+    return;
+  }
   if (!(response.status.code == 200 && response.status.name == "ok")) {
     showError(response.status.description);
     return;
@@ -225,6 +235,11 @@ const showEditEmployeePage = async (id, jwt) => {
   activeNavEmployees();
   getLocationsForDropdowns(token);
   const response = await Employees.fetchEmployeeByID(id, token);
+  if (response.status.code == 401) {
+    showLoginError("For security, please log in again.");
+    showLoginPage();
+    return;
+  }
   if (!(response.status.code == 200 && response.status.name == "ok")) {
     showError(response.status.description);
     return;
@@ -322,7 +337,6 @@ const updateEmployee = async (jwt) => {
     showError(response.status.description);
     return;
   } else {
-    console.log(response);
     $("#employeesTable")
       .DataTable()
       .row(fd.id)
@@ -349,7 +363,6 @@ const updateLocation = async (jwt) => {
     showError(response.status.description);
     return;
   } else {
-    console.log(response);
     $("#locationsTable")
       .DataTable()
       .row(fd.id)
@@ -376,7 +389,6 @@ const updateDept = async (jwt) => {
     showError(response.status.description);
     return;
   } else {
-    console.log(response);
     $("#departmentsTable")
       .DataTable()
       .row(fd.id)
@@ -463,7 +475,6 @@ const populateEmployeesTable = async (jwt) => {
       {
         data: null,
         orderable: false,
-        // width: 180,
         render: function (data, type, row, meta) {
           return (
             '<div><button class="btn btn-primary mr-2 table-button edit" data-row=' +

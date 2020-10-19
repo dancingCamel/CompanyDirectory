@@ -1,22 +1,9 @@
 class Employees {
-  constructor(data) {
-    this.employees = data;
-  }
-
-  get getEmployees() {
-    return this.employees;
-  }
-
-  set setEmployees(employees) {
-    this.employees = employees;
-  }
-
   static async fetchAllEmployees(token) {
     let response = await fetch("/static/php/personnel/getAllPersonnel.php", {
       headers: { Authorization: `JWT ${token}` },
     });
     let responseJson = await response.json();
-    console.log(responseJson);
     return responseJson;
   }
 
@@ -29,7 +16,6 @@ class Employees {
       body: formData,
     });
     let responseJson = await response.json();
-    // console.log(responseJson);
     return responseJson;
   }
 
@@ -45,33 +31,8 @@ class Employees {
       }
     );
     let responseJson = await response.json();
-    console.log(responseJson);
     return responseJson;
   }
-
-  // static async insertEmployee(
-  //   firstName,
-  //   lastName,
-  //   email,
-  //   jobTitle,
-  //   locationID,
-  //   departmentID
-  // ) {
-  //   var formData = new FormData();
-  //   formData.append("firstName", firstName);
-  //   formData.append("lastName", lastName);
-  //   formData.append("email", email);
-  //   formData.append("jobTitle", jobTitle);
-  //   formData.append("locationID", locationID);
-  //   formData.append("departmentID", departmentID);
-  //   let response = await fetch("/static/php/personnel/insertPersonnel.php", {
-  //     method: "POST",
-  //     body: formData,
-  //   });
-  //   let responseJson = await response.json();
-  //   console.log(responseJson);
-  //   return responseJson;
-  // }
 
   static async insertEmployee(formData, token) {
     let response = await fetch("/static/php/personnel/insertPersonnel.php", {
@@ -80,7 +41,6 @@ class Employees {
       body: formData,
     });
     let responseJson = await response.json();
-    // console.log(responseJson);
     return responseJson;
   }
 
@@ -94,7 +54,6 @@ class Employees {
       }
     );
     let responseJson = await response.json();
-    console.log(responseJson);
     return responseJson;
   }
 }
