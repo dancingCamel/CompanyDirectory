@@ -23,11 +23,6 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
     />
-    <!-- <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css"
-    /> -->
 
     <!-- Datatables -->
     <link
@@ -35,14 +30,6 @@
       type="text/css"
       href="https://cdn.datatables.net/v/bs4/dt-1.10.22/b-1.6.5/r-2.2.6/datatables.min.css"
     />
-    <!-- <link
-      rel="stylesheet"
-      href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css"
-    /> -->
-    <!-- <link
-      rel="stylesheet"
-      href="https://cdn.datatables.net/responsive/2.2.6/css/responsive.bootstrap4.min.css"
-    /> -->
 
     <!-- Toastr -->
     <link
@@ -77,7 +64,7 @@
     </div>
 
     <nav
-      class="navbar navbar-expand-lg navbar-light fixed-top bg-dark bellport-purple-text bellport-yellow-background bellport-purple-bottom-border dropshadow"
+      class="d-none navbar navbar-expand-lg navbar-light fixed-top bg-dark bellport-purple-text bellport-yellow-background bellport-purple-bottom-border dropshadow"
       id="navbar"
     >
       <div class="container d-flex justify-content-between align-items-center">
@@ -142,7 +129,7 @@
       </div>
 
       <!-- PAGES -->
-      <div class="employees page" id="employeesPage">
+      <div class="employees page d-none" id="employeesPage">
         <div class="container bellport-purple-text">
           <h1>Employees</h1>
 
@@ -207,7 +194,8 @@
           </div>
         </div>
       </div>
-      <div class="departments page" id="departmentsPage">
+
+      <div class="departments page d-none" id="departmentsPage">
         <div class="container bellport-purple-text">
           <h1>Departments</h1>
           <button
@@ -244,7 +232,7 @@
           </div>
         </div>
       </div>
-      <div class="locations page" id="locationsPage">
+      <div class="locations page d-none" id="locationsPage">
         <div class="container bellport-purple-text">
           <h1>Locations</h1>
           <button
@@ -279,10 +267,10 @@
           </div>
         </div>
       </div>
-      <div class="createDept page" id="createDeptPage">
+
+      <div class="createDept page d-none" id="createDeptPage">
         <div class="container bellport-purple-text">
           <h1>New Department</h1>
-          <!-- (id no need), name, location (auto populate dropdown) -->
           <form id="createDepartmentForm">
             <div class="form-group">
               <label for="newDeptName">Department Name</label>
@@ -300,9 +288,7 @@
                 class="form-control locationDropdown"
                 id="newDeptLocation"
                 name="locationID"
-              >
-                <!-- <option>1</option> -->
-              </select>
+              ></select>
             </div>
             <div class="d-flex flex-row justify-content-between mb-2">
               <button
@@ -324,10 +310,10 @@
           </form>
         </div>
       </div>
-      <div class="createLocation page" id="createLocationPage">
+      <div class="createLocation page d-none" id="createLocationPage">
         <div class="container bellport-purple-text">
           <h1>New Location</h1>
-          <!-- (id no need), name -->
+
           <form id="createLocationForm">
             <div class="form-group">
               <label for="newLocName">Location Name</label>
@@ -359,10 +345,9 @@
           </form>
         </div>
       </div>
-      <div class="createEmployee page" id="createEmployeePage">
+      <div class="createEmployee page d-none" id="createEmployeePage">
         <div class="container bellport-purple-text">
           <h1>New Employee</h1>
-          <!-- (id no need), first name, last name, job title, email, location (dropdown), department (dropdown - updates on changing location) -->
           <form id="createEmployeeForm">
             <div class="form-group">
               <label for="newEmployeeFirstName">First Name</label>
@@ -410,9 +395,7 @@
                 class="form-control locationDropdown"
                 id="newEmployeeLocation"
                 name="locationID"
-              >
-                <!-- <option>1</option> -->
-              </select>
+              ></select>
             </div>
             <div class="form-group">
               <label for="newEmployeeDept">Department</label>
@@ -420,9 +403,7 @@
                 class="form-control departmentDropdown"
                 id="newEmployeeDept"
                 name="departmentID"
-              >
-                <!-- <option>1</option> -->
-              </select>
+              ></select>
             </div>
             <div class="d-flex flex-row justify-content-between mb-2">
               <button
@@ -444,7 +425,8 @@
           </form>
         </div>
       </div>
-      <div class="editDept page" id="editDeptPage">
+
+      <div class="editDept page d-none" id="editDeptPage">
         <div class="container bellport-purple-text">
           <h1>Edit Department</h1>
           <form id="updateDeptForm">
@@ -467,9 +449,7 @@
                 class="form-control locationDropdown"
                 id="editDeptLocation"
                 name="locationID"
-              >
-                <!-- <option>1</option> -->
-              </select>
+              ></select>
             </div>
             <div class="d-flex flex-row justify-content-between mb-2">
               <button
@@ -490,7 +470,8 @@
           </form>
         </div>
       </div>
-      <div class="editEmployee page" id="editEmployeePage">
+
+      <div class="editEmployee page d-none" id="editEmployeePage">
         <div class="container bellport-purple-text">
           <h1>Edit Employee</h1>
           <form id="updateEmployeeForm">
@@ -543,9 +524,7 @@
                 class="form-control locationDropdown"
                 id="editEmployeeLocation"
                 name="locationID"
-              >
-                <!-- <option>1</option> -->
-              </select>
+              ></select>
             </div>
             <div class="form-group">
               <label for="editEmployeeDept">Department</label>
@@ -553,9 +532,7 @@
                 class="form-control departmentDropdown"
                 id="editEmployeeDept"
                 name="departmentID"
-              >
-                <!-- <option>1</option> -->
-              </select>
+              ></select>
             </div>
             <div class="d-flex flex-row justify-content-between mb-2">
               <button
@@ -576,7 +553,8 @@
           </form>
         </div>
       </div>
-      <div class="editLocation page" id="editLocationPage">
+
+      <div class="editLocation page d-none" id="editLocationPage">
         <div class="container bellport-purple-text">
           <h1>Edit Location</h1>
           <form id="updateLocationForm">
@@ -631,7 +609,9 @@
                 <a class="h1 mt-5 bellport-purple-text" href="#"
                   >Company Directory</a
                 >
-
+                <div class="mt-2">
+                  <p>Username: example<br />Password: project</p>
+                </div>
                 <div
                   class="alert alert-danger mt-3 d-none"
                   id="loginErrorContainer"
@@ -666,9 +646,6 @@
                 >
                   Log in
                 </button>
-                <!-- <div class="text-muted">
-                  Not registered yet? <a href="register">Register</a>
-                </div> -->
               </form>
             </div>
           </div>
@@ -695,7 +672,6 @@
     <script src="/static/js/bootstrap.js"></script>
 
     <!-- Datatables -->
-    <!-- <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script> -->
     <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
 
     <script

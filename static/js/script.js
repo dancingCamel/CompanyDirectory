@@ -145,7 +145,7 @@ $(document).ready(function () {
       .draw();
   });
 
-  testFuncs();
+  // testFuncs();
 });
 
 $("#editEmployeeLocation").change(function () {
@@ -262,5 +262,5 @@ const testFuncs = () => {
   // showEditEmployeePage(exampleID);
   // showEditDepartmentPage(exampleID);
   // showEditLocationPage(exampleID);
-  showLoginPage();
+  // showLoginPage();
 };

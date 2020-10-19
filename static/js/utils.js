@@ -31,10 +31,10 @@ const hideLoader = () => {
 
 const showError = (message) => {
   $("#errorBox").text(`An error occurred: ${message}`);
-  $("#errorBox").show();
+  $("#errorBox").removeClass("d-none");
 };
 const hideError = () => {
-  $("#errorBox").hide();
+  $("#errorBox").addClass("d-none");
 };
 
 const hideMain = () => {
@@ -46,11 +46,11 @@ const showMain = () => {
 };
 
 const hideNav = () => {
-  $("nav").hide();
+  $("nav").addClass("d-none");
 };
 
 const showNav = () => {
-  $("nav").show();
+  $("nav").removeClass("d-none");
 };
 
 const clearNavActive = () => {
@@ -108,14 +108,14 @@ const getDepartmentsForDropdown = async (id, jwt) => {
 const hideAllPages = () => {
   hideError();
   $.each($(".page"), function () {
-    $(this).hide();
+    $(this).addClass("d-none");
   });
 };
 
 const showLoginPage = () => {
   hideAllPages();
-  $("nav").hide();
-  $("#loginPage").show();
+  $("nav").addClass("d-none");
+  $("#loginPage").removeClass("d-none");
 };
 
 const showEmployeesPage = async (jwt) => {
@@ -127,7 +127,7 @@ const showEmployeesPage = async (jwt) => {
     loaderWrapper(populateEmployeesTable(token));
     populatedEmployeesTable = true;
   }
-  $("#employeesPage").show();
+  $("#employeesPage").removeClass("d-none");
   $("#employeesTable").DataTable().columns.adjust().draw();
 };
 
@@ -140,7 +140,7 @@ const showDepartmentsPage = async (jwt) => {
     loaderWrapper(populateDepartmentsTable(token));
     populatedDepartmentsTable = true;
   }
-  $("#departmentsPage").show();
+  $("#departmentsPage").removeClass("d-none");
   $("#departmentsTable").DataTable().columns.adjust().draw();
 };
 
@@ -153,7 +153,7 @@ const showLocationsPage = async (jwt) => {
     loaderWrapper(populateLocationsTable(token));
     populatedLocationsTable = true;
   }
-  $("#locationsPage").show();
+  $("#locationsPage").removeClass("d-none");
   $("#locationsTable").DataTable().columns.adjust().draw();
 };
 
@@ -162,7 +162,7 @@ const showCreateLocationPage = () => {
   showNav();
   activeNavLocations();
   getDepartmentsForDropdown($("#newEmployeeLocation").val());
-  $("#createLocationPage").show();
+  $("#createLocationPage").removeClass("d-none");
 };
 
 const showCreateDepartmentPage = () => {
@@ -170,7 +170,7 @@ const showCreateDepartmentPage = () => {
   showNav();
   activeNavDepts();
   getLocationsForDropdowns();
-  $("#createDeptPage").show();
+  $("#createDeptPage").removeClass("d-none");
 };
 
 const showCreateEmployeePage = () => {
@@ -181,7 +181,7 @@ const showCreateEmployeePage = () => {
   // set default values;
   $("#newEmployeeLocation").val(1);
   getDepartmentsForDropdown(1);
-  $("#createEmployeePage").show();
+  $("#createEmployeePage").removeClass("d-none");
 };
 
 const showEditLocationPage = async (id, jwt) => {
@@ -197,7 +197,7 @@ const showEditLocationPage = async (id, jwt) => {
     $("#editLocId").val(response.data[0].id);
     $("#editLocName").val(response.data[0].name);
   }
-  $("#editLocationPage").show();
+  $("#editLocationPage").removeClass("d-none");
 };
 
 const showEditDepartmentPage = async (id, jwt) => {
@@ -215,7 +215,7 @@ const showEditDepartmentPage = async (id, jwt) => {
     $("#editDeptName").val(response.data[0].name);
     $("#editDeptLocation").val(response.data[0].locationID);
   }
-  $("#editDeptPage").show();
+  $("#editDeptPage").removeClass("d-none");
 };
 
 const showEditEmployeePage = async (id, jwt) => {
@@ -238,7 +238,7 @@ const showEditEmployeePage = async (id, jwt) => {
     getDepartmentsForDropdown(response.data[0].locationID, token);
     $("#editEmployeeDept").val(response.data[0].departmentID);
   }
-  $("#editEmployeePage").show();
+  $("#editEmployeePage").removeClass("d-none");
 };
 
 const insertEmployee = async (jwt) => {
