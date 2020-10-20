@@ -190,3 +190,32 @@ select {
   -o-transition: 0.25s all ease;
   transition: 0.25s all ease;
 }
+
+/* mobile buttons */
+.mobile-button-container {
+  width: 110px;
+  z-index: 10;
+  position: fixed;
+  /* top: 88vh; */
+  right: 25px;
+  bottom: 25px;
+}
+
+.mobile-new-button {
+  border-radius: 50% !important;
+  border-color: white !important;
+  width: 50px;
+  height: 50px;
+}
+
+.mobile-filter-button {
+  border-radius: 50% !important;
+  background-color: var(--bellport-purple) !important;
+  border-color: white !important;
+  width: 50px;
+  height: 50px;
+}
+
+.mobile-filter-button:hover {
+  background-color: var(--bellport-purple) !important;
+}
