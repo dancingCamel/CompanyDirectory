@@ -239,6 +239,48 @@ $("#locationsPageMobileCreateBtn").click(function () {
   showCreateLocationPage();
 });
 
+$("#employeesFilterResetBtn").click(function () {
+  $.each($(".employeeFilterSelect"), function () {
+    $(this).val("");
+  });
+
+  employeesTable
+    .columns()
+    .every(function () {
+      let column = this;
+      column.search("");
+    })
+    .draw();
+});
+
+$("#departmentsFilterResetBtn").click(function () {
+  $.each($(".departmentFilterSelect"), function () {
+    $(this).val("");
+  });
+
+  departmentsTable
+    .columns()
+    .every(function () {
+      let column = this;
+      column.search("");
+    })
+    .draw();
+});
+
+$("#locationsFilterResetBtn").click(function () {
+  $.each($(".locationFilterSelect"), function () {
+    $(this).val("");
+  });
+
+  locationsTable
+    .columns()
+    .every(function () {
+      let column = this;
+      column.search("");
+    })
+    .draw();
+});
+
 $(".createBtn").click(function (e) {
   e.preventDefault();
   switch ($(this).data("form")) {
