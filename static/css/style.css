@@ -232,7 +232,7 @@ select {
   z-index: 10;
   position: fixed;
   /* top: 88vh; */
-  right: 25px;
+  left: 25px;
   bottom: 25px;
 }
 
