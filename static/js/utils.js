@@ -458,7 +458,7 @@ const populateEmployeesTable = async (jwt) => {
     responsive: true,
     autoWidth: false,
     ajax: {
-      url: "/static/php/personnel/getAllPersonnel.php",
+      url: "/companydirectory/static/php/personnel/getAllPersonnel.php",
       headers: { Authorization: `JWT ${token}` },
       dataSrc: function (json) {
         return json.data;
@@ -522,7 +522,7 @@ const populateDepartmentsTable = (jwt) => {
     responsive: true,
     autoWidth: false,
     ajax: {
-      url: "/static/php/dept/getAllDepartments.php",
+      url: "/companydirectory/static/php/dept/getAllDepartments.php",
       headers: { Authorization: `JWT ${jwt}` },
       dataSrc: "data",
     },
@@ -580,7 +580,7 @@ const populateLocationsTable = (jwt) => {
     responsive: true,
     autoWidth: false,
     ajax: {
-      url: "/static/php/location/getAllLocations.php",
+      url: "/companydirectory/static/php/location/getAllLocations.php",
       headers: { Authorization: `JWT ${jwt}` },
       dataSrc: "data",
     },
