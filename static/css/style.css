@@ -154,6 +154,8 @@ select {
   position: relative;
   display: block;
   width: 95%;
+  margin-left: auto;
+  margin-right: auto;
   height: 2.5em;
   line-height: 2.5;
   color: var(--bellport-yellow);
@@ -218,4 +220,20 @@ select {
 
 .mobile-filter-button:hover {
   background-color: var(--bellport-purple) !important;
+}
+
+/* Filter Modal */
+.modal-title {
+  color: var(--bellport-purple) !important;
+}
+
+.desktop-filter-button {
+  background-color: var(--bellport-purple) !important;
+  border-color: white !important;
+}
+
+.desktop-filter-button:hover {
+  background-color: white !important;
+  color: var(--bellport-purple) !important;
+  border-color: var(--bellport-purple) !important;
 }
