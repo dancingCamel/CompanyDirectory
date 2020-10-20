@@ -457,6 +457,9 @@ const populateEmployeesTable = async (jwt) => {
   employeesTable = $("#employeesTable").DataTable({
     responsive: true,
     autoWidth: false,
+    paging: false,
+    scrollCollapse: true,
+    scrollY: "60vh",
     ajax: {
       url: "/companydirectory/static/php/personnel/getAllPersonnel.php",
       headers: { Authorization: `JWT ${token}` },
@@ -521,6 +524,9 @@ const populateDepartmentsTable = (jwt) => {
   departmentsTable = $("#departmentsTable").DataTable({
     responsive: true,
     autoWidth: false,
+    paging: false,
+    scrollCollapse: true,
+    scrollY: "60vh",
     ajax: {
       url: "/companydirectory/static/php/dept/getAllDepartments.php",
       headers: { Authorization: `JWT ${jwt}` },
@@ -579,6 +585,9 @@ const populateLocationsTable = (jwt) => {
   locationsTable = $("#locationsTable").DataTable({
     responsive: true,
     autoWidth: false,
+    paging: false,
+    scrollCollapse: true,
+    scrollY: "60vh",
     ajax: {
       url: "/companydirectory/static/php/location/getAllLocations.php",
       headers: { Authorization: `JWT ${jwt}` },

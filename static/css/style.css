@@ -128,6 +128,10 @@ main {
     padding-left: 5vw;
     padding-right: 5vw;
   }
+
+  .dataTables_filter {
+    margin-right: 16px;
+  }
 }
 
 /* Mobile device styling */
@@ -154,6 +158,19 @@ main {
 .dtr-details {
   width: 100% !important;
 }
+
+.dataTables_filter {
+  text-align: end !important;
+}
+
+/* .dataTables_scrollBody {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.dataTables_scrollBody::-webkit-scrollbar {
+  display: none;
+} */
 
 /* select dropdown */
 select {
