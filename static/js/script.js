@@ -215,6 +215,18 @@ $("#departmentsPageCreateBtn").click(function () {
   showCreateDepartmentPage();
 });
 
+$("#employeesPageMobileFilterBtn").click(function () {
+  $("#employeesFilterModal").modal("show");
+});
+
+$("#departmentsPageMobileFilterBtn").click(function () {
+  $("#departmentsFilterModal").modal("show");
+});
+
+$("#locationsPageMobileFilterBtn").click(function () {
+  $("#locationsFilterModal").modal("show");
+});
+
 $(".createBtn").click(function (e) {
   e.preventDefault();
   switch ($(this).data("form")) {
