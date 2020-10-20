@@ -141,8 +141,6 @@ $(document).ready(function () {
       .search(val ? "^" + val + "$" : "", true, false)
       .draw();
   });
-
-  showEmployeesPage();
   // end document on ready
 });
 
