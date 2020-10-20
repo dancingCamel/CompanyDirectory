@@ -13,6 +13,8 @@ html {
 
 main {
   min-height: 72vh;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
 }
 
 .bellport-purple-text {
@@ -115,6 +117,16 @@ main {
 @media screen and (min-width: 576px) {
   main {
     margin-top: 80px !important;
+    padding-left: 35px !important;
+    padding-right: 35px !important;
+  }
+  .dataTables_wrapper .col-sm-12 {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+  }
+  .page {
+    padding-left: 5vw;
+    padding-right: 5vw;
   }
 }
 
@@ -130,6 +142,10 @@ main {
 }
 
 /* Tables */
+.dataTables_wrapper .col-sm-12 {
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
 
 .table-button {
   width: 45px;
@@ -230,6 +246,7 @@ select {
 .desktop-filter-button {
   background-color: var(--bellport-purple) !important;
   border-color: white !important;
+  width: 150px;
 }
 
 .desktop-filter-button:hover {

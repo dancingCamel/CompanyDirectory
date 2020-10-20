@@ -116,8 +116,8 @@
       </div>
     </nav>
 
-    <main role="main" class="container mb-5">
-      <div class="container">
+    <main role="main" class="container-fluid mb-5">
+      <div class="container-fluid">
         <div
           class="alert alert-danger"
           role="alert"
@@ -130,25 +130,29 @@
 
       <!-- PAGES -->
       <div class="employees page d-none" id="employeesPage">
-        <div class="container bellport-purple-text">
+        <div class="container-fluid bellport-purple-text">
           <h3>Employees</h3>
 
-          <div class="w-100 d-flex justify-content-between align-items-center">
-            <button
-              class="btn btn-outline-success my-3"
-              id="employeesPageCreateBtn"
+          <div class="d-none d-sm-block">
+            <div
+              class="w-100 d-flex justify-content-between align-items-center"
             >
-              New Employee
-            </button>
+              <button
+                class="btn btn-outline-success my-3"
+                id="employeesPageCreateBtn"
+              >
+                New Employee
+              </button>
 
-            <button
-              type="button"
-              class="btn btn-primary desktop-filter-button"
-              data-toggle="modal"
-              data-target="#exmployeesFilterModal"
-            >
-              Filter
-            </button>
+              <button
+                type="button"
+                class="btn btn-primary desktop-filter-button"
+                data-toggle="modal"
+                data-target="#exmployeesFilterModal"
+              >
+                Filter
+              </button>
+            </div>
           </div>
 
           <table
@@ -270,22 +274,27 @@
       <div class="departments page d-none" id="departmentsPage">
         <div class="container bellport-purple-text">
           <h3>Departments</h3>
-          <div class="w-100 d-flex justify-content-between align-items-center">
-            <button
-              class="btn btn-outline-success my-3"
-              id="departmentsPageCreateBtn"
+          <div class="d-none d-sm-block">
+            <div
+              class="w-100 d-flex justify-content-between align-items-center"
             >
-              New Department
-            </button>
-            <button
-              type="button"
-              class="btn btn-primary desktop-filter-button"
-              data-toggle="modal"
-              data-target="#departmentsFilterModal"
-            >
-              Filter
-            </button>
+              <button
+                class="btn btn-outline-success my-3"
+                id="departmentsPageCreateBtn"
+              >
+                New Department
+              </button>
+              <button
+                type="button"
+                class="btn btn-primary desktop-filter-button"
+                data-toggle="modal"
+                data-target="#departmentsFilterModal"
+              >
+                Filter
+              </button>
+            </div>
           </div>
+
           <table
             id="departmentsTable"
             class="table table-striped table-bordered"
@@ -375,22 +384,27 @@
       <div class="locations page d-none" id="locationsPage">
         <div class="container bellport-purple-text">
           <h3>Locations</h3>
-          <div class="w-100 d-flex justify-content-between align-items-center">
-            <button
-              class="btn btn-outline-success my-3"
-              id="locationsPageCreateBtn"
+          <div class="d-none d-sm-block">
+            <div
+              class="w-100 d-flex justify-content-between align-items-center"
             >
-              New Location
-            </button>
-            <button
-              type="button"
-              class="btn btn-primary desktop-filter-button"
-              data-toggle="modal"
-              data-target="#locationsFilterModal"
-            >
-              Filter
-            </button>
+              <button
+                class="btn btn-outline-success my-3"
+                id="locationsPageCreateBtn"
+              >
+                New Location
+              </button>
+              <button
+                type="button"
+                class="btn btn-primary desktop-filter-button"
+                data-toggle="modal"
+                data-target="#locationsFilterModal"
+              >
+                Filter
+              </button>
+            </div>
           </div>
+
           <table
             id="locationsTable"
             class="table table-striped table-bordered"
