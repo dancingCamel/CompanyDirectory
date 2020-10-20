@@ -644,7 +644,7 @@ const loaderWrapper = (wrapped) => {
   let result = async function () {
     return await wrapped.apply(this, arguments);
   };
-  setTimeout(hideLoader, 700);
+  setTimeout(hideLoader, 1000);
   return result;
 };
 
