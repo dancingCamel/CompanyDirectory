@@ -669,9 +669,14 @@ const checkLoggedIn = (wrapped) => {
 
 const redrawTables = () => {
   setTimeout(function () {
-    $("#employeesTable").DataTable().draw();
-    $("#locationsTable").DataTable().draw();
-    $("#departmentsTable").DataTable().draw();
-    console.log($(window).width());
+    if (employeesTable) {
+      employeesTable.draw();
+    }
+    if (departmentsTable) {
+      departmentsTable.draw();
+    }
+    if (locationsTable) {
+      locationsTable.draw();
+    }
   }, 100);
 };

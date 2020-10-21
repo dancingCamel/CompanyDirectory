@@ -157,11 +157,6 @@ $(document).ready(function () {
     const searchTerm = $(this).val();
     $("#locationsTable").DataTable().search(searchTerm).draw();
   });
-
-  $(window).resize(function () {
-    redrawTables();
-  });
-
   // end document on ready
 });
 
@@ -333,4 +328,8 @@ $(".updateBtn").click(function (e) {
 $("#loginBtn").click(function (e) {
   e.preventDefault();
   userLogin();
+});
+
+$(window).resize(function () {
+  redrawTables();
 });
