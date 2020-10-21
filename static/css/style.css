@@ -3,6 +3,7 @@
 :root {
   --bellport-yellow: #faffd8;
   --bellport-purple: #54577c;
+  --bellport-purple-dark: #3f415e;
 }
 
 html {
@@ -41,6 +42,11 @@ main {
 
 .dropshadow {
   filter: drop-shadow(0px 2px 4px #bbbbbb);
+}
+
+.page-title {
+  font-size: 1.2em;
+  font-weight: bold;
 }
 
 /* Main page */
@@ -228,6 +234,37 @@ select {
   -webkit-transition: 0.25s all ease;
   -o-transition: 0.25s all ease;
   transition: 0.25s all ease;
+}
+
+/* desktop buttons */
+.desktop-button-container {
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+}
+
+.small-new-button {
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
+  font-size: 0.7em !important;
+  border-radius: 50% !important;
+  border-color: white !important;
+  width: 40px;
+  height: 40px;
+}
+
+.small-filter-button {
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
+  font-size: 0.7em !important;
+  border-radius: 50% !important;
+  background-color: var(--bellport-purple) !important;
+  border-color: white !important;
+  width: 40px;
+  height: 40px;
+}
+
+.small-filter-button:hover {
+  background-color: var(--bellport-purple-dark) !important;
 }
 
 /* mobile buttons */

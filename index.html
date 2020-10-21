@@ -131,34 +131,36 @@
       <!-- PAGES -->
       <div class="employees page d-none" id="employeesPage">
         <div class="container-fluid bellport-purple-text">
-          <h3>Employees</h3>
+          <div class="form-group row d-flex justify-content-between">
+            <label class="col-4 col-form-label page-title">Employees</label>
 
-          <div class="d-none d-sm-block">
-            <div
-              class="w-100 d-flex justify-content-between align-items-center"
-            >
+            <div class="d-none d-sm-block col-2 desktop-button-container">
+              <div class="ml-auto d-flex justify-content-end">
+                <button
+                  type="button"
+                  class="btn btn-success small-new-button"
+                  id="employeesPageCreateBtn"
+                >
+                  <i class="fas fa-plus"></i>
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-primary small-filter-button ml-2"
+                  data-toggle="modal"
+                  data-target="#employeesFilterModal"
+                >
+                  <i class="fas fa-filter"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="col-6">
               <input
                 type="text"
                 class="form-control search-input"
                 placeholder="Search"
                 id="employeesSearchBox"
               />
-              <button
-                type="button"
-                class="btn btn-outline-success my-3"
-                id="employeesPageCreateBtn"
-              >
-                New Employee
-              </button>
-
-              <button
-                type="button"
-                class="btn btn-primary desktop-filter-button"
-                data-toggle="modal"
-                data-target="#employeesFilterModal"
-              >
-                Filter
-              </button>
             </div>
           </div>
 
@@ -272,31 +274,36 @@
 
       <div class="departments page d-none" id="departmentsPage">
         <div class="container bellport-purple-text">
-          <h3>Departments</h3>
-          <div class="d-none d-sm-block">
-            <div
-              class="w-100 d-flex justify-content-between align-items-center"
-            >
+          <div class="form-group row d-flex justify-content-between">
+            <label class="col-4 col-form-label page-title">Departments</label>
+
+            <div class="d-none d-sm-block col-2 desktop-button-container">
+              <div class="ml-auto d-flex justify-content-end">
+                <button
+                  type="button"
+                  class="btn btn-success small-new-button"
+                  id="departmentsPageCreateBtn"
+                >
+                  <i class="fas fa-plus"></i>
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-primary small-filter-button ml-2"
+                  data-toggle="modal"
+                  data-target="#departmentsFilterModal"
+                >
+                  <i class="fas fa-filter"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="col-6">
               <input
                 type="text"
                 class="form-control search-input"
                 placeholder="Search"
-                id="departmentsSearchBox"
+                id="employeesSearchBox"
               />
-              <button
-                class="btn btn-outline-success my-3"
-                id="departmentsPageCreateBtn"
-              >
-                New Department
-              </button>
-              <button
-                type="button"
-                class="btn btn-primary desktop-filter-button"
-                data-toggle="modal"
-                data-target="#departmentsFilterModal"
-              >
-                Filter
-              </button>
             </div>
           </div>
 
@@ -388,31 +395,36 @@
 
       <div class="locations page d-none" id="locationsPage">
         <div class="container bellport-purple-text">
-          <h3>Locations</h3>
-          <div class="d-none d-sm-block">
-            <div
-              class="w-100 d-flex justify-content-between align-items-center"
-            >
+          <div class="form-group row d-flex justify-content-between">
+            <label class="col-4 col-form-label page-title">Locations</label>
+
+            <div class="d-none d-sm-block col-2 desktop-button-container">
+              <div class="ml-auto d-flex justify-content-end">
+                <button
+                  type="button"
+                  class="btn btn-success small-new-button"
+                  id="locationsPageCreateBtn"
+                >
+                  <i class="fas fa-plus"></i>
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-primary small-filter-button ml-2"
+                  data-toggle="modal"
+                  data-target="#locationsFilterModal"
+                >
+                  <i class="fas fa-filter"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="col-6">
               <input
                 type="text"
                 class="form-control search-input"
                 placeholder="Search"
-                id="locationsSearchBox"
+                id="employeesSearchBox"
               />
-              <button
-                class="btn btn-outline-success my-3"
-                id="locationsPageCreateBtn"
-              >
-                New Location
-              </button>
-              <button
-                type="button"
-                class="btn btn-primary desktop-filter-button"
-                data-toggle="modal"
-                data-target="#locationsFilterModal"
-              >
-                Filter
-              </button>
             </div>
           </div>
 
