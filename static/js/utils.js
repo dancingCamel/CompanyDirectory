@@ -480,7 +480,7 @@ const populateEmployeesTable = async (jwt) => {
         orderable: false,
         render: function (data, type, row, meta) {
           return (
-            '<div><button class="btn btn-primary mr-2 table-button edit" data-row=' +
+            '<div class="table-button-wrapper"><button class="btn btn-primary mr-2 table-button edit" data-row=' +
             row.id +
             '><i class="fas fa-edit"></i></button><button class="btn btn-danger table-button delete" data-row=' +
             row.id +
@@ -543,7 +543,7 @@ const populateDepartmentsTable = (jwt) => {
         width: "180px",
         render: function (data, type, row, meta) {
           return (
-            '<div><button class="btn btn-primary mr-2 table-button edit" data-row=' +
+            '<div class="table-button-wrapper"><button class="btn btn-primary mr-2 table-button edit" data-row=' +
             row.id +
             '><i class="fas fa-edit"></i></button><button class="btn btn-danger table-button delete" data-row=' +
             row.id +
@@ -602,7 +602,7 @@ const populateLocationsTable = (jwt) => {
         width: "180px",
         render: function (data, type, row, meta) {
           return (
-            '<div><button class="btn btn-primary mr-2 table-button edit" data-row=' +
+            '<div class="table-button-wrapper"><button class="btn btn-primary mr-2 table-button edit" data-row=' +
             row.id +
             '><i class="fas fa-edit"></i></button><button class="btn btn-danger table-button delete" data-row=' +
             row.id +

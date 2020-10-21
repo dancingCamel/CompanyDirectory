@@ -173,6 +173,10 @@ main {
   text-align: end !important;
 }
 
+.table-button-wrapper {
+  min-width: 130px;
+}
+
 /* .dataTables_scrollBody {
   -ms-overflow-style: none;
   scrollbar-width: none;
