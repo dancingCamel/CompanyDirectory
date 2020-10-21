@@ -158,6 +158,10 @@ $(document).ready(function () {
     $("#locationsTable").DataTable().search(searchTerm).draw();
   });
 
+  $(window).resize(function () {
+    redrawTables();
+  });
+
   // end document on ready
   showEmployeesPage();
 });

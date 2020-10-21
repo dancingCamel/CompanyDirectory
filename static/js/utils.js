@@ -663,3 +663,12 @@ const checkLoggedIn = (wrapped) => {
   };
   return result;
 };
+
+const redrawTables = () => {
+  setTimeout(function () {
+    $("#employeesTable").DataTable().draw();
+    $("#locationsTable").DataTable().draw();
+    $("#departmentsTable").DataTable().draw();
+    console.log($(window).width());
+  }, 100);
+};
