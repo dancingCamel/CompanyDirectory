@@ -141,6 +141,23 @@ $(document).ready(function () {
       .search(val ? "^" + val + "$" : "", true, false)
       .draw();
   });
+
+  // Search boxes
+  $("#employeesSearchBox").keyup(function () {
+    const searchTerm = $(this).val();
+    $("#employeesTable").DataTable().search(searchTerm).draw();
+  });
+
+  $("#departmentsSearchBox").keyup(function () {
+    const searchTerm = $(this).val();
+    $("#departmentsTable").DataTable().search(searchTerm).draw();
+  });
+
+  $("#locationsSearchBox").keyup(function () {
+    const searchTerm = $(this).val();
+    $("#locationsTable").DataTable().search(searchTerm).draw();
+  });
+
   // end document on ready
   showEmployeesPage();
 });
