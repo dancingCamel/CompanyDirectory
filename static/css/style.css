@@ -49,6 +49,10 @@ main {
   font-weight: bold;
 }
 
+.page-title-container {
+  margin-bottom: 0px !important;
+}
+
 /* Main page */
 
 main {
@@ -138,6 +142,10 @@ main {
   .dataTables_filter {
     margin-right: 16px;
   }
+
+  .table-wrapper {
+    height: 75vh;
+  }
 }
 
 /* Mobile device styling */
@@ -148,6 +156,10 @@ main {
 
   .filter-row {
     margin-top: 5px;
+  }
+
+  .table-wrapper {
+    height: 85vh;
   }
 }
 
@@ -175,6 +187,10 @@ main {
 
 .table-button-wrapper {
   min-width: 130px;
+}
+
+div.dataTables_length {
+  display: none;
 }
 
 /* .dataTables_scrollBody {
