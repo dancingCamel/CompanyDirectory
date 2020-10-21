@@ -405,6 +405,7 @@ const userLogin = async () => {
   const form = $("#loginForm").serializeArray();
   let fd = new FormData();
   form.forEach((element) => fd.append(element.name, element.value));
+  $("#loginForm")[0].reset();
   let response = await User.login(fd);
   if (!(response.status.code == 200 && response.status.name == "ok")) {
     showLoginError(response.status.description);
@@ -412,7 +413,6 @@ const userLogin = async () => {
   } else {
     sessionStorage.setItem("jwt", response.data.jwt);
     sessionStorage.setItem("username", response.data.username);
-    $("#loginForm")[0].reset();
   }
 
   loaderWrapper(showEmployeesPage(response.data.jwt));
@@ -647,7 +647,7 @@ const loaderWrapper = (wrapped) => {
   let result = async function () {
     return await wrapped.apply(this, arguments);
   };
-  setTimeout(hideLoader, 1000);
+  setTimeout(hideLoader, 1200);
   return result;
 };
 
