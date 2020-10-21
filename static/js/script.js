@@ -163,6 +163,7 @@ $(document).ready(function () {
   });
 
   // end document on ready
+  showEmployeesPage();
 });
 
 $("#editEmployeeLocation").change(function () {

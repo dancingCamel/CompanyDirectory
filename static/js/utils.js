@@ -455,6 +455,7 @@ let populatedEmployeesTable = false;
 const populateEmployeesTable = async (jwt) => {
   const token = jwt ? jwt : sessionStorage.getItem("jwt");
   employeesTable = $("#employeesTable").DataTable({
+    order: [1, "asc"],
     scrollResize: true,
     responsive: true,
     autoWidth: false,
@@ -523,6 +524,7 @@ let departmentsTable;
 let populatedDepartmentsTable = false;
 const populateDepartmentsTable = (jwt) => {
   departmentsTable = $("#departmentsTable").DataTable({
+    order: [1, "asc"],
     scrollResize: true,
     responsive: true,
     autoWidth: false,
@@ -585,6 +587,7 @@ let locationsTable;
 let populatedLocationsTable = false;
 const populateLocationsTable = (jwt) => {
   locationsTable = $("#locationsTable").DataTable({
+    order: [1, "asc"],
     scrollResize: true,
     responsive: true,
     autoWidth: false,
