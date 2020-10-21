@@ -142,6 +142,7 @@ $(document).ready(function () {
       .draw();
   });
   // end document on ready
+  showEmployeesPage();
 });
 
 $("#editEmployeeLocation").change(function () {
