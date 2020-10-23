@@ -129,6 +129,10 @@ const showEmployeesPage = async (jwt) => {
   }
   $("#employeesPage").removeClass("d-none");
   $("#employeesTable").DataTable().columns.adjust().draw();
+
+  setTimeout(function () {
+    $("#employeesTable").DataTable().draw();
+  }, 500);
 };
 
 const showDepartmentsPage = async (jwt) => {
@@ -142,6 +146,10 @@ const showDepartmentsPage = async (jwt) => {
   }
   $("#departmentsPage").removeClass("d-none");
   $("#departmentsTable").DataTable().columns.adjust().draw();
+
+  setTimeout(function () {
+    $("#departmentsTable").DataTable().draw();
+  }, 500);
 };
 
 const showLocationsPage = async (jwt) => {
@@ -155,6 +163,9 @@ const showLocationsPage = async (jwt) => {
   }
   $("#locationsPage").removeClass("d-none");
   $("#locationsTable").DataTable().columns.adjust().draw();
+  setTimeout(function () {
+    $("#locationsTable").DataTable().draw();
+  }, 500);
 };
 
 const showCreateLocationPage = () => {
