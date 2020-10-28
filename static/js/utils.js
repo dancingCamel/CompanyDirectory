@@ -693,3 +693,15 @@ const redrawTables = () => {
     }
   }, 100);
 };
+
+const clearEmployeeSearch = () => {
+  $("#employeesSearchBox").val("");
+};
+
+const clearDeptSearch = () => {
+  $("#departmentsSearchBox").val("");
+};
+
+const clearLocatationSearch = () => {
+  $("#locationsSearchBox").val("");
+};

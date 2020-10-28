@@ -230,14 +230,17 @@ $("#departmentsPageCreateBtn").click(function () {
 });
 
 $("#employeesPageMobileFilterBtn").click(function () {
+  clearEmployeeSearch();
   $("#employeesFilterModal").modal("show");
 });
 
 $("#departmentsPageMobileFilterBtn").click(function () {
+  clearDeptSearch();
   $("#departmentsFilterModal").modal("show");
 });
 
 $("#locationsPageMobileFilterBtn").click(function () {
+  clearLocatationSearch();
   $("#locationsFilterModal").modal("show");
 });
 
