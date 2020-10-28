@@ -504,7 +504,7 @@ const populateEmployeesTable = async (jwt) => {
     ],
     initComplete: function () {
       this.api()
-        .columns([1, 3, 5, 6])
+        .columns([3, 5, 6])
         .every(function () {
           var column = this;
           var columnIndex = column.index();
@@ -522,9 +522,11 @@ const populateEmployeesTable = async (jwt) => {
               let $option = $(document.createElement("option"));
               $option.val(d);
               $option.html(d);
-              $($(".employeeFilterSelect")[Math.floor(columnIndex / 2)]).append(
-                $option
-              );
+              $.each($(".employeeFilterSelect"), function () {
+                if ($(this).data("column") == columnIndex) {
+                  $(this).append($option);
+                }
+              });
             });
         });
     },
