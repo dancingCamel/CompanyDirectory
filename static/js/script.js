@@ -144,16 +144,19 @@ $(document).ready(function () {
 
   // Search boxes
   $("#employeesSearchBox").keyup(function () {
+    resetEmployeeFilter();
     const searchTerm = $(this).val();
     $("#employeesTable").DataTable().search(searchTerm).draw();
   });
 
   $("#departmentsSearchBox").keyup(function () {
+    resetDeptFilter();
     const searchTerm = $(this).val();
     $("#departmentsTable").DataTable().search(searchTerm).draw();
   });
 
   $("#locationsSearchBox").keyup(function () {
+    resetLocationFilter();
     const searchTerm = $(this).val();
     $("#locationsTable").DataTable().search(searchTerm).draw();
   });
@@ -257,45 +260,15 @@ $("#locationsPageMobileCreateBtn").click(function () {
 });
 
 $("#employeesFilterResetBtn").click(function () {
-  $.each($(".employeeFilterSelect"), function () {
-    $(this).val("");
-  });
-
-  employeesTable
-    .columns()
-    .every(function () {
-      let column = this;
-      column.search("");
-    })
-    .draw();
+  resetEmployeeFilter();
 });
 
 $("#departmentsFilterResetBtn").click(function () {
-  $.each($(".departmentFilterSelect"), function () {
-    $(this).val("");
-  });
-
-  departmentsTable
-    .columns()
-    .every(function () {
-      let column = this;
-      column.search("");
-    })
-    .draw();
+  resetDeptFilter();
 });
 
 $("#locationsFilterResetBtn").click(function () {
-  $.each($(".locationFilterSelect"), function () {
-    $(this).val("");
-  });
-
-  locationsTable
-    .columns()
-    .every(function () {
-      let column = this;
-      column.search("");
-    })
-    .draw();
+  resetLocationFilter();
 });
 
 $(".createBtn").click(function (e) {

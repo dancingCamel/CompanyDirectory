@@ -708,3 +708,45 @@ const clearLocatationSearch = () => {
   $("#locationsSearchBox").val("");
   $("#locationsTable").DataTable().search("").draw();
 };
+
+const resetEmployeeFilter = () => {
+  $.each($(".employeeFilterSelect"), function () {
+    $(this).val("");
+  });
+
+  employeesTable
+    .columns()
+    .every(function () {
+      let column = this;
+      column.search("");
+    })
+    .draw();
+};
+
+const resetDeptFilter = () => {
+  $.each($(".departmentFilterSelect"), function () {
+    $(this).val("");
+  });
+
+  departmentsTable
+    .columns()
+    .every(function () {
+      let column = this;
+      column.search("");
+    })
+    .draw();
+};
+
+const resetLocationFilter = () => {
+  $.each($(".locationFilterSelect"), function () {
+    $(this).val("");
+  });
+
+  locationsTable
+    .columns()
+    .every(function () {
+      let column = this;
+      column.search("");
+    })
+    .draw();
+};
