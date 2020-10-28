@@ -696,12 +696,15 @@ const redrawTables = () => {
 
 const clearEmployeeSearch = () => {
   $("#employeesSearchBox").val("");
+  $("#employeesTable").DataTable().search("").draw();
 };
 
 const clearDeptSearch = () => {
   $("#departmentsSearchBox").val("");
+  $("#departmentsTable").DataTable().search("").draw();
 };
 
 const clearLocatationSearch = () => {
   $("#locationsSearchBox").val("");
+  $("#locationsTable").DataTable().search("").draw();
 };
