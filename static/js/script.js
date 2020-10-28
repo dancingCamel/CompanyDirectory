@@ -51,6 +51,7 @@ $(document).ready(function () {
       }
       if (response.status.code == 200 && response.status.name === "ok") {
         employeesTable.row(row).remove().draw();
+        toastr["success"]("Employee Deleted", "Success");
       } else {
         showError(response.status.description);
       }
@@ -93,6 +94,7 @@ $(document).ready(function () {
       }
       if (response.status.code == 200 && response.status.name === "ok") {
         departmentsTable.row(row).remove().draw();
+        toastr["success"]("Department Deleted", "Success");
       } else {
         showError(response.status.description);
       }
@@ -127,6 +129,7 @@ $(document).ready(function () {
       }
       if (response.status.code == 200 && response.status.name === "ok") {
         locationsTable.row(row).remove().draw();
+        toastr["success"]("Location Deleted", "Success");
       } else {
         showError(response.status.description);
       }
