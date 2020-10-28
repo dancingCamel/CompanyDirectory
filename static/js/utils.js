@@ -420,6 +420,7 @@ const userLogin = async () => {
   let response = await User.login(fd);
   if (!(response.status.code == 200 && response.status.name == "ok")) {
     showLoginError(response.status.description);
+    $("#username").focus();
     return;
   } else {
     sessionStorage.setItem("jwt", response.data.jwt);
